@@ -10,5 +10,5 @@ export function Grid(props: GridProps) {
         rows.push(<Row key={index} />);
     }
 
-    return <div>{rows}</div>;
+    return <div data-testid='mars-rover-grid'>{rows}</div>;
 }
