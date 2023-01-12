@@ -1,9 +1,10 @@
+import React from 'react';
 import './App.css';
 import { Grid } from './grid/Grid';
 
-function App() {
-  return (
-    <div className='App'>
+export class App extends React.Component {
+  render() {
+    return <div className='App'>
       <header className='App-header'>
         <div>
           <Grid />
@@ -11,7 +12,7 @@ function App() {
         </div>
       </header>
     </div>
-  );
+  }
 }
 
 export default App;
