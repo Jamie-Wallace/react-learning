@@ -1,11 +1,11 @@
 import './App.css';
-import { Row } from './grid/Row';
+import { Grid } from './grid/Grid';
 
 function App() {
   return (
     <div className='App'>
       <header className='App-header'>
-        <Row />
+        <Grid />
       </header>
     </div>
   );
