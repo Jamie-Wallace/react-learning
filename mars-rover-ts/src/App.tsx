@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import { Row } from './grid/Row';
 import {Square} from './grid/Square';
 
 function App() {
@@ -10,11 +11,9 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <div data-testid='row_1'>
-          {row}
-        </div>
+    <div className='App'>
+      <header className='App-header'>
+        <Row />
       </header>
     </div>
   );

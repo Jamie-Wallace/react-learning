@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import App from '../App';
 
 describe('MarsRover', () => {
-    test('renders a grid', () => {
+    it('renders a grid', () => {
         render(<App />);
 
         const row1 = screen.getByTestId('row_1');
