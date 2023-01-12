@@ -5,7 +5,10 @@ function App() {
   return (
     <div className='App'>
       <header className='App-header'>
-        <Grid />
+        <div>
+          <Grid />
+          <div><button>Move</button></div>
+        </div>
       </header>
     </div>
   );

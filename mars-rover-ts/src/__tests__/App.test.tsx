@@ -7,6 +7,8 @@ describe('App', () => {
 
         const gridElement = screen.getByTestId('mars-rover-grid');
         expect(gridElement).toBeInTheDocument();
-        //  screen.findByTestId('mars-rover-grid');
+
+        const moveButton = screen.getByText('Move');
+        expect(moveButton).toBeInTheDocument();
     });
 });
