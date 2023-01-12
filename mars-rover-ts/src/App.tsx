@@ -2,12 +2,24 @@ import React from 'react';
 import './App.css';
 import { Grid } from './grid/Grid';
 
-export class App extends React.Component {
+type AppProps = {
+  roverLocationX: Number,
+  roverLocationY: Number
+};
+
+type AppState = {
+  gridSquares: string[][];
+};
+
+export class App extends React.Component<AppProps, AppState> {
+  state: AppState = {
+    gridSquares: [],
+  };
   render() {
     return <div className='App'>
       <header className='App-header'>
         <div>
-          <Grid />
+          <Grid squares={this.state.gridSquares} />
           <div><button>Move</button></div>
         </div>
       </header>

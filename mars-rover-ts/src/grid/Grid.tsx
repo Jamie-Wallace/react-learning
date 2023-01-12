@@ -1,7 +1,11 @@
 import React from 'react';
 import { Row } from './Row';
 
-export class Grid extends React.Component {
+type GridProps = {
+    squares: string[][];
+};
+
+export class Grid extends React.Component<GridProps> {
     render() {
         let rows = [];
 
