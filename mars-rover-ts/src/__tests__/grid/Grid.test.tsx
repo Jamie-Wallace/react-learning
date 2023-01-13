@@ -12,9 +12,17 @@ describe('Grid', () => {
 
     it('shows the rover at start position', () => {
         render(<Grid squares={[]} roverLocationX={0} roverLocationY={0} />);
-        
+
         const rover = screen.getByText('^');
-        
+
         expect(rover).toBeInTheDocument();
+    });
+
+    it('shows the rover after it has moved forwards', () => {
+        render(<Grid squares={[]} roverLocationX={0} roverLocationY={5} />);
+
+        const squareWithRover = screen.getByTestId('0_5');
+
+        expect(squareWithRover).toHaveTextContent('^');
     });
 });

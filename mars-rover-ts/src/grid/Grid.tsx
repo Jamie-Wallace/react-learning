@@ -18,7 +18,7 @@ export class Grid extends React.Component<GridProps> {
             if (index === this.props.roverLocationY) {
                 xIndex = this.props.roverLocationX;
             }
-            rows.push(<Row key={index} roverPositionIndex={xIndex} />);
+            rows.push(<Row key={index} rowIndex={index} roverPositionIndex={xIndex} />);
         }
 
         rows.reverse();

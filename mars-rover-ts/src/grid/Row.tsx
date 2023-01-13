@@ -1,6 +1,7 @@
 import { Square } from './Square';
 
 interface RowProps {
+    rowIndex: number,
     roverPositionIndex: number
 }
 
@@ -12,7 +13,7 @@ export function Row(props: RowProps) {
         if (index === props.roverPositionIndex) {
             squareValue = '^';
         }
-        squares.push(<Square key={index} value={squareValue} />);
+        squares.push(<Square key={index} value={squareValue} xCoordinate={index} yCoordinate={props.rowIndex} />);
     }
 
     return <div>{squares}</div>;

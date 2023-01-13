@@ -1,9 +1,12 @@
 interface SquareProps {
-    value: String,
+    value: string,
+    xCoordinate: number,
+    yCoordinate: number
 }
 
 export function Square(props: SquareProps) {
+    let testId = `${props.xCoordinate}_${props.yCoordinate}`;
     return (
-        <div className='square'>{props.value}</div>
+        <div className='square' data-testid={testId}>{props.value}</div>
     );
 }
