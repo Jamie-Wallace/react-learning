@@ -10,26 +10,15 @@ describe('Grid', () => {
         expect(grid.childNodes).toHaveLength(10);
     });
 
-    it('shows the rover at start position', () => {
-        render(<Grid squares={[]} roverLocationX={0} roverLocationY={0} />);
+    it.each([
+        [0, 0],
+        [0, 5], 
+        [6, 3]
+    ])('indicates correct rover position', (x, y) => {
+        render(<Grid squares={[]} roverLocationX={x} roverLocationY={y} />);
 
-        const squareWithRover = screen.getByTestId('0_0');
-
-        expect(squareWithRover).toHaveTextContent('^');
-    });
-
-    it('shows the rover after it has moved forwards', () => {
-        render(<Grid squares={[]} roverLocationX={0} roverLocationY={5} />);
-
-        const squareWithRover = screen.getByTestId('0_5');
-
-        expect(squareWithRover).toHaveTextContent('^');
-    });
-
-    it('shows the rover after it has rotated and moved', () => {
-        render(<Grid squares={[]} roverLocationX={6} roverLocationY={3} />);
-
-        const squareWithRover = screen.getByTestId('6_3');
+        let testId = `square_${x}_${y}`;
+        const squareWithRover = screen.getByTestId(testId);
 
         expect(squareWithRover).toHaveTextContent('^');
     });

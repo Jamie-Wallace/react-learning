@@ -5,7 +5,7 @@ interface SquareProps {
 }
 
 export function Square(props: SquareProps) {
-    let testId = `${props.xCoordinate}_${props.yCoordinate}`;
+    let testId = `square_${props.xCoordinate}_${props.yCoordinate}`;
     return (
         <div className='square' data-testid={testId}>{props.value}</div>
     );
