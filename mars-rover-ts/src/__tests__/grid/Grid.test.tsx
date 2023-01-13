@@ -13,9 +13,9 @@ describe('Grid', () => {
     it('shows the rover at start position', () => {
         render(<Grid squares={[]} roverLocationX={0} roverLocationY={0} />);
 
-        const rover = screen.getByText('^');
+        const squareWithRover = screen.getByTestId('0_0');
 
-        expect(rover).toBeInTheDocument();
+        expect(squareWithRover).toHaveTextContent('^');
     });
 
     it('shows the rover after it has moved forwards', () => {
