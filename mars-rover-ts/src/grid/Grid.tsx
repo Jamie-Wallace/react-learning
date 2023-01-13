@@ -21,6 +21,8 @@ export class Grid extends React.Component<GridProps> {
             rows.push(<Row key={index} roverPositionIndex={xIndex} />);
         }
 
+        rows.reverse();
+
         return <div data-testid='mars-rover-grid'>{rows}</div>;
     }
 }
