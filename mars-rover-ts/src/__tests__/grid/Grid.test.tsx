@@ -25,4 +25,12 @@ describe('Grid', () => {
 
         expect(squareWithRover).toHaveTextContent('^');
     });
+
+    it('shows the rover after it has rotated and moved', () => {
+        render(<Grid squares={[]} roverLocationX={6} roverLocationY={3} />);
+
+        const squareWithRover = screen.getByTestId('6_3');
+
+        expect(squareWithRover).toHaveTextContent('^');
+    });
 });
