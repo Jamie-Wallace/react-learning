@@ -19,7 +19,7 @@ export class App extends React.Component<AppProps, AppState> {
     return <div className='App'>
       <header className='App-header'>
         <div>
-          <Grid squares={this.state.gridSquares} />
+          <Grid squares={this.state.gridSquares} roverLocationX={0} roverLocationY={0} />
           <div><button>Move</button></div>
         </div>
       </header>

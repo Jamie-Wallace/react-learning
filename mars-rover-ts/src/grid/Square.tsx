@@ -4,6 +4,6 @@ interface SquareProps {
 
 export function Square(props: SquareProps) {
     return (
-        <div className='square'></div>
+        <div className='square'>{props.value}</div>
     );
 }

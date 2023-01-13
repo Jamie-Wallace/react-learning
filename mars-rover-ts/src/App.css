@@ -15,6 +15,7 @@
 
 .square {
   background: #fff;
+  color: black;
   border: 1px solid #999;
   float: left;
   font-size: 24px;
