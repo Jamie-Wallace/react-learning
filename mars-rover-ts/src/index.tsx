@@ -9,7 +9,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <App roverLocationX={0} roverLocationY={0} />
   </React.StrictMode>
 );
 
