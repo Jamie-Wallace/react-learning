@@ -2,18 +2,9 @@
 
 export class MarsRover {
     execute(command: string) {
-        if (command === '') {
-            return '0:0:N';
-        }
+        let directions = ['N', 'E', 'S', 'W'];
 
-        if (command.length === 3) {
-            return '0:0:W'
-        }
-
-        if (command.length === 2) {
-            return '0:0:S'
-        }
-
-        return '0:0:E';
+        const direction = directions[command.length];
+        return `0:0:${direction}`;
     }
 }
