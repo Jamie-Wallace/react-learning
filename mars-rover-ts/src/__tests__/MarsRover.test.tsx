@@ -25,4 +25,10 @@ describe('MarsRover', () => {
 
         expect(result).toEqual(expectedResult);
     });
+
+    it('turns left once', () => {
+        var result = marsRover.execute('L');
+
+        expect(result).toEqual('0:0:W');
+    });
 });
