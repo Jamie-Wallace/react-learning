@@ -18,6 +18,8 @@ describe('MarsRover', () => {
         ['R', '0:0:E'],
         ['RR', '0:0:S'],
         ['RRR', '0:0:W'],
+        ['RRRR', '0:0:N'],
+        ['RRRRR', '0:0:E'],
     ])('should face correct direction after turning right', (command, expectedResult) => {
         var result = marsRover.execute(command);
 
