@@ -14,21 +14,13 @@ describe('MarsRover', () => {
         expect(result).toEqual('0:0:N');
     });
 
-    it('should turn right', () => {
-        var result = marsRover.execute('R');
+    it.each([
+        ['R', '0:0:E'],
+        ['RR', '0:0:S'],
+        ['RRR', '0:0:W'],
+    ])('should face correct direction after turning right', (command, expectedResult) => {
+        var result = marsRover.execute(command);
 
-        expect(result).toEqual('0:0:E');
-    });
-
-    it('should turn right twice', () => {
-        var result = marsRover.execute('RR');
-
-        expect(result).toEqual('0:0:S');
-    });
-
-    it('should turn right three times', () => {
-        var result = marsRover.execute('RRR');
-
-        expect(result).toEqual('0:0:W');
+        expect(result).toEqual(expectedResult);
     });
 });
