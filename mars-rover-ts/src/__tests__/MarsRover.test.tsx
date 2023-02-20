@@ -2,27 +2,33 @@ import {} from '@testing-library/react';
 import { MarsRover } from '../MarsRover/MarsRover';
 
 describe('MarsRover', () => {
-    it('does not move given an empty command', () => {
-        var marsRover = new MarsRover();
+    let marsRover : MarsRover;
 
+    beforeEach(() => {
+        marsRover = new MarsRover();
+    });
+
+    it('does not move given an empty command', () => {
         var result = marsRover.execute('');
 
         expect(result).toEqual('0:0:N');
     });
 
-    it('should turn right', () => {
-        var marsRover = new MarsRover();
+    it.each([
+        ['R', '0:0:E'],
+        ['RR', '0:0:S'],
+        ['RRR', '0:0:W'],
+        ['RRRR', '0:0:N'],
+        ['RRRRR', '0:0:E'],
+    ])('should face correct direction after turning right', (command, expectedResult) => {
+        var result = marsRover.execute(command);
 
-        var result = marsRover.execute('R');
-
-        expect(result).toEqual('0:0:E');
+        expect(result).toEqual(expectedResult);
     });
 
-    it('should turn right twice', () => {
-        var marsRover = new MarsRover();
+    it('turns left once', () => {
+        var result = marsRover.execute('L');
 
-        var result = marsRover.execute('RR');
-
-        expect(result).toEqual('0:0:S');
+        expect(result).toEqual('0:0:W');
     });
 });
