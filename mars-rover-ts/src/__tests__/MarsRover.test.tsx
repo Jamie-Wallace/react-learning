@@ -43,4 +43,10 @@ describe('MarsRover', () => {
 
         expect(result).toEqual('0:0:S');
     });
+
+    it('should move forwards once', () => {
+        var result = marsRover.execute('M');
+
+        expect(result).toEqual('0:1:N');
+    });
 });

@@ -4,7 +4,21 @@ export class MarsRover {
     execute(command: string) {
         let directions = ['N', 'E', 'S', 'W'];
 
+        // if (command === 'M') {
+        //     return `0:1:N`;
+        // }
+
+        // if (command === 'MM') {
+        //     return `0:2:N`;
+        // }
+
+        // if (command === 'MMM') {
+        //     return `0:3:N`;
+        // }
+
         let directionIndex = 0;
+        let moveIndex = 0;
+
         Array.from(command).forEach(character => {
             if (commandIsTurnLeft(character)) {
                 directionIndex = turnLeft(directionIndex);
@@ -12,10 +26,14 @@ export class MarsRover {
             if (commandIsTurnRight(character)) {
                 directionIndex = turnRight(directionIndex);
             }
+
+            if (character === 'M') {
+                moveIndex++;
+            }
         });
 
         const direction = directions[directionIndex];
-        return `0:0:${direction}`;
+        return `0:${moveIndex}:${direction}`;
     }
 }
 
