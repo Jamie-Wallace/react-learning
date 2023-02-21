@@ -50,6 +50,7 @@ describe('MarsRover', () => {
         ['MMM', '0:3:N'],
         ['MMMMM', '0:5:N'],
         ['MMMMMMMMM', '0:9:N'],
+        ['MMMMMMMMMM', '0:0:N'],
     ])('should be at the correct coordinate after moving', (command, expectedResult) => {
         var result = marsRover.execute(command);
 
