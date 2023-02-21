@@ -26,9 +26,15 @@ describe('MarsRover', () => {
         expect(result).toEqual(expectedResult);
     });
 
-    it('turns left once', () => {
-        var result = marsRover.execute('L');
+    it.each([
+        ['L', '0:0:W'],
+        ['LL', '0:0:S'],
+        ['LLL', '0:0:E'],
+        ['LLLL', '0:0:N'],
+        ['LLLLL', '0:0:W'],
+    ])('should face correct direction after turning left', (command, expectedResult) => {
+        var result = marsRover.execute(command);
 
-        expect(result).toEqual('0:0:W');
+        expect(result).toEqual(expectedResult);
     });
 });
