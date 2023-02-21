@@ -1,8 +1,8 @@
-import {} from '@testing-library/react';
+import { } from '@testing-library/react';
 import { MarsRover } from '../MarsRover/MarsRover';
 
 describe('MarsRover', () => {
-    let marsRover : MarsRover;
+    let marsRover: MarsRover;
 
     beforeEach(() => {
         marsRover = new MarsRover();
@@ -44,9 +44,15 @@ describe('MarsRover', () => {
         expect(result).toEqual('0:0:S');
     });
 
-    it('should move forwards once', () => {
-        var result = marsRover.execute('M');
+    it.each([
+        ['M', '0:1:N'],
+        ['MM', '0:2:N'],
+        ['MMM', '0:3:N'],
+        ['MMMMM', '0:5:N'],
+        ['MMMMMMMMM', '0:9:N'],
+    ])('should be at the correct coordinate after moving', (command, expectedResult) => {
+        var result = marsRover.execute(command);
 
-        expect(result).toEqual('0:1:N');
+        expect(result).toEqual(expectedResult);
     });
 });
