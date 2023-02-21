@@ -37,4 +37,10 @@ describe('MarsRover', () => {
 
         expect(result).toEqual(expectedResult);
     });
+
+    it('handles a combination of different turn commands', () => {
+        var result = marsRover.execute('LLRL');
+
+        expect(result).toEqual('0:0:S');
+    });
 });
