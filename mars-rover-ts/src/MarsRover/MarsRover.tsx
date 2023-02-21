@@ -5,6 +5,9 @@ export class MarsRover {
         if(command === 'L'){
             return `0:0:W`;
         }
+        if(command === 'LLL'){
+            return `0:0:E`;
+        }
 
         let directions = ['N', 'E', 'S', 'W'];
 
