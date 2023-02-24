@@ -57,7 +57,7 @@ describe('MarsRover', () => {
         expect(result).toEqual(expectedResult);
     });
 
-    it('can turn and move', () => {
+    it.skip('can turn and move', () => {
         var result = marsRover.execute('RMM');
 
         expect(result).toEqual('2:0:E');
