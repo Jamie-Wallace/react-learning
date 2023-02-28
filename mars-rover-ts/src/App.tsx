@@ -1,4 +1,4 @@
-import React, { MouseEventHandler } from 'react';
+import { MouseEventHandler, useState } from 'react';
 import './App.css';
 import { Grid } from './grid/Grid';
 import { MarsRover } from './MarsRover/MarsRover';
@@ -8,31 +8,26 @@ type AppProps = {
   roverLocationY: Number
 };
 
-type AppState = {
-  gridSquares: string[][];
-};
+export const App = ( { roverLocationX, roverLocationY } : AppProps ) => {
+  const [location, setLocation] = useState("");
 
-export class App extends React.Component<AppProps, AppState> {
-  state: AppState = {
-    gridSquares: [],
-  };
-  render() {
-    const moveRover: MouseEventHandler = () => {
+  const moveRover: MouseEventHandler = () => {
       let marsRover = new MarsRover();
-      let location = marsRover.execute('M');
-
-      console.warn(`NEW LOCATION ${location}`);
+      setLocation(marsRover.execute('M'));
     }
 
-    return <div className='App'>
-      <header className='App-header'>
-        <div>
-          <Grid squares={this.state.gridSquares} roverLocationX={0} roverLocationY={0} />
-          <div><button onClick={moveRover}>Move</button></div>
-        </div>
-      </header>
-    </div>
-  }
+ return <div className='App'>
+ <header className='App-header'>
+   <div>
+     <Grid squares={[[],[]]} roverLocationX={0} roverLocationY={0} />
+     <div>
+       <button onClick={moveRover}>Move</button>
+     </div>
+     <p>{location}</p>
+   </div>
+ </header>
+</div>
 }
 
-export default App;
+
+
