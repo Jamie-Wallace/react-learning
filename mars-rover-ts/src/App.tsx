@@ -13,7 +13,8 @@ export const App = ( { roverLocationX, roverLocationY } : AppProps ) => {
 
   const moveRover: MouseEventHandler = () => {
       let marsRover = new MarsRover();
-      setLocation(marsRover.execute('M'));
+      let result = marsRover.execute('M');
+      setLocation(`${result.positionX}:${result.positionY}:${result.compass}`);
     }
 
  return <div className='App'>
