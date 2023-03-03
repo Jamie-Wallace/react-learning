@@ -1,8 +1,8 @@
 
 export class Position { 
-    compass : string;
-    positionX : number;
-    positionY : number;
+    readonly compass : string;
+    readonly positionX : number;
+    readonly positionY : number;
 
     constructor(compass: string, positionX: number, positionY: number){
         this.compass = compass;
