@@ -1,4 +1,5 @@
 
+import { Position } from './Position';
 
 export class MarsRover {
     execute(command: string) {
@@ -20,7 +21,8 @@ export class MarsRover {
 
         let directions = ['N', 'E', 'S', 'W'];
         const direction = directions[directionIndex];
-        return `0:${moveIndex}:${direction}`;
+
+        return new Position(direction, 0, moveIndex);
     }
 
     private commandIsMove(character: string): boolean {
