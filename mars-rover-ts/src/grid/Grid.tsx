@@ -1,5 +1,6 @@
 import React from 'react';
 import { Row } from './Row';
+import { Square } from './Square';
 
 type GridProps = {
     squares: string[][],
@@ -18,7 +19,11 @@ export class Grid extends React.Component<GridProps> {
             if (index === this.props.roverLocationY) {
                 xIndex = this.props.roverLocationX;
             }
-            rows.push(<Row key={index} rowIndex={index} roverPositionIndex={xIndex} />);
+            
+            rows.push(<div><Square key={index} value={"This is a square"} xCoordinate={0} yCoordinate={index} /></div>);
+
+
+            //rows.push(<Row key={index} rowIndex={index} roverPositionIndex={xIndex} />);
         }
 
         rows.reverse();

@@ -14,6 +14,16 @@ describe('Grid', () => {
 
         expect(grid.childNodes).toHaveLength(expectedLength);
     });
+
+    it('renders a square in a row', () => {
+        const view = render(<Grid squares={[['This is a square']]} roverLocationX={0} roverLocationY={0} />);
+
+        const grid = view.container.childNodes[0];
+
+
+        expect(grid).toHaveTextContent("This is a square");
+    });
+
     
     it.skip.each([
         [0, 0],
