@@ -12,7 +12,7 @@ export class Grid extends React.Component<GridProps> {
         let rows = [];
 
         // TODO: find a better key than index.
-        for (let index = 0; index < 10; index++) {
+        for (let index = 0; index < this.props.squares.length; index++) {
             let xIndex = -1;
 
             if (index === this.props.roverLocationY) {
