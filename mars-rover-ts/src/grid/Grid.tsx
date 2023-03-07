@@ -1,5 +1,3 @@
-import React from 'react';
-import { Row } from './Row';
 import { Square } from './Square';
 
 type GridProps = {
@@ -8,16 +6,15 @@ type GridProps = {
     roverLocationY: number
 };
 
-export class Grid extends React.Component<GridProps> {
-    render() {
+export const Grid = ( { squares, roverLocationX, roverLocationY } : GridProps) => {
         let rows = [];
 
         // TODO: find a better key than index.
-        for (let index = 0; index < this.props.squares.length; index++) {
+        for (let index = 0; index < squares.length; index++) {
             let xIndex = -1;
 
-            if (index === this.props.roverLocationY) {
-                xIndex = this.props.roverLocationX;
+            if (index === roverLocationY) {
+                xIndex = roverLocationX;
             }
             
             rows.push(<div><Square key={index} value={"This is a square"} xCoordinate={0} yCoordinate={index} /></div>);
@@ -29,5 +26,4 @@ export class Grid extends React.Component<GridProps> {
         rows.reverse();
 
         return <div data-testid='mars-rover-grid'>{rows}</div>;
-    }
 }
