@@ -2,22 +2,19 @@ import { render, screen } from '@testing-library/react';
 import { Grid } from '../../grid/Grid';
 
 describe('Grid', () => {
-    it('renders one row', () => {
-        const view = render(<Grid squares={[['']]} roverLocationX={0} roverLocationY={0} />);
+    it.each([
+        [[['']], 1], 
+        [[[''],['']], 2], 
+        [[[''],[''],['']], 3], 
+    ])
+    ('renders expected rows', (squares, expectedLength) => {
+        const view = render(<Grid squares={squares} roverLocationX={0} roverLocationY={0} />);
 
         const grid = view.container.childNodes[0];
 
-        expect(grid.childNodes).toHaveLength(1);
+        expect(grid.childNodes).toHaveLength(expectedLength);
     });
-
-    it('renders two rows', () => {
-        const view = render(<Grid squares={[[''],['']]} roverLocationX={0} roverLocationY={0} />);
-
-        const grid = view.container.childNodes[0];
-
-        expect(grid.childNodes).toHaveLength(2);
-    });
-
+    
     it.skip.each([
         [0, 0],
         [0, 5], 
