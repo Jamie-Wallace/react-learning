@@ -3,12 +3,7 @@ import './App.css';
 import { Grid } from './grid/Grid';
 import { MarsRover } from './MarsRover/MarsRover';
 
-type AppProps = {
-  roverLocationX: Number,
-  roverLocationY: Number
-};
-
-export const App = ( { roverLocationX, roverLocationY } : AppProps ) => {
+export const App = () => {
   const [location, setLocation] = useState("");
 
   const moveRover: MouseEventHandler = () => {
@@ -20,7 +15,7 @@ export const App = ( { roverLocationX, roverLocationY } : AppProps ) => {
  return <div className='App'>
  <header className='App-header'>
    <div>
-     <Grid squares={[[],[]]} />
+     <Grid squares={[['', '^'], ['', '']]} />
      <div>
        <button onClick={moveRover}>Move</button>
      </div>
@@ -29,6 +24,3 @@ export const App = ( { roverLocationX, roverLocationY } : AppProps ) => {
  </header>
 </div>
 }
-
-
-
