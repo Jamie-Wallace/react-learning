@@ -8,7 +8,7 @@ describe('Grid', () => {
         [[[''],[''],['']], 3], 
     ])
     ('renders expected rows', (squares, expectedLength) => {
-        const view = render(<Grid squares={squares} roverLocationX={0} roverLocationY={0} />);
+        const view = render(<Grid squares={squares} />);
 
         const grid = view.container.childNodes[0];
 
@@ -16,12 +16,20 @@ describe('Grid', () => {
     });
 
     it('renders a square in a row', () => {
-        const view = render(<Grid squares={[['This is a square']]} roverLocationX={0} roverLocationY={0} />);
+        const view = render(<Grid squares={[['This is a square']]} />);
 
         const grid = view.container.childNodes[0];
 
-
         expect(grid).toHaveTextContent("This is a square");
+    });
+
+    it('renders 2 squares in a row', () => {
+        const view = render(<Grid squares={[['Square1', 'Square2']]} />);
+
+        const grid = view.container.childNodes[0];
+
+        expect(grid).toHaveTextContent('Square1');
+        expect(grid).toHaveTextContent('Square2');
     });
 
     
@@ -30,7 +38,7 @@ describe('Grid', () => {
         [0, 5], 
         [6, 3]
     ])('indicates correct rover position', (x, y) => {
-        render(<Grid squares={[[]]} roverLocationX={x} roverLocationY={y} />);
+        render(<Grid squares={[[]]} />);
 
         let testId = `square_${x}_${y}`;
         const squareWithRover = screen.getByTestId(testId);

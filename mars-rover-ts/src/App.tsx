@@ -23,7 +23,7 @@ export const App = ( { roverLocationX, roverLocationY } : AppProps ) => {
  return <div className='App'>
  <header className='App-header'>
    <div>
-     <Grid squares={[[],[]]} roverLocationX={0} roverLocationY={yPosition} />
+     <Grid squares={[[],[]]} />
      <div>
        <button onClick={moveRover}>Move</button>
      </div>

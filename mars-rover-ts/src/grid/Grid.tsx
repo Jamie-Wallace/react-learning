@@ -9,18 +9,10 @@ type GridProps = {
 export const Grid = ( { squares, roverLocationX, roverLocationY } : GridProps) => {
         let rows = [];
 
-        // TODO: find a better key than index.
-        for (let index = 0; index < squares.length; index++) {
-            let xIndex = -1;
-
-            if (index === roverLocationY) {
-                xIndex = roverLocationX;
+        for (let rowIndex = 0; rowIndex < squares.length; rowIndex++) { // rows
+            for (let columnIndex = 0; columnIndex < squares[rowIndex].length; columnIndex++) {
+                rows.push(<Square key={rowIndex} value={squares[rowIndex][columnIndex]} xCoordinate={0} yCoordinate={rowIndex} />);   
             }
-            
-            rows.push(<div><Square key={index} value={"This is a square"} xCoordinate={0} yCoordinate={index} /></div>);
-
-
-            //rows.push(<Row key={index} rowIndex={index} roverPositionIndex={xIndex} />);
         }
 
         rows.reverse();
