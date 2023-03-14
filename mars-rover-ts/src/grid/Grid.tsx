@@ -7,7 +7,7 @@ type GridProps = {
 export const Grid = ( { squares } : GridProps) => {
         let rows = [];
 
-        for (let rowIndex = 0; rowIndex < squares.length; rowIndex++) {
+        for (let rowIndex = squares.length - 1; rowIndex >= 0 ; rowIndex--) {
             let row = [];
 
             for (let columnIndex = 0; columnIndex < squares[rowIndex].length; columnIndex++) {

@@ -8,20 +8,18 @@ export const App = () => {
   const [location, setLocation] = useState("");
   const [squares, setSquares] = useState([['^', '', ''], ['', '', ''], ['', '', '']]);
   const [lastPosition, setLastPosition] = useState(new Position('N', 0, 0));
+  const [rover] = useState(new MarsRover());
 
   const moveRover: MouseEventHandler = () => {
-      let marsRover = new MarsRover();
+      let result = rover.execute('M');
 
-      
-      let result = marsRover.execute('M');
-
-      var newSquares = [...squares]; //[['', '', ''], ['', '', ''], ['', '', '']]
+      var newSquares = [...squares];
 
       newSquares[lastPosition.positionY][lastPosition.positionX] = '';
       newSquares[result.positionY][result.positionX] = '^';
 
 
-      setSquares(newSquares);//.reverse());
+      setSquares(newSquares);
       setLastPosition(result);
       setLocation(`${result.positionX}:${result.positionY}:${result.compass}`);
     }
