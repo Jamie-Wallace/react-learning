@@ -45,4 +45,19 @@ describe('App', () => {
         const roverFacingSouth = screen.getByText('V');
         expect(roverFacingSouth).toBeInTheDocument();
     });
+
+    it ('should command rover to turn thrice and display rover facing West', () => {
+        render(<App />);
+
+        const turnRightButton = screen.getByText('R');
+        fireEvent.click(turnRightButton);
+        fireEvent.click(turnRightButton);
+        fireEvent.click(turnRightButton);
+
+        const locationLabel = screen.getByText('0:0:W');
+        expect(locationLabel).toBeInTheDocument();
+
+        const roverFacingSouth = screen.getByText('<');
+        expect(roverFacingSouth).toBeInTheDocument();
+    });
 });

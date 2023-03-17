@@ -30,11 +30,13 @@ export const App = () => {
       var newSquares = [...squares];
 
       newSquares[lastPosition.positionY][lastPosition.positionX] = '';
-      // TODO: likely belongs in the Rover.
+      // TODO: likely belongs in the Rover or some styling component.
       if (result.compass === 'E') {
         newSquares[result.positionY][result.positionX] = '>';
       } else if (result.compass === 'S') {
         newSquares[result.positionY][result.positionX] = 'V';
+      } else if (result.compass === 'W') {
+        newSquares[result.positionY][result.positionX] = '<';
       }
 
       setSquares(newSquares);
