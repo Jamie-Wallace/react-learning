@@ -21,4 +21,14 @@ describe('App', () => {
         const locationLabel = screen.getByText('0:1:N');
         expect(locationLabel).toBeInTheDocument();
     });
+
+    it ('should command rover to turn and display updated position in a label', () => {
+        render(<App />);
+
+        const turnRightButton = screen.getByText('R');
+        fireEvent.click(turnRightButton);
+
+        const locationLabel = screen.getByText('0:0:E');
+        expect(locationLabel).toBeInTheDocument();
+    });
 });

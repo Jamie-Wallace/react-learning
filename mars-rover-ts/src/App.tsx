@@ -18,6 +18,18 @@ export const App = () => {
       newSquares[lastPosition.positionY][lastPosition.positionX] = '';
       newSquares[result.positionY][result.positionX] = '^';
 
+      setSquares(newSquares);
+      setLastPosition(result);
+      setLocation(`${result.positionX}:${result.positionY}:${result.compass}`);
+    }
+
+    const turnRoverRight: MouseEventHandler = () => {
+      let result = rover.execute('R');
+
+      var newSquares = [...squares];
+
+      newSquares[lastPosition.positionY][lastPosition.positionX] = '';
+      newSquares[result.positionY][result.positionX] = '>';
 
       setSquares(newSquares);
       setLastPosition(result);
@@ -30,6 +42,7 @@ export const App = () => {
      <Grid squares={squares} />
      <div>
        <button onClick={moveRover}>Move</button>
+       <button onClick={turnRoverRight}>R</button>
      </div>
      <p>{location}</p>
    </div>
