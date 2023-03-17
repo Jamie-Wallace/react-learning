@@ -16,6 +16,7 @@ export const App = () => {
       var newSquares = [...squares];
 
       newSquares[lastPosition.positionY][lastPosition.positionX] = '';
+
       newSquares[result.positionY][result.positionX] = '^';
 
       setSquares(newSquares);
@@ -29,7 +30,12 @@ export const App = () => {
       var newSquares = [...squares];
 
       newSquares[lastPosition.positionY][lastPosition.positionX] = '';
-      newSquares[result.positionY][result.positionX] = '>';
+      // TODO: likely belongs in the Rover.
+      if (result.compass === 'E') {
+        newSquares[result.positionY][result.positionX] = '>';
+      } else if (result.compass === 'S') {
+        newSquares[result.positionY][result.positionX] = 'V';
+      }
 
       setSquares(newSquares);
       setLastPosition(result);
