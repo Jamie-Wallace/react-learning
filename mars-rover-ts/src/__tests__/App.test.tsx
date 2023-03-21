@@ -22,58 +22,25 @@ describe('App', () => {
         expect(locationLabel).toBeInTheDocument();
     });
 
-    it ('should command rover to turn and display updated position in a label', () => {
+    it.each(
+        [
+            [1, 'E', '>'],
+            [2, 'S', 'V'],
+            [3, 'W', '<'],
+            [4, 'N', '^']
+        ]
+    )('should command rover to turn and display updated position in a label', (timesToTurn, compass, roverDisplay) => {
         render(<App />);
 
         const turnRightButton = screen.getByText('R');
-        fireEvent.click(turnRightButton);
+        for(let i = 0; i < timesToTurn; i++){
+            fireEvent.click(turnRightButton);
+        }
 
-        const locationLabel = screen.getByText('0:0:E');
-        expect(locationLabel).toBeInTheDocument();
-    });
-
-    it ('should command rover to turn twice and display rover facing South', () => {
-        render(<App />);
-
-        const turnRightButton = screen.getByText('R');
-        fireEvent.click(turnRightButton);
-        fireEvent.click(turnRightButton);
-
-        const locationLabel = screen.getByText('0:0:S');
+        const locationLabel = screen.getByText(`0:0:${compass}`);
         expect(locationLabel).toBeInTheDocument();
 
-        const roverFacingSouth = screen.getByText('V');
-        expect(roverFacingSouth).toBeInTheDocument();
-    });
-
-    it ('should command rover to turn thrice and display rover facing West', () => {
-        render(<App />);
-
-        const turnRightButton = screen.getByText('R');
-        fireEvent.click(turnRightButton);
-        fireEvent.click(turnRightButton);
-        fireEvent.click(turnRightButton);
-
-        const locationLabel = screen.getByText('0:0:W');
-        expect(locationLabel).toBeInTheDocument();
-
-        const roverFacingSouth = screen.getByText('<');
-        expect(roverFacingSouth).toBeInTheDocument();
-    });
-
-    it ('should command rover to turn four times and display rover facing North', () => {
-        render(<App />);
-
-        const turnRightButton = screen.getByText('R');
-        fireEvent.click(turnRightButton);
-        fireEvent.click(turnRightButton);
-        fireEvent.click(turnRightButton);
-        fireEvent.click(turnRightButton);
-
-        const locationLabel = screen.getByText('0:0:N');
-        expect(locationLabel).toBeInTheDocument();
-
-        const roverFacingNorth = screen.getByText('^');
-        expect(roverFacingNorth).toBeInTheDocument();
+        const rover = screen.getByText(roverDisplay);
+        expect(rover).toBeInTheDocument();
     });
 });
