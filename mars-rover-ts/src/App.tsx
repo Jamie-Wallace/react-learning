@@ -37,6 +37,8 @@ export const App = () => {
         newSquares[result.positionY][result.positionX] = 'V';
       } else if (result.compass === 'W') {
         newSquares[result.positionY][result.positionX] = '<';
+      } else if (result.compass === 'N') {
+        newSquares[result.positionY][result.positionX] = '^';
       }
 
       setSquares(newSquares);
