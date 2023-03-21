@@ -29,17 +29,16 @@ export const App = () => {
 
       var newSquares = [...squares];
 
-      newSquares[lastPosition.positionY][lastPosition.positionX] = '';
       // TODO: likely belongs in the Rover or some styling component.
-      if (result.compass === 'E') {
-        newSquares[result.positionY][result.positionX] = '>';
-      } else if (result.compass === 'S') {
-        newSquares[result.positionY][result.positionX] = 'V';
-      } else if (result.compass === 'W') {
-        newSquares[result.positionY][result.positionX] = '<';
-      } else if (result.compass === 'N') {
-        newSquares[result.positionY][result.positionX] = '^';
-      }
+      const hashMap = new Map<string, string>([
+        ['N', '^'],
+        ['E', '>'],
+        ['S', 'V'],
+        ['W', '<'],
+      ]);
+
+      newSquares[lastPosition.positionY][lastPosition.positionX] = '';
+      newSquares[result.positionY][result.positionX] = hashMap.get(result.compass)!;;
 
       setSquares(newSquares);
       setLastPosition(result);
