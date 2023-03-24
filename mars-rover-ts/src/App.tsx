@@ -1,12 +1,15 @@
 import { MouseEventHandler, useState } from 'react';
+import { isJsxElement } from 'typescript';
 import './App.css';
 import { Grid } from './grid/Grid';
 import { MarsRover } from './MarsRover/MarsRover';
+import { MarsRoverComponent } from './MarsRover/MarsRoverComponent';
 import { Position } from './MarsRover/Position';
 
 export const App = () => {
   const [location, setLocation] = useState("");
   const [squares, setSquares] = useState([['^', '', ''], ['', '', ''], ['', '', '']]);
+ //const [squares, setSquares] = useState[<MarsRoverComponent direction = "N"/>];
   const [lastPosition, setLastPosition] = useState(new Position('N', 0, 0));
   const [rover] = useState(new MarsRover());
 
@@ -29,16 +32,21 @@ export const App = () => {
 
       var newSquares = [...squares];
 
-      newSquares[lastPosition.positionY][lastPosition.positionX] = '';
       // TODO: likely belongs in the Rover or some styling component.
-      if (result.compass === 'E') {
-        newSquares[result.positionY][result.positionX] = '>';
-      } else if (result.compass === 'S') {
-        newSquares[result.positionY][result.positionX] = 'V';
-      } else if (result.compass === 'W') {
-        newSquares[result.positionY][result.positionX] = '<';
-      }
+      
+      const hashMap = new Map<string, string>([
+        ['N', '^'],
+        ['E', '>'],
+        ['S', 'V'],
+        ['W', '<'],
+      ]);
 
+      var displayValue =  hashMap.get(result.compass)!;
+      newSquares[lastPosition.positionY][lastPosition.positionX] = '';
+      newSquares[result.positionY][result.positionX] = displayValue;
+     
+    
+     // newSquares[result.positionY][result.positionX] = <MarsRoverComponent direction = result.compass />
       setSquares(newSquares);
       setLastPosition(result);
       setLocation(`${result.positionX}:${result.positionY}:${result.compass}`);
