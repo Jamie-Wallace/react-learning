@@ -1,5 +1,8 @@
+interface MarsRoverComponentProps {
+  direction: string
+}
 
-export const MarsRoverComponent = (direction : string) => {
+export const MarsRoverComponent = (props : MarsRoverComponentProps) => {
    
     const hashMap = new Map<string, string>([
         ['N', '^'],
@@ -8,7 +11,7 @@ export const MarsRoverComponent = (direction : string) => {
         ['W', '<'],
       ]);
 
-      var displayValue =  hashMap.get(direction)!;
+      var displayValue =  hashMap.get(props.direction)!;
 
-      return <p>{displayValue}</p>
+      return <span><div className='square'>{displayValue}</div></span>
 }

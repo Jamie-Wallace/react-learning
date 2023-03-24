@@ -1,7 +1,5 @@
-import { Square } from './Square';
-
 type GridProps = {
-    squares: string[][]
+    squares: JSX.Element[][]
 };
 
 export const Grid = ( { squares } : GridProps) => {
@@ -11,7 +9,8 @@ export const Grid = ( { squares } : GridProps) => {
             let row = [];
 
             for (let columnIndex = 0; columnIndex < squares[rowIndex].length; columnIndex++) {
-                row.push(<Square key={columnIndex} value={squares[rowIndex][columnIndex]} xCoordinate={0} yCoordinate={rowIndex} />);   
+                const currentSquare = squares[rowIndex][columnIndex];
+                row.push(<span key={columnIndex}>{currentSquare}</span>);   
             }
 
             rows.push(<div key={rowIndex} >{row}</div>);
