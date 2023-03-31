@@ -3,7 +3,8 @@ import { Position } from './Position';
 
 export class MarsRover {
     directionIndex: number = 0;
-    moveIndex: number = 0;
+    yMoveIndex: number = 0;
+    xMoveIndex: number = 0;
 
     execute(command: string) {
 
@@ -16,14 +17,21 @@ export class MarsRover {
             }
 
             if (this.commandIsMove(character)) {
-                this.moveIndex = this.moveForwards(this.moveIndex);
+                if(this.directionIndex == 1){
+                    this.xMoveIndex = this.moveForwards(this.xMoveIndex);
+                }
+                else {
+                    this.yMoveIndex = this.moveForwards(this.yMoveIndex);
+                }
+
+                
             }
         });
 
         let directions = ['N', 'E', 'S', 'W'];
         const direction = directions[this.directionIndex];
 
-        return new Position(direction, 0, this.moveIndex);
+        return new Position(direction, this.xMoveIndex, this.yMoveIndex);
     }
 
     private commandIsMove(character: string): boolean {
@@ -38,7 +46,6 @@ export class MarsRover {
         }
         return moveIndex;
     }
-
     private commandIsTurnLeft(commandCharacter: string): boolean {
         return commandCharacter === 'L';
     }

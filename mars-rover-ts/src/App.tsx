@@ -23,7 +23,7 @@ export const App = () => {
 
       newSquares[lastPosition.positionY][lastPosition.positionX] = <Square />;
 
-      newSquares[result.positionY][result.positionX] = <MarsRoverComponent direction='N'/>;
+      newSquares[result.positionY][result.positionX] = <MarsRoverComponent direction={result.compass}/>;
 
       setSquares(newSquares);
       setLastPosition(result);

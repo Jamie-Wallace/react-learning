@@ -12,23 +12,15 @@ describe('Grid', () => {
         [[[<Square />]], 1],
         [[[<Square />, <Square />]], 2],
         [[[<Square />, <Square />, <Square />]], 3],
+        [[[<Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />]], 10]
     ])
         ('renders expected rows', (squares, expectedLength) => {
-            const view = render(<Grid squares={squares} />);
+            render(<Grid squares={squares} />);
+            
+            var foundSquares = screen.getAllByTestId("squareId");
 
-            const grid = view.container.childNodes[0].childNodes[0];
-
-            expect(grid.childNodes).toHaveLength(expectedLength);
+            expect(foundSquares).toHaveLength(expectedLength);
         });
-
-    it('renders 10 squares in a row', () => {
-        render(<Grid squares={[[<Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />]]} />);
-
-        var foundSquares = screen.getAllByTestId("squareId");
-
-        expect(foundSquares).toHaveLength(10);
-    });
-
 
     it('renders 2 rows with 2 squares per row', () => {
         const view = render(<Grid squares={[[<Square />, <Square />], [<Square />, <Square />]]} />);
