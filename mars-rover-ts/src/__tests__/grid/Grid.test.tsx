@@ -1,33 +1,37 @@
 import { render, screen } from '@testing-library/react';
 import { Grid } from '../../grid/Grid';
+import { Square }  from '../../grid/Square';
+
+jest.mock("../../grid/Square", () => ({
+    default: () => <></>,
+    Square: () => <div data-testid="squareId" />
+  }));
 
 describe('Grid', () => {
     it.each([
-        [[['']], 1],
-        [[[''], ['']], 2],
-        [[[''], [''], ['']], 3],
+        [[[<Square />]], 1],
+        [[[<Square />, <Square />]], 2],
+        [[[<Square />, <Square />, <Square />]], 3],
     ])
         ('renders expected rows', (squares, expectedLength) => {
             const view = render(<Grid squares={squares} />);
 
-            const grid = view.container.childNodes[0];
+            const grid = view.container.childNodes[0].childNodes[0];
 
             expect(grid.childNodes).toHaveLength(expectedLength);
         });
 
     it('renders 10 squares in a row', () => {
-        const view = render(<Grid squares={[['Square1', 'Square2', 'Square3', 'Square4', 'Square5', 'Square6', 'Square7', 'Square8', 'Square9', 'Square10']]} />);
+        render(<Grid squares={[[<Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />]]} />);
 
-        const grid = view.container.childNodes[0];
+        var foundSquares = screen.getAllByTestId("squareId");
 
-        expect(grid).toHaveTextContent('Square1');
-        expect(grid).toHaveTextContent('Square5');
-        expect(grid).toHaveTextContent('Square10');
+        expect(foundSquares).toHaveLength(10);
     });
 
 
     it('renders 2 rows with 2 squares per row', () => {
-        const view = render(<Grid squares={[['', ''], ['', '']]} />);
+        const view = render(<Grid squares={[[<Square />, <Square />], [<Square />, <Square />]]} />);
 
         const grid = view.container.childNodes[0];
         expect(grid.childNodes).toHaveLength(2);
