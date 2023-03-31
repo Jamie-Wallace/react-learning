@@ -17,14 +17,17 @@ export class MarsRover {
             }
 
             if (this.commandIsMove(character)) {
-                if(this.directionIndex == 1){
+                if(this.directionIndex === 1){
                     this.xMoveIndex = this.moveForwards(this.xMoveIndex);
                 }
-                else {
+                else if (this.directionIndex === 2)
+                {
+                    this.yMoveIndex = this.moveBackwards(this.yMoveIndex);
+                }
+                else 
+                {
                     this.yMoveIndex = this.moveForwards(this.yMoveIndex);
                 }
-
-                
             }
         });
 
@@ -46,6 +49,16 @@ export class MarsRover {
         }
         return moveIndex;
     }
+
+    private moveBackwards(moveIndex: number) {
+        moveIndex--;
+
+        if (moveIndex < 0) {
+            moveIndex = 2;
+        }
+        return moveIndex;
+    }
+
     private commandIsTurnLeft(commandCharacter: string): boolean {
         return commandCharacter === 'L';
     }
