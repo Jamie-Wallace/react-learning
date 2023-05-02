@@ -8,11 +8,4 @@ export class Position {
         this.compass = compass;
         this.coordinate = coordinate;
     }
-
-    // constructor(compass: string, positionX: number, positionY: number){
-    //     this.compass = compass;
-    //     this.positionX = positionX;
-    //     this.positionY = positionY;
-    // }
-
 }
