@@ -1,4 +1,5 @@
 
+import { Coordinates } from './Coordinates';
 import { Position } from './Position';
 
 export class MarsRover {
@@ -38,7 +39,7 @@ export class MarsRover {
         let directions = ['N', 'E', 'S', 'W'];
         const direction = directions[this.directionIndex];
 
-        return new Position(direction, this.xMoveIndex, this.yMoveIndex);
+        return new Position(direction, new Coordinates(this.xMoveIndex, this.yMoveIndex));
     }
 
     private commandIsMove(character: string): boolean {

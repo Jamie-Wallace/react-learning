@@ -1,13 +1,18 @@
+import { Coordinates } from "./Coordinates";
 
 export class Position { 
     readonly compass : string;
-    readonly positionX : number;
-    readonly positionY : number;
+    readonly coordinate : Coordinates;
 
-    constructor(compass: string, positionX: number, positionY: number){
+    constructor(compass: string, coordinate: Coordinates){
         this.compass = compass;
-        this.positionX = positionX;
-        this.positionY = positionY;
+        this.coordinate = coordinate;
     }
+
+    // constructor(compass: string, positionX: number, positionY: number){
+    //     this.compass = compass;
+    //     this.positionX = positionX;
+    //     this.positionY = positionY;
+    // }
 
 }
