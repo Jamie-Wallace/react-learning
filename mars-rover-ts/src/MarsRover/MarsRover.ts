@@ -24,6 +24,10 @@ export class MarsRover {
                 {
                     this.yMoveIndex = this.moveBackwards(this.yMoveIndex);
                 }
+                else if (this.directionIndex === 3)
+                {
+                    this.xMoveIndex = this.moveBackwards(this.xMoveIndex);
+                }
                 else 
                 {
                     this.yMoveIndex = this.moveForwards(this.yMoveIndex);

@@ -43,11 +43,25 @@ export const App = () => {
       setLocation(`${result.positionX}:${result.positionY}:${result.compass}`);
     }
 
+    const turnRoverLeft: MouseEventHandler = () => {
+      let result = rover.execute('L');
+
+      var newSquares = [...squares];
+
+      newSquares[lastPosition.positionY][lastPosition.positionX] = <Square />;
+      newSquares[result.positionY][result.positionX] = <MarsRoverComponent direction={result.compass} />;
+
+      setSquares(newSquares);
+      setLastPosition(result);
+      setLocation(`${result.positionX}:${result.positionY}:${result.compass}`);
+    }
+
  return <div className='App'>
  <header className='App-header'>
    <div>
      <Grid squares={squares} />
      <div>
+       <button onClick={turnRoverLeft}>L</button>
        <button onClick={moveRover}>Move</button>
        <button onClick={turnRoverRight}>R</button>
      </div>
