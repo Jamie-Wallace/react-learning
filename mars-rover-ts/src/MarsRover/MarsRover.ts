@@ -1,29 +1,41 @@
-
+import { Compass } from './Compass';
+import { Coordinates } from './Coordinates';
 import { Position } from './Position';
 
 export class MarsRover {
-    directionIndex: number = 0;
-    moveIndex: number = 0;
+    compass: Compass = new Compass();
+    yMoveIndex: number = 0;
+    xMoveIndex: number = 0;
 
     execute(command: string) {
-
         Array.from(command).forEach(character => {
             if (this.commandIsTurnLeft(character)) {
-                this.directionIndex = this.turnLeft(this.directionIndex);
+                this.compass.turnLeft();       
             }
             if (this.commandIsTurnRight(character)) {
-                this.directionIndex = this.turnRight(this.directionIndex);
+                this.compass.turnRight();    
             }
 
             if (this.commandIsMove(character)) {
-                this.moveIndex = this.moveForwards(this.moveIndex);
+                if(this.compass.getDirection() === "E"){
+                    this.xMoveIndex = this.moveForwards(this.xMoveIndex);
+                }
+                else if (this.compass.getDirection() === "S")
+                {
+                    this.yMoveIndex = this.moveBackwards(this.yMoveIndex);
+                }
+                else if (this.compass.getDirection() === "W")
+                {
+                    this.xMoveIndex = this.moveBackwards(this.xMoveIndex);
+                }
+                else 
+                {
+                    this.yMoveIndex = this.moveForwards(this.yMoveIndex);
+                }
             }
         });
 
-        let directions = ['N', 'E', 'S', 'W'];
-        const direction = directions[this.directionIndex];
-
-        return new Position(direction, 0, this.moveIndex);
+        return new Position(this.compass.getDirection(), new Coordinates(this.xMoveIndex, this.yMoveIndex));
     }
 
     private commandIsMove(character: string): boolean {
@@ -39,31 +51,20 @@ export class MarsRover {
         return moveIndex;
     }
 
+    private moveBackwards(moveIndex: number) {
+        moveIndex--;
+
+        if (moveIndex < 0) {
+            moveIndex = 2;
+        }
+        return moveIndex;
+    }
+
     private commandIsTurnLeft(commandCharacter: string): boolean {
         return commandCharacter === 'L';
     }
 
     private commandIsTurnRight(commandCharacter: string): boolean {
         return commandCharacter === 'R';
-    }
-
-    private turnLeft(directionIndex: number): number {
-        directionIndex--;
-
-        if (directionIndex < 0) {
-            directionIndex = 3;
-        }
-
-        return directionIndex;
-    }
-
-    private turnRight(directionIndex: number): number {
-        directionIndex++;
-
-        if (directionIndex > 3) {
-            directionIndex = 0;
-        }
-
-        return directionIndex;
     }
 }

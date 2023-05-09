@@ -11,7 +11,7 @@ export const MarsRoverComponent = (props : MarsRoverComponentProps) => {
         ['W', '<'],
       ]);
 
-      var displayValue =  hashMap.get(props.direction)!;
+      var displayValue = hashMap.get(props.direction)!;
 
       return <span><div className='square'>{displayValue}</div></span>
 }

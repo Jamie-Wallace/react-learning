@@ -5,6 +5,7 @@ import { Square } from './grid/Square';
 import { MarsRover } from './MarsRover/MarsRover';
 import { MarsRoverComponent } from './MarsRover/MarsRoverComponent';
 import { Position } from './MarsRover/Position';
+import { Coordinates } from './MarsRover/Coordinates';
 
 export const App = () => {
   const [location, setLocation] = useState("");
@@ -13,7 +14,7 @@ export const App = () => {
                                 [<Square />, <Square />, <Square />], 
                                 [<Square />, <Square />, <Square />]
                               ]);
-  const [lastPosition, setLastPosition] = useState(new Position('N', 0, 0));
+  const [lastPosition, setLastPosition] = useState(new Position('N', new Coordinates(0, 0)));
   const [rover] = useState(new MarsRover());
 
   const moveRover: MouseEventHandler = () => {
@@ -21,13 +22,13 @@ export const App = () => {
 
       var newSquares = [...squares];
 
-      newSquares[lastPosition.positionY][lastPosition.positionX] = <Square />;
+      newSquares[lastPosition.coordinate.positionY][lastPosition.coordinate.positionX] = <Square />;
 
-      newSquares[result.positionY][result.positionX] = <MarsRoverComponent direction='N'/>;
+      newSquares[result.coordinate.positionY][result.coordinate.positionX] = <MarsRoverComponent direction={result.compass}/>;
 
       setSquares(newSquares);
       setLastPosition(result);
-      setLocation(`${result.positionX}:${result.positionY}:${result.compass}`);
+      setLocation(`${result.coordinate.positionX}:${result.coordinate.positionY}:${result.compass}`);
     }
 
     const turnRoverRight: MouseEventHandler = () => {
@@ -35,12 +36,25 @@ export const App = () => {
 
       var newSquares = [...squares];
 
-      newSquares[lastPosition.positionY][lastPosition.positionX] = <Square />;
-      newSquares[result.positionY][result.positionX] = <MarsRoverComponent direction={result.compass} />;
+      newSquares[lastPosition.coordinate.positionY][lastPosition.coordinate.positionX] = <Square />;
+      newSquares[result.coordinate.positionY][result.coordinate.positionX] = <MarsRoverComponent direction={result.compass} />;
 
       setSquares(newSquares);
       setLastPosition(result);
-      setLocation(`${result.positionX}:${result.positionY}:${result.compass}`);
+      setLocation(`${result.coordinate.positionX}:${result.coordinate.positionY}:${result.compass}`);
+    }
+
+    const turnRoverLeft: MouseEventHandler = () => {
+      let result = rover.execute('L');
+
+      var newSquares = [...squares];
+
+      newSquares[lastPosition.coordinate.positionY][lastPosition.coordinate.positionX] = <Square />;
+      newSquares[result.coordinate.positionY][result.coordinate.positionX] = <MarsRoverComponent direction={result.compass} />;
+
+      setSquares(newSquares);
+      setLastPosition(result);
+      setLocation(`${result.coordinate.positionX}:${result.coordinate.positionY}:${result.compass}`);
     }
 
  return <div className='App'>
@@ -48,6 +62,7 @@ export const App = () => {
    <div>
      <Grid squares={squares} />
      <div>
+       <button onClick={turnRoverLeft}>L</button>
        <button onClick={moveRover}>Move</button>
        <button onClick={turnRoverRight}>R</button>
      </div>

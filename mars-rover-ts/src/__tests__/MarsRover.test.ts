@@ -1,6 +1,7 @@
 import { } from '@testing-library/react';
 import { MarsRover } from '../MarsRover/MarsRover';
 import { Position } from '../MarsRover/Position';
+import { Coordinates } from '../MarsRover/Coordinates';
 
 describe('MarsRover', () => {
     let marsRover: MarsRover;
@@ -12,17 +13,17 @@ describe('MarsRover', () => {
     it('does not move given an empty command', () => {
         var result = marsRover.execute('');
 
-        var expectedPosition = new Position('N', 0, 0);
+        var expectedPosition = new Position('N', new Coordinates(0, 0));
 
         expect(result).toEqual(expectedPosition);
     });
 
     it.each([
-        ['R', new Position('E', 0, 0)],
-        ['RR', new Position('S', 0, 0)],
-        ['RRR', new Position('W', 0, 0)],
-        ['RRRR', new Position('N', 0, 0)],
-        ['RRRRR', new Position('E', 0, 0)],
+        ['R', new Position('E', new Coordinates(0, 0))],
+        ['RR', new Position('S', new Coordinates(0, 0))],
+        ['RRR', new Position('W', new Coordinates(0, 0))],
+        ['RRRR', new Position('N', new Coordinates(0, 0))],
+        ['RRRRR', new Position('E', new Coordinates(0, 0))],
     ])('should face correct direction after turning right', (command, expectedResult) => {
         var result = marsRover.execute(command);
 
@@ -30,11 +31,11 @@ describe('MarsRover', () => {
     });
 
     it.each([
-        ['L', new Position('W', 0, 0)],
-        ['LL', new Position('S', 0, 0)],
-        ['LLL', new Position('E', 0, 0)],
-        ['LLLL', new Position('N', 0, 0)],
-        ['LLLLL', new Position('W', 0, 0)],
+        ['L', new Position('W', new Coordinates(0, 0))],
+        ['LL', new Position('S', new Coordinates(0, 0))],
+        ['LLL', new Position('E', new Coordinates(0, 0))],
+        ['LLLL', new Position('N', new Coordinates(0, 0))],
+        ['LLLLL', new Position('W', new Coordinates(0, 0))],
     ])('should face correct direction after turning left', (command, expectedResult) => {
         var result = marsRover.execute(command);
 
@@ -44,7 +45,7 @@ describe('MarsRover', () => {
     it('handles a combination of different turn commands', () => {
         var result = marsRover.execute('LLRL');
 
-        expect(result).toEqual(new Position('S', 0, 0));
+        expect(result).toEqual(new Position('S', new Coordinates(0, 0)));
     });
 
     it.skip.each([
@@ -60,9 +61,27 @@ describe('MarsRover', () => {
         expect(result).toEqual(expectedResult);
     });
 
-    it.skip('can turn and move', () => {
-        var result = marsRover.execute('RMM');
+    it('can turn east and move', () => {
+        var result = marsRover.execute('RM');
 
-        expect(result).toEqual('2:0:E');
+        expect(result.compass).toEqual('E');
+        expect(result.coordinate.positionX).toEqual(1);
+        expect(result.coordinate.positionY).toEqual(0);
+    });
+
+    it('can turn south and move', () => {
+        var result = marsRover.execute('RRM');
+
+        expect(result.compass).toEqual('S');
+        expect(result.coordinate.positionX).toEqual(0);
+        expect(result.coordinate.positionY).toEqual(2);
+    });
+
+    it('can turn west and move', () => {
+        var result = marsRover.execute('LM');
+
+        expect(result.compass).toEqual('W');
+        expect(result.coordinate.positionX).toEqual(2);
+        expect(result.coordinate.positionY).toEqual(0);
     });
 });
