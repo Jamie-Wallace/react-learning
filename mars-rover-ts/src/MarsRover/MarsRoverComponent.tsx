@@ -1,14 +1,16 @@
+import { Direction } from "./Direction";
+
 interface MarsRoverComponentProps {
-  direction: string
+  direction: Direction
 }
 
 export const MarsRoverComponent = (props : MarsRoverComponentProps) => {
    
-    const hashMap = new Map<string, string>([
-        ['N', '^'],
-        ['E', '>'],
-        ['S', 'V'],
-        ['W', '<'],
+    const hashMap = new Map<Direction, string>([
+        [Direction.North, '^'],
+        [Direction.East, '>'],
+        [Direction.South, 'V'],
+        [Direction.West, '<'],
       ]);
 
       var displayValue = hashMap.get(props.direction)!;

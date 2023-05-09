@@ -6,15 +6,16 @@ import { MarsRover } from './MarsRover/MarsRover';
 import { MarsRoverComponent } from './MarsRover/MarsRoverComponent';
 import { Position } from './MarsRover/Position';
 import { Coordinates } from './MarsRover/Coordinates';
+import { Direction } from './MarsRover/Direction';
 
 export const App = () => {
   const [location, setLocation] = useState("");
   const [squares, setSquares] = useState([
-                                [<MarsRoverComponent direction='N' />, <Square />, <Square />], 
+                                [<MarsRoverComponent direction={Direction.North} />, <Square />, <Square />], 
                                 [<Square />, <Square />, <Square />], 
                                 [<Square />, <Square />, <Square />]
                               ]);
-  const [lastPosition, setLastPosition] = useState(new Position('N', new Coordinates(0, 0)));
+  const [lastPosition, setLastPosition] = useState(new Position(Direction.North, new Coordinates(0, 0)));
   const [rover] = useState(new MarsRover());
 
   const moveRover: MouseEventHandler = () => {
@@ -28,7 +29,7 @@ export const App = () => {
 
       setSquares(newSquares);
       setLastPosition(result);
-      setLocation(`${result.coordinate.positionX}:${result.coordinate.positionY}:${result.compass}`);
+      setLocation(`${result.coordinate.positionX}:${result.coordinate.positionY}:${Direction[result.compass]}`);
     }
 
     const turnRoverRight: MouseEventHandler = () => {
@@ -41,7 +42,7 @@ export const App = () => {
 
       setSquares(newSquares);
       setLastPosition(result);
-      setLocation(`${result.coordinate.positionX}:${result.coordinate.positionY}:${result.compass}`);
+      setLocation(`${result.coordinate.positionX}:${result.coordinate.positionY}:${Direction[result.compass]}`);
     }
 
     const turnRoverLeft: MouseEventHandler = () => {
@@ -54,7 +55,7 @@ export const App = () => {
 
       setSquares(newSquares);
       setLastPosition(result);
-      setLocation(`${result.coordinate.positionX}:${result.coordinate.positionY}:${result.compass}`);
+      setLocation(`${result.coordinate.positionX}:${result.coordinate.positionY}:${Direction[result.compass]}`);
     }
 
  return <div className='App'>

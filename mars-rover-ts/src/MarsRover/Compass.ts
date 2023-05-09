@@ -3,31 +3,37 @@ import { Direction } from "./Direction";
 export class Compass {
     direction: Direction = Direction.North;
 
-    
-    directionIndex: number = 0;
-    directions = ['N', 'E', 'S', 'W'];
-
     turnLeft() { 
-        this.directionIndex--;
-
-        if (this.directionIndex < 0) {
-            this.directionIndex = 3;
+        this.direction--;
+        if (this.direction < 0) {
+            this.direction = 3;
         }
-
-        return this.directionIndex;
     }
 
     turnRight() { 
-        this.directionIndex++;
-
-        if (this.directionIndex > 3) {
-            this.directionIndex = 0;
+        this.direction++;
+        if (this.direction > 3) {
+            this.direction = 0;
         }
-
-        return this.directionIndex;
     }
 
-    getDirection(){
-        return this.directions[this.directionIndex];
+    getDirection() {
+        return this.direction;
+    }
+
+    isNorth() {
+        return this.direction === Direction.North;
+    }
+
+    isEast() {
+        return this.direction === Direction.East;
+    }
+
+    isSouth() {
+        return this.direction === Direction.South;
+    }
+
+    isWest() {
+        return this.direction === Direction.West;
     }
 }

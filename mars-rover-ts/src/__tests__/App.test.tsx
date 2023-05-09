@@ -18,16 +18,16 @@ describe('App', () => {
         const moveButton = screen.getByText('Move');
         fireEvent.click(moveButton);
 
-        const locationLabel = screen.getByText('0:1:N');
+        const locationLabel = screen.getByText('0:1:North');
         expect(locationLabel).toBeInTheDocument();
     });
 
     it.each(
         [
-            [1, 'E', '>'],
-            [2, 'S', 'V'],
-            [3, 'W', '<'],
-            [4, 'N', '^']
+            [1, 'East', '>'],
+            [2, 'South', 'V'],
+            [3, 'West', '<'],
+            [4, 'North', '^']
         ]
     )('should command rover to turn and display updated position in a label', (timesToTurn, compass, roverDisplay) => {
         render(<App />);

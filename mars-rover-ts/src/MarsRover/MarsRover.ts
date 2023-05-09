@@ -1,5 +1,6 @@
 import { Compass } from './Compass';
 import { Coordinates } from './Coordinates';
+import { Direction } from './Direction';
 import { Position } from './Position';
 
 export class MarsRover {
@@ -17,19 +18,16 @@ export class MarsRover {
             }
 
             if (this.commandIsMove(character)) {
-                if(this.compass.getDirection() === "E"){
+                if (this.compass.isEast()) {
                     this.xMoveIndex = this.moveForwards(this.xMoveIndex);
                 }
-                else if (this.compass.getDirection() === "S")
-                {
+                else if (this.compass.isSouth()) {
                     this.yMoveIndex = this.moveBackwards(this.yMoveIndex);
                 }
-                else if (this.compass.getDirection() === "W")
-                {
+                else if (this.compass.isWest()) {
                     this.xMoveIndex = this.moveBackwards(this.xMoveIndex);
                 }
-                else 
-                {
+                else {
                     this.yMoveIndex = this.moveForwards(this.yMoveIndex);
                 }
             }
