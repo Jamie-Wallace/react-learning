@@ -1,3 +1,5 @@
+import { Direction } from "./Direction";
+
 export class Coordinates {
     positionX : number;
     positionY : number;
@@ -5,6 +7,21 @@ export class Coordinates {
     constructor(positionX: number, positionY: number){
         this.positionX = positionX;
         this.positionY = positionY;
+    }
+
+    move(direction: Direction){
+        if (direction === Direction.East) {
+            this.moveXForwards();
+        }
+        else if (direction === Direction.South) {
+            this.moveYBackwards();
+        }
+        else if (direction === Direction.West) {
+            this.moveXBackwards();
+        }
+        else if (direction === Direction.North) {
+            this.moveYForwards();
+        }
     }
 
     moveXForwards() {

@@ -16,18 +16,7 @@ export class MarsRover {
             }
 
             if (this.commandIsMove(character)) {
-                if (this.compass.isEast()) {
-                    this.coordinate.moveXForwards();
-                }
-                else if (this.compass.isSouth()) {
-                    this.coordinate.moveYBackwards();
-                }
-                else if (this.compass.isWest()) {
-                    this.coordinate.moveXBackwards();
-                }
-                else {
-                    this.coordinate.moveYForwards();
-                }
+                this.coordinate.move(this.compass.getDirection());
             }
         });
 
