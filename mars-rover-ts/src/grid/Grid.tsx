@@ -1,20 +1,25 @@
 type GridProps = {
-    squares: JSX.Element[][]
+  squares: JSX.Element[][];
 };
 
-export const Grid = ( { squares } : GridProps) => {
-        let rows = [];
+export const Grid = ({ squares }: GridProps) => {
+  let rows = [];
 
-        for (let rowIndex = squares.length - 1; rowIndex >= 0 ; rowIndex--) {
-            let row = [];
+  for (let rowIndex = squares.length - 1; rowIndex >= 0; rowIndex--) {
+    let row = buildRow(squares, rowIndex);
+    rows.push(<div key={rowIndex}>{row}</div>);
+  }
 
-            for (let columnIndex = 0; columnIndex < squares[rowIndex].length; columnIndex++) {
-                const currentSquare = squares[rowIndex][columnIndex];
-                row.push(<span key={columnIndex}>{currentSquare}</span>);   
-            }
+  return <div data-testid="mars-rover-grid">{rows}</div>;
+};
 
-            rows.push(<div key={rowIndex} >{row}</div>);
-        }
+function buildRow(squares: JSX.Element[][], rowIndex: number) {
+  let row = [];
 
-        return <div data-testid='mars-rover-grid'>{rows}</div>;
+  for (let columnIndex = 0; columnIndex < squares[rowIndex].length; columnIndex++) {
+    const currentSquare = squares[rowIndex][columnIndex];
+    row.push(<span key={columnIndex}>{currentSquare}</span>);
+  }
+
+  return row;
 }
