@@ -27,7 +27,7 @@ export class Coordinates {
     moveXForwards() {
         this.positionX++;
 
-        if (this.positionX > 2) {
+        if (this.positionX > 9) {
             this.positionX = 0;
         }
         return this.positionX;
@@ -37,7 +37,7 @@ export class Coordinates {
         this.positionX--;
 
         if (this.positionX < 0) {
-            this.positionX = 2;
+            this.positionX = 9;
         }
         return this.positionX;
     }
@@ -45,7 +45,7 @@ export class Coordinates {
     moveYForwards() {
         this.positionY++;
 
-        if (this.positionY > 2) {
+        if (this.positionY > 9) {
             this.positionY = 0;
         }
         return this.positionY;
@@ -55,7 +55,7 @@ export class Coordinates {
         this.positionY--;
 
         if (this.positionY < 0) {
-            this.positionY = 2;
+            this.positionY = 9;
         }
         return this.positionY;
     }

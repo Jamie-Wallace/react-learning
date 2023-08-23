@@ -75,14 +75,14 @@ describe('MarsRover', () => {
 
         expect(result.compass).toEqual(Direction.South);
         expect(result.coordinate.positionX).toEqual(0);
-        expect(result.coordinate.positionY).toEqual(2);
+        expect(result.coordinate.positionY).toEqual(9);
     });
 
     it('can turn west and move', () => {
         var result = marsRover.execute('LM');
 
         expect(result.compass).toEqual(Direction.West);
-        expect(result.coordinate.positionX).toEqual(2);
+        expect(result.coordinate.positionX).toEqual(9);
         expect(result.coordinate.positionY).toEqual(0);
     });
 });

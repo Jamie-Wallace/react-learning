@@ -15,9 +15,23 @@ export const App = () => {
       <MarsRoverComponent direction={Direction.North} />,
       <Square />,
       <Square />,
+      <Square />,
+      <Square />,
+      <Square />,
+      <Square />,
+      <Square />,
+      <Square />,
+      <Square />
     ],
-    [<Square />, <Square />, <Square />],
-    [<Square />, <Square />, <Square />],
+    [<Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />],
+    [<Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />],
+    [<Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />],
+    [<Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />],
+    [<Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />],
+    [<Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />],
+    [<Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />],
+    [<Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />],
+    [<Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />, <Square />]
   ]);
   const [lastPosition, setLastPosition] = useState(
     new Position(Direction.North, new Coordinates(0, 0))
