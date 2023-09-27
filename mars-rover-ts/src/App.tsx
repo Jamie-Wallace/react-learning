@@ -45,7 +45,7 @@ export const App = () => {
     refreshGrid(rover.execute("L"));
   };
 
-  const refreshGrid = (result: Position) => {
+  function refreshGrid(result: Position)  {
     let newSquares = [...squares];
 
     let lastCoordinate = lastPosition.coordinate;
