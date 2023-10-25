@@ -16,7 +16,7 @@ export const App = () => {
     for (let rows = 0; rows < gridSize; rows++) {
       let gridColumns: Array<React.ReactElement> = [];
       for (let columns = 0; columns < gridSize; columns++) {
-        gridColumns.push(<Square/>);
+        gridColumns.push(<Square />);
       }
       gridRows.push(gridColumns);
     }
