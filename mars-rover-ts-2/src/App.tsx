@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <button onClick={controller.move}>Move</button>
-      <button>Right</button>
+      <button onClick={controller.turnRight}>Right</button>
     </div>
   );
 }
