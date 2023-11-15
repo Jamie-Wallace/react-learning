@@ -30,20 +30,13 @@ describe("App", () => {
     expect(turnRightFunction).toHaveBeenCalled();
   });
 
-  it("has a turn left button", () => {
-    render(<App />);
-
-    const turnLeftButton = screen.getByRole("button", { name: "Left" });
-
-    expect(turnLeftButton).toBeInTheDocument();
-  });
-
   it("turns the rover left when we click Left", () => {
     const turnLeftFunction = jest.fn();
     MarsRoverController.prototype.turnLeft = turnLeftFunction;
 
     render(<App />);
 
+    //TODO Duplicated `GetByRole("button", "name");
     const turnLeftButton = screen.getByRole("button", { name: "Left" });
     userEvent.click(turnLeftButton);
 

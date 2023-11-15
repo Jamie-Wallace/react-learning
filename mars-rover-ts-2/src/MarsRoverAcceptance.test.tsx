@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import App from "./App";
 import userEvent from "@testing-library/user-event";
 
-describe.skip("mars rover feature", () => {
+describe("mars rover feature", () => {
   it("moves and turns", () => {
     render(<App />);
 
