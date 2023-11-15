@@ -37,4 +37,16 @@ describe("App", () => {
 
     expect(turnLeftButton).toBeInTheDocument();
   });
+
+  it("turns the rover left when we click Left", () => {
+    const turnLeftFunction = jest.fn();
+    MarsRoverController.prototype.turnLeft = turnLeftFunction;
+
+    render(<App />);
+
+    const turnLeftButton = screen.getByRole("button", { name: "Left" });
+    userEvent.click(turnLeftButton);
+
+    expect(turnLeftFunction).toHaveBeenCalled();
+  });
 });

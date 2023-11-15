@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <button onClick={controller.move}>Move</button>
       <button onClick={controller.turnRight}>Right</button>
-      <button>Left</button>
+      <button onClick={controller.turnLeft}>Left</button>
     </div>
   );
 }

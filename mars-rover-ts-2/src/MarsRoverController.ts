@@ -6,4 +6,8 @@ export class MarsRoverController {
   turnRight() {
     throw new Error("Not implemented!");
   }
+
+  turnLeft() {
+    throw new Error("Not implemented!");
+  }
 }
