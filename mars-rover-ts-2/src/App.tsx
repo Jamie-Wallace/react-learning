@@ -1,11 +1,12 @@
-import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
+import { MarsRoverController } from "./MarsRoverController";
 
 function App() {
+  const controller = new MarsRoverController();
+
   return (
     <div className="App">
-      <button>Move</button>
+      <button onClick={controller.Move}>Move</button>
     </div>
   );
 }
