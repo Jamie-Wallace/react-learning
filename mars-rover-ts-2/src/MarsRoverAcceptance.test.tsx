@@ -2,8 +2,8 @@ import { render, screen } from "@testing-library/react";
 import App from "./App";
 import userEvent from "@testing-library/user-event";
 
-describe("mars rover feature", () => {
-  it.skip("moves and turns", () => {
+describe.skip("mars rover feature", () => {
+  it("moves and turns", () => {
     render(<App />);
 
     let moveButton = screen.getByRole("button", { name: "Move" });

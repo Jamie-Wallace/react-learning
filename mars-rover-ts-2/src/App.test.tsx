@@ -17,4 +17,12 @@ describe("App", () => {
 
     expect(moveFunction).toHaveBeenCalled();
   });
+
+  it("has a 'Turn right' button", () => {
+    render(<App />);
+
+    const rightButton = screen.getByRole("button", { name: "Right" });
+
+    expect(rightButton).toBeInTheDocument();
+  });
 });

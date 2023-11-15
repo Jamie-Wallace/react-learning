@@ -7,6 +7,7 @@ function App() {
   return (
     <div className="App">
       <button onClick={controller.move}>Move</button>
+      <button>Right</button>
     </div>
   );
 }
