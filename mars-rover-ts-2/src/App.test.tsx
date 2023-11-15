@@ -18,14 +18,6 @@ describe("App", () => {
     expect(moveFunction).toHaveBeenCalled();
   });
 
-  it("has a 'Turn right' button", () => {
-    render(<App />);
-
-    const rightButton = screen.getByRole("button", { name: "Right" });
-
-    expect(rightButton).toBeInTheDocument();
-  });
-
   it("turns the rover right when we click Right", () => {
     const turnRightFunction = jest.fn();
     MarsRoverController.prototype.turnRight = turnRightFunction;
@@ -36,5 +28,13 @@ describe("App", () => {
     userEvent.click(turnRightButton);
 
     expect(turnRightFunction).toHaveBeenCalled();
+  });
+
+  it("has a turn left button", () => {
+    render(<App />);
+
+    const turnLeftButton = screen.getByRole("button", { name: "Left" });
+
+    expect(turnLeftButton).toBeInTheDocument();
   });
 });
