@@ -1,5 +1,5 @@
 export class MarsRoverController {
-  Move() {
+  move() {
     throw new Error("Not implemented!");
   }
 }

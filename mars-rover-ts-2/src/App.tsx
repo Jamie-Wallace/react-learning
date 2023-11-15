@@ -6,7 +6,7 @@ function App() {
 
   return (
     <div className="App">
-      <button onClick={controller.Move}>Move</button>
+      <button onClick={controller.move}>Move</button>
     </div>
   );
 }

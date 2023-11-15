@@ -6,17 +6,9 @@ import { MarsRoverController } from "./MarsRoverController";
 jest.mock("./MarsRoverController");
 
 describe("App", () => {
-  it("has a Move button", () => {
-    render(<App />);
-
-    const moveButton = screen.getByRole("button", { name: "Move" });
-
-    expect(moveButton).toBeInTheDocument();
-  });
-
   it("moves the rover when we click Move", () => {
     const moveFunction = jest.fn();
-    MarsRoverController.prototype.Move = moveFunction;
+    MarsRoverController.prototype.move = moveFunction;
 
     render(<App />);
 
