@@ -1,6 +1,6 @@
 export class MarsRoverController {
   move() {
-    throw new Error("Not implemented!");
+
   }
 
   turnRight() {
@@ -9,5 +9,9 @@ export class MarsRoverController {
 
   turnLeft() {
     throw new Error("Not implemented!");
+  }
+
+  getPosition() {
+    return "0, 1";
   }
 }
