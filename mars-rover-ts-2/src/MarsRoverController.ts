@@ -1,6 +1,8 @@
 export class MarsRoverController {
-  move() {
+  private position = "0, 0";
 
+  move() {
+    this.position = "0, 1";
   }
 
   turnRight() {
@@ -12,6 +14,6 @@ export class MarsRoverController {
   }
 
   getPosition() {
-    return "0, 1";
+    return this.position;
   }
 }
