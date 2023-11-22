@@ -10,11 +10,19 @@ describe("MarsRoverController", () => {
   });
 
   it('should move', () => {
-
     // TODO: execute("M")???
     let controller = new MarsRoverController();
     controller.move();
 
     expect(controller.getPosition()).toBe("0, 1");
+  });
+
+  it('should move twice', () => {
+    // TODO: execute("M")???
+    let controller = new MarsRoverController();
+    controller.move();
+    controller.move();
+
+    expect(controller.getPosition()).toBe("0, 2");
   });
 });

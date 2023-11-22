@@ -1,7 +1,9 @@
 export class MarsRoverController {
   private position = "0, 0";
+  private yPosition = 0;
 
   move() {
+    this.yPosition+=1;
     this.position = "0, 1";
   }
 
@@ -14,6 +16,6 @@ export class MarsRoverController {
   }
 
   getPosition() {
-    return this.position;
+    return `0, ${this.yPosition}`;
   }
 }
