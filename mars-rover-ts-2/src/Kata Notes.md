@@ -16,3 +16,5 @@ Originally decided to use Left/Right/Move buttons - have since highlighted that 
 To resolve this, we're discussing different approaches. One currently highlighted is keeping the L/R/M buttons, but using them to populate a text box (Clicking Left adds an L, clicking Right then appends an R) and adding an execute button to fire out command off all at once ("LR" instead of "L" and then "R").
 
 ---
+
+Expanded acceptance test to include clicking Execute button
