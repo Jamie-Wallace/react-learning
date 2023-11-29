@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import App from "./App";
 import userEvent from "@testing-library/user-event";
 
@@ -10,32 +10,19 @@ describe("App", () => {
 
     const commandString = screen.getByLabelText("Command:");
 
-    expect(commandString).toHaveTextContent("");
+    expect(commandString).toHaveValue("");
     expect(commandString).toBeDisabled();
   });
 
-  // it("Adds M to the move command when we click Move", () => {
-  //   render(<App />);
+  it("Adds M to the move command when we click Move", async () => {
+    render(<App />);
 
-  //   const moveButton = screen.getByRole("button", { name: "Move" });
-  //   userEvent.click(moveButton);
+    const moveButton = screen.getByRole("button", { name: "Move" });
+    userEvent.click(moveButton);
 
-  //   const commandString = screen.getByLabelText("Command:");
-
-  //   expect(commandString).toHaveTextContent("M");
-  // });
-
-  // it("moves the rover when we click Move", () => {
-  //   const moveFunction = jest.fn();
-  //   MarsRoverController.prototype.move = moveFunction;
-
-  //   render(<App />);
-
-  //   const moveButton = screen.getByRole("button", { name: "Move" });
-  //   userEvent.click(moveButton);
-
-  //   expect(moveFunction).toHaveBeenCalled();
-  // });
+    const commandString = screen.getByLabelText("Command:");
+    expect(commandString).toHaveValue("M");
+  });
 
   // it("turns the rover right when we click Right", () => {
   //   const turnRightFunction = jest.fn();
