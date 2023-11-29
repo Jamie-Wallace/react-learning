@@ -1,45 +1,64 @@
 import { render, screen } from "@testing-library/react";
 import App from "./App";
 import userEvent from "@testing-library/user-event";
-import { MarsRoverController } from "./MarsRoverController";
 
 jest.mock("./MarsRoverController");
 
 describe("App", () => {
-  it("moves the rover when we click Move", () => {
-    const moveFunction = jest.fn();
-    MarsRoverController.prototype.move = moveFunction;
-
+  it("Starts with an empty command list", () => {
     render(<App />);
 
-    const moveButton = screen.getByRole("button", { name: "Move" });
-    userEvent.click(moveButton);
+    const commandString = screen.getByLabelText("Command:");
 
-    expect(moveFunction).toHaveBeenCalled();
+    expect(commandString).toHaveTextContent("");
+    expect(commandString).toBeDisabled();
   });
 
-  it("turns the rover right when we click Right", () => {
-    const turnRightFunction = jest.fn();
-    MarsRoverController.prototype.turnRight = turnRightFunction;
+  // it("Adds M to the move command when we click Move", () => {
+  //   render(<App />);
 
-    render(<App />);
+  //   const moveButton = screen.getByRole("button", { name: "Move" });
+  //   userEvent.click(moveButton);
 
-    const turnRightButton = screen.getByRole("button", { name: "Right" });
-    userEvent.click(turnRightButton);
+  //   const commandString = screen.getByLabelText("Command:");
 
-    expect(turnRightFunction).toHaveBeenCalled();
-  });
+  //   expect(commandString).toHaveTextContent("M");
+  // });
 
-  it("turns the rover left when we click Left", () => {
-    const turnLeftFunction = jest.fn();
-    MarsRoverController.prototype.turnLeft = turnLeftFunction;
+  // it("moves the rover when we click Move", () => {
+  //   const moveFunction = jest.fn();
+  //   MarsRoverController.prototype.move = moveFunction;
 
-    render(<App />);
+  //   render(<App />);
 
-    //TODO Duplicated `GetByRole("button", "name");
-    const turnLeftButton = screen.getByRole("button", { name: "Left" });
-    userEvent.click(turnLeftButton);
+  //   const moveButton = screen.getByRole("button", { name: "Move" });
+  //   userEvent.click(moveButton);
 
-    expect(turnLeftFunction).toHaveBeenCalled();
-  });
+  //   expect(moveFunction).toHaveBeenCalled();
+  // });
+
+  // it("turns the rover right when we click Right", () => {
+  //   const turnRightFunction = jest.fn();
+  //   MarsRoverController.prototype.turnRight = turnRightFunction;
+
+  //   render(<App />);
+
+  //   const turnRightButton = screen.getByRole("button", { name: "Right" });
+  //   userEvent.click(turnRightButton);
+
+  //   expect(turnRightFunction).toHaveBeenCalled();
+  // });
+
+  // it("turns the rover left when we click Left", () => {
+  //   const turnLeftFunction = jest.fn();
+  //   MarsRoverController.prototype.turnLeft = turnLeftFunction;
+
+  //   render(<App />);
+
+  //   //TODO Duplicated `GetByRole("button", "name");
+  //   const turnLeftButton = screen.getByRole("button", { name: "Left" });
+  //   userEvent.click(turnLeftButton);
+
+  //   expect(turnLeftFunction).toHaveBeenCalled();
+  // });
 });
