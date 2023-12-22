@@ -16,13 +16,17 @@ function App() {
     setCommand( command + "R");
   }
 
+  function turnLeft(): void {
+    setCommand( command + "L");
+  }
+
   return (
     <div className="App">
       <label htmlFor="command">Command:</label>
       <input id="command" disabled value={command} />
       <button onClick={move}>Move</button>
       <button onClick={turnRight}>Right</button>
-      <button onClick={controller.turnLeft}>Left</button>
+      <button onClick={turnLeft}>Left</button>
     </div>
   );
 }

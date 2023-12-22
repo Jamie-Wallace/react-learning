@@ -23,11 +23,7 @@ describe("App", () => {
         render(<App/>);
 
         const moveButton = screen.getByRole("button", { name: "Move" });
-        for (let i = 0; i < clickCount; i++) {
-          act(() => {
-            userEvent.click(moveButton);
-          });
-        }
+        clickButton(moveButton, clickCount);
 
         const commandString = screen.getByLabelText("Command:");
         expect(commandString).toHaveValue(expectedCommand);
@@ -42,27 +38,32 @@ describe("App", () => {
         render(<App/>);
 
         const rightButton = screen.getByRole("button", { name: "Right" });
-        for (let i = 0; i < clickCount; i++) {
-          act(() => {
-            userEvent.click(rightButton);
-          });
-        }
+        clickButton(rightButton, clickCount);
 
         const commandString = screen.getByLabelText("Command:");
         expect(commandString).toHaveValue(expectedCommand);
       });
 
+  it.each([
+    [1, "L"],
+    [2, "LL"],
+    [5, "LLLLL"]
+  ])("Adds L to the command when we click Left",
+      async (clickCount, expectedCommand) => {
+        render(<App/>);
 
-  // it("turns the rover left when we click Left", () => {
-  //   const turnLeftFunction = jest.fn();
-  //   MarsRoverController.prototype.turnLeft = turnLeftFunction;
+        const leftButton = screen.getByRole("button", { name: "Left" });
+        clickButton(leftButton, clickCount);
 
-  //   render(<App />);
+        const commandString = screen.getByLabelText("Command:");
+        expect(commandString).toHaveValue(expectedCommand);
+      });
 
-  //   //TODO Duplicated `GetByRole("button", "name");
-  //   const turnLeftButton = screen.getByRole("button", { name: "Left" });
-  //   userEvent.click(turnLeftButton);
-
-  //   expect(turnLeftFunction).toHaveBeenCalled();
-  // });
+  function clickButton(button: HTMLElement, clickCount: Number) {
+    for (let i = 0; i < clickCount; i++) {
+      act(() => {
+        userEvent.click(button);
+      });
+    }
+  }
 });
