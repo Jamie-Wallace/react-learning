@@ -18,7 +18,7 @@ describe("App", () => {
     [1, "M"],
     [2, "MM"],
     [5, "MMMMM"]
-  ])("Adds M to the move command when we click Move",
+  ])("Adds M to the command when we click Move",
       async (clickCount, expectedCommand) => {
         render(<App/>);
 
@@ -33,17 +33,25 @@ describe("App", () => {
         expect(commandString).toHaveValue(expectedCommand);
       });
 
-  // it("turns the rover right when we click Right", () => {
-  //   const turnRightFunction = jest.fn();
-  //   MarsRoverController.prototype.turnRight = turnRightFunction;
+  it.each([
+    [1, "R"],
+    [2, "RR"],
+    [5, "RRRRR"]
+  ])("Adds R to the command when we click Right",
+      async (clickCount, expectedCommand) => {
+        render(<App/>);
 
-  //   render(<App />);
+        const rightButton = screen.getByRole("button", { name: "Right" });
+        for (let i = 0; i < clickCount; i++) {
+          act(() => {
+            userEvent.click(rightButton);
+          });
+        }
 
-  //   const turnRightButton = screen.getByRole("button", { name: "Right" });
-  //   userEvent.click(turnRightButton);
+        const commandString = screen.getByLabelText("Command:");
+        expect(commandString).toHaveValue(expectedCommand);
+      });
 
-  //   expect(turnRightFunction).toHaveBeenCalled();
-  // });
 
   // it("turns the rover left when we click Left", () => {
   //   const turnLeftFunction = jest.fn();
