@@ -1,4 +1,4 @@
-import { act, render, screen, waitFor } from "@testing-library/react";
+import { act, render, screen } from "@testing-library/react";
 import App from "./App";
 import userEvent from "@testing-library/user-event";
 
@@ -25,8 +25,7 @@ describe("App", () => {
         const moveButton = screen.getByRole("button", { name: "Move" });
         clickButton(moveButton, clickCount);
 
-        const commandString = screen.getByLabelText("Command:");
-        expect(commandString).toHaveValue(expectedCommand);
+        assertCommandIs(expectedCommand);
       });
 
   it.each([
@@ -40,8 +39,7 @@ describe("App", () => {
         const rightButton = screen.getByRole("button", { name: "Right" });
         clickButton(rightButton, clickCount);
 
-        const commandString = screen.getByLabelText("Command:");
-        expect(commandString).toHaveValue(expectedCommand);
+        assertCommandIs(expectedCommand);
       });
 
   it.each([
@@ -55,8 +53,7 @@ describe("App", () => {
         const leftButton = screen.getByRole("button", { name: "Left" });
         clickButton(leftButton, clickCount);
 
-        const commandString = screen.getByLabelText("Command:");
-        expect(commandString).toHaveValue(expectedCommand);
+        assertCommandIs(expectedCommand);
       });
 
   function clickButton(button: HTMLElement, clickCount: Number) {
@@ -65,5 +62,10 @@ describe("App", () => {
         userEvent.click(button);
       });
     }
+  }
+
+  function assertCommandIs(expectedCommand: string) {
+    const commandString = screen.getByLabelText("Command:");
+    expect(commandString).toHaveValue(expectedCommand);
   }
 });
