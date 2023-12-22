@@ -9,7 +9,7 @@ function App() {
   const [command, setCommand] = useState("");
 
   function move(): void {
-    setCommand("M");
+    setCommand( command + "M");
   }
 
   return (

@@ -14,34 +14,24 @@ describe("App", () => {
     expect(commandString).toBeDisabled();
   });
 
-  it("Adds M to the move command when we click Move", async () => {
-    render(<App/>);
+  it.each([
+    [1, "M"],
+    [2, "MM"],
+    [5, "MMMMM"]
+  ])("Adds M to the move command when we click Move",
+      async (clickCount, expectedCommand) => {
+        render(<App/>);
 
-    const moveButton = screen.getByRole("button", { name: "Move" });
+        const moveButton = screen.getByRole("button", { name: "Move" });
+        for (let i = 0; i < clickCount; i++) {
+          act(() => {
+            userEvent.click(moveButton);
+          });
+        }
 
-    act(() => {
-      userEvent.click(moveButton);
-    });
-
-    const commandString = await screen.findByLabelText("Command:");
-    expect(commandString).toHaveValue("M");
-  });
-
-
-  // it.each([
-  //   [1, "M"]
-  // ])("Adds M to the move command when we click Move",
-  //     async (clickCount, expectedCommand) => {
-  //       render(<App/>);
-  //
-  //       const moveButton = screen.getByRole("button", { name: "Move" });
-  //       for (let i = 0; i < clickCount; i++) {
-  //         userEvent.click(moveButton);
-  //       }
-  //
-  //       const commandString = screen.getByLabelText("Command:");
-  //       expect(commandString).toHaveValue(expectedCommand);
-  //     });
+        const commandString = screen.getByLabelText("Command:");
+        expect(commandString).toHaveValue(expectedCommand);
+      });
 
   // it("turns the rover right when we click Right", () => {
   //   const turnRightFunction = jest.fn();
