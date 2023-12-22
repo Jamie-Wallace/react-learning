@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import { MarsRoverController } from "./MarsRoverController";
+import { act } from "@testing-library/react";
 
 function App() {
   const controller = new MarsRoverController();
@@ -8,7 +9,6 @@ function App() {
   const [command, setCommand] = useState("");
 
   function move(): void {
-    //TODO Warning: An update to App inside a test was not wrapped in act(...).
     setCommand("M");
   }
 

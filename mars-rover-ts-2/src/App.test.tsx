@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { act, render, screen, waitFor } from "@testing-library/react";
 import App from "./App";
 import userEvent from "@testing-library/user-event";
 
@@ -6,7 +6,7 @@ jest.mock("./MarsRoverController");
 
 describe("App", () => {
   it("Starts with an empty command list", () => {
-    render(<App />);
+    render(<App/>);
 
     const commandString = screen.getByLabelText("Command:");
 
@@ -15,14 +15,33 @@ describe("App", () => {
   });
 
   it("Adds M to the move command when we click Move", async () => {
-    render(<App />);
+    render(<App/>);
 
     const moveButton = screen.getByRole("button", { name: "Move" });
-    userEvent.click(moveButton);
 
-    const commandString = screen.getByLabelText("Command:");
+    act(() => {
+      userEvent.click(moveButton);
+    });
+
+    const commandString = await screen.findByLabelText("Command:");
     expect(commandString).toHaveValue("M");
   });
+
+
+  // it.each([
+  //   [1, "M"]
+  // ])("Adds M to the move command when we click Move",
+  //     async (clickCount, expectedCommand) => {
+  //       render(<App/>);
+  //
+  //       const moveButton = screen.getByRole("button", { name: "Move" });
+  //       for (let i = 0; i < clickCount; i++) {
+  //         userEvent.click(moveButton);
+  //       }
+  //
+  //       const commandString = screen.getByLabelText("Command:");
+  //       expect(commandString).toHaveValue(expectedCommand);
+  //     });
 
   // it("turns the rover right when we click Right", () => {
   //   const turnRightFunction = jest.fn();
