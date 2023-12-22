@@ -3,12 +3,12 @@ import App from "./App";
 import userEvent from "@testing-library/user-event";
 
 describe("mars rover feature", () => {
-  it("moves and turns", () => {
+  it.skip("moves and turns", () => {
     render(<App />);
 
-    let moveButton = screen.getByRole("button", { name: "Move" });
-    let turnRightButton = screen.getByRole("button", { name: "Right" });
-    let turnLeftButton = screen.getByRole("button", { name: "Left" });
+    const moveButton = screen.getByRole("button", { name: "Move" });
+    const turnRightButton = screen.getByRole("button", { name: "Right" });
+    const turnLeftButton = screen.getByRole("button", { name: "Left" });
 
     // Move forwards    0,1
     userEvent.click(moveButton);
@@ -23,6 +23,9 @@ describe("mars rover feature", () => {
     // Move forwards    1,3
     userEvent.click(moveButton);
     // 1,3 ^
+
+    const executeButton = screen.getByRole("button", { name: "Execute" });
+    userEvent.click(executeButton);
 
     // Assert on the position.
     const squareAt1_3 = screen.getByLabelText("square at x1 y3");

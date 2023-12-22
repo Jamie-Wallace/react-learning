@@ -2,7 +2,7 @@ export class MarsRoverController {
   private yPosition = 0;
 
   move() {
-    this.yPosition+=1;
+    this.yPosition += 1;
   }
 
   turnRight() {
