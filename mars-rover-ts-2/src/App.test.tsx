@@ -24,8 +24,7 @@ describe("App", () => {
     async (clickCount, expectedCommand) => {
       render(<App />);
 
-      const moveButton = screen.getByRole("button", { name: "Move" });
-      clickButton(moveButton, clickCount);
+      clickMoveButton(clickCount);
 
       assertCommandIs(expectedCommand);
     }
@@ -82,10 +81,7 @@ describe("App", () => {
 
     render(<App />);
 
-    const moveButton = screen.getByRole("button", { name: "Move" });
-    act(() => {
-      userEvent.click(moveButton);
-    });
+    clickMoveButton();
 
     const executeButton = screen.getByRole("button", { name: "Execute" });
     userEvent.click(executeButton);
@@ -100,14 +96,13 @@ describe("App", () => {
 
     render(<App />);
 
-    const moveButton = screen.getByRole("button", { name: "Move" });
     const leftButton = screen.getByRole("button", { name: "Left" });
     const rightButton = screen.getByRole("button", { name: "Right" });
-    clickButton(moveButton);
+    clickMoveButton();
     clickButton(leftButton, 2);
-    clickButton(moveButton);
+    clickMoveButton();
     clickButton(rightButton);
-    clickButton(moveButton);
+    clickMoveButton();
 
     const executeButton = screen.getByRole("button", { name: "Execute" });
     clickButton(executeButton);
@@ -115,6 +110,11 @@ describe("App", () => {
     expect(executeFunction).toHaveBeenCalledTimes(1);
     expect(executeFunction).toHaveBeenCalledWith("MLLMRM");
   });
+
+  function clickMoveButton(clickCount: number = 1) {
+    const moveButton = screen.getByRole("button", { name: "Move" });
+    clickButton(moveButton, clickCount);
+  }
 
   function clickButton(button: HTMLElement, clickCount: number = 1) {
     for (let i = 0; i < clickCount; i++) {
