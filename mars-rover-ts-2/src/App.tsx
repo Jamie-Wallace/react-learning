@@ -19,6 +19,10 @@ function App() {
     setCommand(command + "L");
   }
 
+  function executeCommand(): void {
+    controller.execute("");
+  }
+
   return (
     <div className="App">
       <label htmlFor="command">Command:</label>
@@ -26,7 +30,7 @@ function App() {
       <button onClick={move}>Move</button>
       <button onClick={turnRight}>Right</button>
       <button onClick={turnLeft}>Left</button>
-      <button onClick={controller.execute}>Execute</button>
+      <button onClick={executeCommand}>Execute</button>
     </div>
   );
 }

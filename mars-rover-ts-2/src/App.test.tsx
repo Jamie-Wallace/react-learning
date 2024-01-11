@@ -80,7 +80,8 @@ describe("App", () => {
     const executeButton = screen.getByRole("button", { name: "Execute" });
     userEvent.click(executeButton);
 
-    expect(executeFunction).toHaveBeenCalled();
+    expect(executeFunction).toHaveBeenCalledTimes(1);
+    expect(executeFunction).toHaveBeenCalledWith("");
   });
 
   function clickButton(button: HTMLElement, clickCount: number) {

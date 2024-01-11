@@ -1,6 +1,6 @@
 export class MarsRoverController {
   private yPosition = 0;
-  execute() {
+  execute(command: string) {
     throw new Error("Not implemented!");
   }
 
