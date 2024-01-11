@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "./App.css";
 import { MarsRoverController } from "./MarsRoverController";
-import { act } from "@testing-library/react";
 
 function App() {
   const controller = new MarsRoverController();
@@ -9,15 +8,15 @@ function App() {
   const [command, setCommand] = useState("");
 
   function move(): void {
-    setCommand( command + "M");
+    setCommand(command + "M");
   }
 
   function turnRight(): void {
-    setCommand( command + "R");
+    setCommand(command + "R");
   }
 
   function turnLeft(): void {
-    setCommand( command + "L");
+    setCommand(command + "L");
   }
 
   return (
@@ -27,6 +26,7 @@ function App() {
       <button onClick={move}>Move</button>
       <button onClick={turnRight}>Right</button>
       <button onClick={turnLeft}>Left</button>
+      <button>Execute</button>
     </div>
   );
 }
