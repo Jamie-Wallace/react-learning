@@ -1,5 +1,8 @@
 export class MarsRoverController {
   private yPosition = 0;
+  execute() {
+    throw new Error("Not implemented!");
+  }
 
   move() {
     this.yPosition += 1;

@@ -26,7 +26,7 @@ function App() {
       <button onClick={move}>Move</button>
       <button onClick={turnRight}>Right</button>
       <button onClick={turnLeft}>Left</button>
-      <button>Execute</button>
+      <button onClick={controller.execute}>Execute</button>
     </div>
   );
 }

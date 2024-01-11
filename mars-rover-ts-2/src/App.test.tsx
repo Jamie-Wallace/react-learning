@@ -1,6 +1,7 @@
 import { act, render, screen } from "@testing-library/react";
 import App from "./App";
 import userEvent from "@testing-library/user-event";
+import { MarsRoverController } from "./MarsRoverController";
 
 jest.mock("./MarsRoverController");
 
@@ -68,6 +69,18 @@ describe("App", () => {
     const executeButton = screen.getByRole("button", { name: "Execute" });
 
     expect(executeButton).toBeInTheDocument();
+  });
+
+  it("sends an empty execute command to the controller", () => {
+    const executeFunction = jest.fn();
+    MarsRoverController.prototype.execute = executeFunction;
+
+    render(<App />);
+
+    const executeButton = screen.getByRole("button", { name: "Execute" });
+    userEvent.click(executeButton);
+
+    expect(executeFunction).toHaveBeenCalled();
   });
 
   function clickButton(button: HTMLElement, clickCount: number) {
