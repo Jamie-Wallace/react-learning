@@ -84,6 +84,24 @@ describe("App", () => {
     expect(executeFunction).toHaveBeenCalledWith("");
   });
 
+  it("sends execute command of M to the controller", () => {
+    const executeFunction = jest.fn();
+    MarsRoverController.prototype.execute = executeFunction;
+
+    render(<App />);
+
+    const moveButton = screen.getByRole("button", { name: "Move" });
+    act(() => {
+      userEvent.click(moveButton);
+    });
+
+    const executeButton = screen.getByRole("button", { name: "Execute" });
+    userEvent.click(executeButton);
+
+    expect(executeFunction).toHaveBeenCalledTimes(1);
+    expect(executeFunction).toHaveBeenCalledWith("M");
+  });
+
   function clickButton(button: HTMLElement, clickCount: number) {
     for (let i = 0; i < clickCount; i++) {
       act(() => {

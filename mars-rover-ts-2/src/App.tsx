@@ -20,7 +20,7 @@ function App() {
   }
 
   function executeCommand(): void {
-    controller.execute("");
+    controller.execute(command);
   }
 
   return (
