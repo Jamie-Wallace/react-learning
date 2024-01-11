@@ -63,14 +63,6 @@ describe("App", () => {
     }
   );
 
-  it("has an execute button", () => {
-    render(<App />);
-
-    const executeButton = screen.getByRole("button", { name: "Execute" });
-
-    expect(executeButton).toBeInTheDocument();
-  });
-
   it("sends an empty execute command to the controller", () => {
     const executeFunction = jest.fn();
     MarsRoverController.prototype.execute = executeFunction;
@@ -100,6 +92,41 @@ describe("App", () => {
 
     expect(executeFunction).toHaveBeenCalledTimes(1);
     expect(executeFunction).toHaveBeenCalledWith("M");
+  });
+
+  it("sends execute command of MLLMRM to the controller", () => {
+    const executeFunction = jest.fn();
+    MarsRoverController.prototype.execute = executeFunction;
+
+    render(<App />);
+
+    const moveButton = screen.getByRole("button", { name: "Move" });
+    const leftButton = screen.getByRole("button", { name: "Left" });
+    const rightButton = screen.getByRole("button", { name: "Right" });
+    act(() => {
+      userEvent.click(moveButton);
+    });
+    act(() => {
+      userEvent.click(leftButton);
+    });
+    act(() => {
+      userEvent.click(leftButton);
+    });
+    act(() => {
+      userEvent.click(moveButton);
+    });
+    act(() => {
+      userEvent.click(rightButton);
+    });
+    act(() => {
+      userEvent.click(moveButton);
+    });
+
+    const executeButton = screen.getByRole("button", { name: "Execute" });
+    userEvent.click(executeButton);
+
+    expect(executeFunction).toHaveBeenCalledTimes(1);
+    expect(executeFunction).toHaveBeenCalledWith("MLLMRM");
   });
 
   function clickButton(button: HTMLElement, clickCount: number) {
