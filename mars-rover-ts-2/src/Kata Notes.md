@@ -18,3 +18,8 @@ To resolve this, we're discussing different approaches. One currently highlighte
 ---
 
 Expanded acceptance test to include clicking Execute button
+
+---
+
+Refactored Move / Left / Right buttons to update text on screen
+Hooked up Execute button with Controller
