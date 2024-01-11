@@ -103,33 +103,20 @@ describe("App", () => {
     const moveButton = screen.getByRole("button", { name: "Move" });
     const leftButton = screen.getByRole("button", { name: "Left" });
     const rightButton = screen.getByRole("button", { name: "Right" });
-    act(() => {
-      userEvent.click(moveButton);
-    });
-    act(() => {
-      userEvent.click(leftButton);
-    });
-    act(() => {
-      userEvent.click(leftButton);
-    });
-    act(() => {
-      userEvent.click(moveButton);
-    });
-    act(() => {
-      userEvent.click(rightButton);
-    });
-    act(() => {
-      userEvent.click(moveButton);
-    });
+    clickButton(moveButton);
+    clickButton(leftButton, 2);
+    clickButton(moveButton);
+    clickButton(rightButton);
+    clickButton(moveButton);
 
     const executeButton = screen.getByRole("button", { name: "Execute" });
-    userEvent.click(executeButton);
+    clickButton(executeButton);
 
     expect(executeFunction).toHaveBeenCalledTimes(1);
     expect(executeFunction).toHaveBeenCalledWith("MLLMRM");
   });
 
-  function clickButton(button: HTMLElement, clickCount: number) {
+  function clickButton(button: HTMLElement, clickCount: number = 1) {
     for (let i = 0; i < clickCount; i++) {
       act(() => {
         userEvent.click(button);
