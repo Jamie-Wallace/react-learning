@@ -1,12 +1,13 @@
 import { act, render, screen } from "@testing-library/react";
 import App from "./App";
 import userEvent from "@testing-library/user-event";
+import { MarsRoverController } from "./MarsRoverController";
 
 jest.mock("./MarsRoverController");
 
 describe("App", () => {
   it("Starts with an empty command list", () => {
-    render(<App/>);
+    render(<App />);
 
     const commandString = screen.getByLabelText("Command:");
 
@@ -17,46 +18,113 @@ describe("App", () => {
   it.each([
     [1, "M"],
     [2, "MM"],
-    [5, "MMMMM"]
-  ])("Adds M to the command when we click Move",
-      async (clickCount, expectedCommand) => {
-        render(<App/>);
+    [5, "MMMMM"],
+  ])(
+    "Adds M to the command when we click Move",
+    async (clickCount, expectedCommand) => {
+      render(<App />);
 
-        const moveButton = screen.getByRole("button", { name: "Move" });
-        clickButton(moveButton, clickCount);
+      clickMoveButton(clickCount);
 
-        assertCommandIs(expectedCommand);
-      });
+      assertCommandIs(expectedCommand);
+    }
+  );
 
   it.each([
     [1, "R"],
     [2, "RR"],
-    [5, "RRRRR"]
-  ])("Adds R to the command when we click Right",
-      async (clickCount, expectedCommand) => {
-        render(<App/>);
+    [5, "RRRRR"],
+  ])(
+    "Adds R to the command when we click Right",
+    async (clickCount, expectedCommand) => {
+      render(<App />);
 
-        const rightButton = screen.getByRole("button", { name: "Right" });
-        clickButton(rightButton, clickCount);
+      clickRightButton(clickCount);
 
-        assertCommandIs(expectedCommand);
-      });
+      assertCommandIs(expectedCommand);
+    }
+  );
 
   it.each([
     [1, "L"],
     [2, "LL"],
-    [5, "LLLLL"]
-  ])("Adds L to the command when we click Left",
-      async (clickCount, expectedCommand) => {
-        render(<App/>);
+    [5, "LLLLL"],
+  ])(
+    "Adds L to the command when we click Left",
+    async (clickCount, expectedCommand) => {
+      render(<App />);
 
-        const leftButton = screen.getByRole("button", { name: "Left" });
-        clickButton(leftButton, clickCount);
+      clickLeftButton(clickCount);
 
-        assertCommandIs(expectedCommand);
-      });
+      assertCommandIs(expectedCommand);
+    }
+  );
 
-  function clickButton(button: HTMLElement, clickCount: Number) {
+  it("sends an empty execute command to the controller", () => {
+    const executeFunction = jest.fn();
+    MarsRoverController.prototype.execute = executeFunction;
+
+    render(<App />);
+
+    clickExecuteButton();
+
+    expect(executeFunction).toHaveBeenCalledTimes(1);
+    expect(executeFunction).toHaveBeenCalledWith("");
+  });
+
+  it("sends execute command of M to the controller", () => {
+    const executeFunction = jest.fn();
+    MarsRoverController.prototype.execute = executeFunction;
+
+    render(<App />);
+
+    clickMoveButton();
+
+    clickExecuteButton();
+
+    expect(executeFunction).toHaveBeenCalledTimes(1);
+    expect(executeFunction).toHaveBeenCalledWith("M");
+  });
+
+  it("sends execute command of MLLMRM to the controller", () => {
+    const executeFunction = jest.fn();
+    MarsRoverController.prototype.execute = executeFunction;
+
+    render(<App />);
+
+    clickMoveButton();
+    clickLeftButton(2);
+    clickMoveButton();
+    clickRightButton();
+    clickMoveButton();
+
+    clickExecuteButton();
+
+    expect(executeFunction).toHaveBeenCalledTimes(1);
+    expect(executeFunction).toHaveBeenCalledWith("MLLMRM");
+  });
+
+  function clickMoveButton(clickCount: number = 1) {
+    const button = screen.getByRole("button", { name: "Move" });
+    clickButton(button, clickCount);
+  }
+
+  function clickLeftButton(clickCount: number = 1) {
+    const button = screen.getByRole("button", { name: "Left" });
+    clickButton(button, clickCount);
+  }
+
+  function clickRightButton(clickCount: number = 1) {
+    const button = screen.getByRole("button", { name: "Right" });
+    clickButton(button, clickCount);
+  }
+
+  function clickExecuteButton(clickCount: number = 1) {
+    const button = screen.getByRole("button", { name: "Execute" });
+    clickButton(button, clickCount);
+  }
+
+  function clickButton(button: HTMLElement, clickCount: number = 1) {
     for (let i = 0; i < clickCount; i++) {
       act(() => {
         userEvent.click(button);
