@@ -5,8 +5,11 @@ describe("MarsRoverController", () => {
           ["R", "E"],
           ["RR", "S"],
           ["RRR", "W"],
-          ["RRRR", "N"]])
-  ('should turn', (command, expectedDirection) => {
+          ["RRRR", "N"],
+          ["RRRRR", "E"],
+          ["RRRRRR", "S"],
+          ["RRRRRRRRRR", "S"]])
+  ('should turn right', (command, expectedDirection) => {
     let controller = new MarsRoverController();
 
     let direction = controller.execute(command);
