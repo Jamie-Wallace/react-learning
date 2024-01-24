@@ -1,34 +1,16 @@
 import { MarsRoverController } from "./MarsRoverController";
 
 describe("MarsRoverController", () => {
-  it('should turn right once', () => {
+  it.each([
+          ["R", "E"],
+          ["RR", "S"],
+          ["RRR", "W"],
+          ["RRRR", "N"]])
+  ('should turn', (command, expectedDirection) => {
     let controller = new MarsRoverController();
 
-    let direction = controller.execute("R");
+    let direction = controller.execute(command);
 
-    expect(direction).toBe("E");
+    expect(direction).toBe(expectedDirection);
   });
-
-  it('should turn right twice', () => {
-    let controller = new MarsRoverController();
-
-    let direction = controller.execute("RR");
-
-    expect(direction).toBe("S");
-  });
-
-  it('should turn right thrice', () => {
-    let controller = new MarsRoverController();
-
-    let direction = controller.execute("RRR");
-
-    expect(direction).toBe("W");
-  });
-
-  /*TODO Next steps
-  Consider clearing text after executing
-  Move into MarsRoverController and start testing the Execute method
-  
-
-  */
 });
