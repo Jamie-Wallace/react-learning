@@ -3,7 +3,7 @@ import App from "./App";
 import userEvent from "@testing-library/user-event";
 
 describe("mars rover feature", () => {
-  it.skip("moves and turns", () => {
+  it("moves and turns", () => {
     render(<App />);
 
     const moveButton = screen.getByRole("button", { name: "Move" });

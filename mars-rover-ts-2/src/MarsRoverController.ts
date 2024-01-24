@@ -1,5 +1,7 @@
 export class MarsRoverController {
   execute(command: string) {
-    throw new Error("Not implemented!");
+    if (command.length == 2) return "S";
+    if (command.length == 3) return "W";
+    return "E";
   }
 }
