@@ -31,3 +31,9 @@ The difference between them is that userEvent simulates entire user interations,
 This is because our experience with userEvent resulted in some unexpected side-effects when handling state changes.
 To resolve this we had to wrap our code in either act() or our assertions in waitFor().
 To make our code cleaner, it seems better to save userEvent just for our acceptance tests, so we can avoid boilerplate where we don't believe it brings any real value.
+
+--
+
+Added individual turn left and turn right tests to MarsRovercontroller
+
+--
