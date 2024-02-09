@@ -1,6 +1,5 @@
-import { act, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import App from "./App";
-import userEvent from "@testing-library/user-event";
 import { MarsRoverController } from "./MarsRoverController";
 
 jest.mock("./MarsRoverController");
@@ -126,9 +125,7 @@ describe("App", () => {
 
   function clickButton(button: HTMLElement, clickCount: number = 1) {
     for (let i = 0; i < clickCount; i++) {
-      act(() => {
-        userEvent.click(button);
-      });
+      fireEvent.click(button);
     }
   }
 
