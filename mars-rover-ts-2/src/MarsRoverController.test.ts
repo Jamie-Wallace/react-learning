@@ -20,6 +20,7 @@ describe("MarsRoverController", () => {
   it.each([
     ["L", "W"],
     ["LL", "S"],
+    ["LLL", "E"],
   ])("should turn left", (command, expectedDirection) => {
     let controller = new MarsRoverController();
 
