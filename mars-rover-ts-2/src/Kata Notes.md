@@ -23,3 +23,17 @@ Expanded acceptance test to include clicking Execute button
 
 Refactored Move / Left / Right buttons to update text on screen
 Hooked up Execute button with Controller
+
+---
+
+We've made the decision going forward to use fireEvent instead of userEvent inside of Unit Tests
+The difference between them is that userEvent simulates entire user interations, whereas fireEvent only handles sending specific events.
+This is because our experience with userEvent resulted in some unexpected side-effects when handling state changes.
+To resolve this we had to wrap our code in either act() or our assertions in waitFor().
+To make our code cleaner, it seems better to save userEvent just for our acceptance tests, so we can avoid boilerplate where we don't believe it brings any real value.
+
+--
+
+Added individual turn left and turn right tests to MarsRovercontroller
+
+--

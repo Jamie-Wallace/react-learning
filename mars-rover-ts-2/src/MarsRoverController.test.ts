@@ -2,28 +2,51 @@ import { MarsRoverController } from "./MarsRoverController";
 
 describe("MarsRoverController", () => {
   it.each([
-          ["R", "E"],
-          ["RR", "S"],
-          ["RRR", "W"],
-          ["RRRR", "N"],
-          ["RRRRR", "E"],
-          ["RRRRRR", "S"],
-          ["RRRRRRRRRR", "S"]])
-  ('should turn right', (command, expectedDirection) => {
-    let controller = new MarsRoverController();
+    ["R", "E"],
+    ["RR", "S"],
+    ["RRR", "W"],
+    ["RRRR", "N"],
+    ["RRRRR", "E"],
+    ["RRRRRR", "S"],
+    ["RRRRRRRRRR", "S"],
+  ])(
+    "when command is %s, should turn left to face %s",
+    (command, expectedDirection) => {
+      let controller = new MarsRoverController();
 
-    let direction = controller.execute(command);
+      let direction = controller.execute(command);
 
-    expect(direction).toBe(expectedDirection);
-  });
+      expect(direction).toBe(expectedDirection);
+    }
+  );
 
   it.each([
-    ["L", "W"]])
-  ('should turn left', (command, expectedDirection) => {
-    let controller = new MarsRoverController();
+    ["L", "W"],
+    ["LL", "S"],
+    ["LLL", "E"],
+    ["LLLL", "N"],
+    ["LLLLL", "W"],
+    ["LLLLLL", "S"],
+    ["LLLLLLLLLL", "S"],
+  ])(
+    "when command is %s, should turn left to face %s",
+    (command, expectedDirection) => {
+      let controller = new MarsRoverController();
 
-    let direction = controller.execute(command);
+      let direction = controller.execute(command);
 
-    expect(direction).toBe(expectedDirection);
-  });
+      expect(direction).toBe(expectedDirection);
+    }
+  );
+
+  it.each([["LR", "N"]])(
+    "when command is %s, should turn to face %s",
+    (command, expectedDirection) => {
+      let controller = new MarsRoverController();
+
+      let direction = controller.execute(command);
+
+      expect(direction).toBe(expectedDirection);
+    }
+  );
 });
