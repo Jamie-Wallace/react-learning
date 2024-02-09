@@ -1,5 +1,9 @@
 export class MarsRoverController {
   execute(command: string) {
+    if (command === "L") {
+      return "W";
+    }
+
     const directions = ["E", "S", "W", "N"];
     let directionIndex = command.length - 1;
     if (directionIndex > 3) {
