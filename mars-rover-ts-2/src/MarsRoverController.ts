@@ -9,12 +9,12 @@ export class MarsRoverController {
       directionIndex = command.length - 1;
     }
 
-    if (directionIndex < 0) {
+    while (directionIndex < 0) {
       directionIndex += 4;
     }
 
-    if (directionIndex > 3) {
-      directionIndex = directionIndex % 4;
+    while (directionIndex > 3) {
+      directionIndex -= 4;
     }
 
     return directions[directionIndex];

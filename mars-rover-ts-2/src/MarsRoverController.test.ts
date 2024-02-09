@@ -26,6 +26,8 @@ describe("MarsRoverController", () => {
     ["LLL", "E"],
     ["LLLL", "N"],
     ["LLLLL", "W"],
+    ["LLLLLL", "S"],
+    ["LLLLLLLLLL", "S"],
   ])(
     "when command is %s, should turn left to face %s",
     (command, expectedDirection) => {
