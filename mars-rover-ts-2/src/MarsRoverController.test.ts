@@ -9,13 +9,16 @@ describe("MarsRoverController", () => {
     ["RRRRR", "E"],
     ["RRRRRR", "S"],
     ["RRRRRRRRRR", "S"],
-  ])("should turn right", (command, expectedDirection) => {
-    let controller = new MarsRoverController();
+  ])(
+    "when command is %s, should turn left to face %s",
+    (command, expectedDirection) => {
+      let controller = new MarsRoverController();
 
-    let direction = controller.execute(command);
+      let direction = controller.execute(command);
 
-    expect(direction).toBe(expectedDirection);
-  });
+      expect(direction).toBe(expectedDirection);
+    }
+  );
 
   it.each([
     ["L", "W"],
@@ -23,11 +26,14 @@ describe("MarsRoverController", () => {
     ["LLL", "E"],
     ["LLLL", "N"],
     ["LLLLL", "W"],
-  ])("should turn left", (command, expectedDirection) => {
-    let controller = new MarsRoverController();
+  ])(
+    "when command is %s, should turn left to face %s",
+    (command, expectedDirection) => {
+      let controller = new MarsRoverController();
 
-    let direction = controller.execute(command);
+      let direction = controller.execute(command);
 
-    expect(direction).toBe(expectedDirection);
-  });
+      expect(direction).toBe(expectedDirection);
+    }
+  );
 });
