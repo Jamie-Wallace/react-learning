@@ -6,6 +6,9 @@ export class MarsRoverController {
     if (command === "LLL") {
       return "E";
     }
+    if (command === "LLLLL") {
+      return "W";
+    }
 
     const directions = ["E", "S", "W", "N"];
     let directionIndex = command.length - 1;

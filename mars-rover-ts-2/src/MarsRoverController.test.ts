@@ -22,6 +22,7 @@ describe("MarsRoverController", () => {
     ["LL", "S"],
     ["LLL", "E"],
     ["LLLL", "N"],
+    ["LLLLL", "W"],
   ])("should turn left", (command, expectedDirection) => {
     let controller = new MarsRoverController();
 
