@@ -57,7 +57,8 @@ describe("MarsRoverController", () => {
   );
 
   it.each([
-    ["", "0:0:N"]
+    ["", "0:0:N"],
+    ["M", "0:1:N"]
   ])(
       "when command is %s, position should be %s",
       (command, expectedPosition) => {
