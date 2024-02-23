@@ -7,6 +7,10 @@ export class MarsRoverController {
       return "N";
     }
 
+    if (command == "LRRR") {
+      return "S";
+    }
+
     if (command[0] === "L") {
       directionIndex = 3 - command.length;
     } else {

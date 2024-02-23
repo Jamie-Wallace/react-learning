@@ -39,7 +39,11 @@ describe("MarsRoverController", () => {
     }
   );
 
-  it.each([["LR", "N"]])(
+  it.each([
+      ["LR", "N"],
+      ["LRR", "E"],
+      ["LRRR", "S"]
+  ])(
     "when command is %s, should turn to face %s",
     (command, expectedDirection) => {
       let controller = new MarsRoverController();
