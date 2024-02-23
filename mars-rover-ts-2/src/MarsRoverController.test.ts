@@ -16,7 +16,7 @@ describe("MarsRoverController", () => {
 
       let direction = controller.execute(command);
 
-      expect(direction).toBe(expectedDirection);
+      expect(direction).toBe(`0:0:${expectedDirection}`);
     }
   );
 
@@ -35,7 +35,7 @@ describe("MarsRoverController", () => {
 
       let direction = controller.execute(command);
 
-      expect(direction).toBe(expectedDirection);
+      expect(direction).toBe(`0:0:${expectedDirection}`);
     }
   );
 
@@ -52,7 +52,21 @@ describe("MarsRoverController", () => {
 
       let direction = controller.execute(command);
 
-      expect(direction).toBe(expectedDirection);
+      expect(direction).toBe(`0:0:${expectedDirection}`);
     }
   );
+
+  it.each([
+    ["", "0:0:N"]
+  ])(
+      "when command is %s, position should be %s",
+      (command, expectedPosition) => {
+        let controller = new MarsRoverController();
+
+        let position = controller.execute(command);
+
+        expect(position).toBe(expectedPosition);
+      }
+  );
+
 });

@@ -17,6 +17,6 @@ export class MarsRoverController {
       }
     });
 
-    return directions[directionIndex];
+    return `0:0:${directions[directionIndex]}`;
   }
 }
