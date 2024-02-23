@@ -50,6 +50,7 @@ Seems to have put us into a bit of a tricky spot when doing LR.
     }
  ```
 
-Looking up how Mars Rover was solved previously (without UI) might be a good idea.
+Instead we should process every command and + or - 1 frm the direction index. Early on. 
+Rather than use magic maths as we know the number of repeated commands.
 
 --
