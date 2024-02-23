@@ -42,7 +42,9 @@ describe("MarsRoverController", () => {
   it.each([
       ["LR", "N"],
       ["LRR", "E"],
-      ["LRRR", "S"]
+      ["LRRR", "S"],
+      ["RL", "N"],
+      ["RLLLRL", "S"]
   ])(
     "when command is %s, should turn to face %s",
     (command, expectedDirection) => {
