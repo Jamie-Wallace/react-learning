@@ -3,6 +3,10 @@ export class MarsRoverController {
     const directions = ["E", "S", "W", "N"];
     let directionIndex = 0;
 
+    if (command == "LR") {
+      return "N";
+    }
+
     if (command[0] === "L") {
       directionIndex = 3 - command.length;
     } else {

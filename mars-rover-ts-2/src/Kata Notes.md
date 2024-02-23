@@ -37,3 +37,19 @@ To make our code cleaner, it seems better to save userEvent just for our accepta
 Added individual turn left and turn right tests to MarsRovercontroller
 
 --
+
+Next time consider if using command.length for turn R or turn L only is a good idea.
+E.g. with LLLLL we only checked the first command and then used length as we know the rest are L's.
+Seems to have put us into a bit of a tricky spot when doing LR.
+
+```
+    if (command[0] === "L") {
+      directionIndex = 3 - command.length;
+    } else {
+      directionIndex = command.length - 1;
+    }
+ ```
+
+Looking up how Mars Rover was solved previously (without UI) might be a good idea.
+
+--
