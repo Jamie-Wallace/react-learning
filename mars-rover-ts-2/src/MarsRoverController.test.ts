@@ -60,6 +60,8 @@ describe("MarsRoverController", () => {
     [0, "0:0:N"],
     [1, "0:1:N"],
     [2, "0:2:N"],
+    [9, "0:9:N"],
+    [10, "0:0:N"],
   ])(
     "when moving forward %s times, position should be %s",
     (numberOfMoves, expectedPosition) => {

@@ -14,6 +14,10 @@ export class MarsRoverController {
         directionIndex += 1;
       }
 
+      if (yCoordinate > 9) {
+        yCoordinate = 0;
+      }
+
       if (directionIndex < 0) {
         directionIndex = 3;
       } else if (directionIndex > 3) {
