@@ -127,6 +127,29 @@ describe("MarsRoverController", () => {
     }
   );
 
+  it.each([
+    [0, "0"],
+    // [1, "9"],
+    // [2, "8"],
+    // [10, "0"],
+    // [11, "9"],
+  ])(
+    "when moving forward %s times after turning west, x coordinate should be %s",
+    (numberOfMoves, expectedPosition) => {
+      let command = "L";
+
+      for (let i = 0; i < numberOfMoves; i++) {
+        command += "M";
+      }
+
+      let controller = new MarsRoverController();
+
+      let position = controller.execute(command);
+
+      expect(position).toBe(`${expectedPosition}:0:W`);
+    }
+  );
+
   it("when given an invalid command, should not move", () => {
     let controller = new MarsRoverController();
 
