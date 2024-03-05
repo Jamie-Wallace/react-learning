@@ -79,4 +79,12 @@ describe("MarsRoverController", () => {
       expect(position).toBe(expectedPosition);
     }
   );
+
+  it("when given an invalid command, should not move", () => {
+    let controller = new MarsRoverController();
+
+    let position = controller.execute("X");
+
+    expect(position).toBe("0:0:N");
+  });
 });

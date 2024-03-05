@@ -26,9 +26,12 @@ export class MarsRoverController {
         return;
       }
 
-      directionIndex += 1;
-      if (directionIndex > 3) {
-        directionIndex = 0;
+      if (commandChar === "R") {
+        directionIndex += 1;
+
+        if (directionIndex > 3) {
+          directionIndex = 0;
+        }
       }
     });
 
