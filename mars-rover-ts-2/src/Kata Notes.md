@@ -48,9 +48,49 @@ Seems to have put us into a bit of a tricky spot when doing LR.
     } else {
       directionIndex = command.length - 1;
     }
- ```
+```
 
-Instead we should process every command and + or - 1 frm the direction index. Early on. 
+Instead we should process every command and + or - 1 frm the direction index. Early on.
 Rather than use magic maths as we know the number of repeated commands.
 
 --
+
+Added moving forward - the work we had already done for turning made the logic a lot easier.
+Pretty much just stole our turning 'overflow' code.
+
+`
+if (commandChar === "M") {
+yCoordinate += 1;
+
+        if (yCoordinate > 9) {
+          yCoordinate = 0;
+        }
+
+        return;
+      }
+
+`
+
+Then moved our overflow logic together, so commands are all neatly grouped up.
+`
+if (commandChar === "L") {
+directionIndex -= 1;
+
+        if (directionIndex < 0) {
+          directionIndex = 3;
+        }
+
+        return;
+      }
+
+      if (commandChar === "R") {
+        directionIndex += 1;
+
+        if (directionIndex > 3) {
+          directionIndex = 0;
+        }
+      }
+
+`
+
+** To discuss : Do we want to refactor as we go, or refactor towards the end?**
