@@ -3,8 +3,12 @@ export class MarsRoverController {
     const directions = ["N", "E", "S", "W"];
     let directionIndex = 0;
 
-    Array.from(command).forEach(commandChar => {
-      if (commandChar === "L") {
+    let yCoordinate = 0;
+
+    Array.from(command).forEach((commandChar) => {
+      if (commandChar === "M") {
+        yCoordinate += 1;
+      } else if (commandChar === "L") {
         directionIndex -= 1;
       } else {
         directionIndex += 1;
@@ -17,6 +21,6 @@ export class MarsRoverController {
       }
     });
 
-    return `0:0:${directions[directionIndex]}`;
+    return `0:${yCoordinate}:${directions[directionIndex]}`;
   }
 }

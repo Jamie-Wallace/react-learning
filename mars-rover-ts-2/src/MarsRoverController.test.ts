@@ -40,11 +40,11 @@ describe("MarsRoverController", () => {
   );
 
   it.each([
-      ["LR", "N"],
-      ["LRR", "E"],
-      ["LRRR", "S"],
-      ["RL", "N"],
-      ["RLLLRL", "S"]
+    ["LR", "N"],
+    ["LRR", "E"],
+    ["LRRR", "S"],
+    ["RL", "N"],
+    ["RLLLRL", "S"],
   ])(
     "when command is %s, should turn to face %s",
     (command, expectedDirection) => {
@@ -58,16 +58,15 @@ describe("MarsRoverController", () => {
 
   it.each([
     ["", "0:0:N"],
-    ["M", "0:1:N"]
+    ["M", "0:1:N"],
   ])(
-      "when command is %s, position should be %s",
-      (command, expectedPosition) => {
-        let controller = new MarsRoverController();
+    "when command is %s, position should be %s",
+    (command, expectedPosition) => {
+      let controller = new MarsRoverController();
 
-        let position = controller.execute(command);
+      let position = controller.execute(command);
 
-        expect(position).toBe(expectedPosition);
-      }
+      expect(position).toBe(expectedPosition);
+    }
   );
-
 });
