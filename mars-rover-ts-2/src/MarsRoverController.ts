@@ -4,10 +4,13 @@ export class MarsRoverController {
     let directionIndex = 0;
 
     let yCoordinate = 0;
+    let xCoordinate = 0;
 
     Array.from(command).forEach((commandChar) => {
       if (commandChar === "M") {
-        if (directionIndex === 2) {
+        if (directionIndex === 1) {
+          xCoordinate += 1;
+        } else if (directionIndex === 2) {
           yCoordinate -= 1;
 
           if (yCoordinate < 0) {
@@ -43,6 +46,6 @@ export class MarsRoverController {
       }
     });
 
-    return `0:${yCoordinate}:${directions[directionIndex]}`;
+    return `${xCoordinate}:${yCoordinate}:${directions[directionIndex]}`;
   }
 }
