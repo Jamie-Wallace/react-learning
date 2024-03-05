@@ -94,3 +94,8 @@ directionIndex -= 1;
 `
 
 ** To discuss : Do we want to refactor as we go, or refactor towards the end?**
+
+-- Next steps (As at 2024-03-05)
+Discuss refactoring movement
+
+Start hooking up the UI on the response of the Controller

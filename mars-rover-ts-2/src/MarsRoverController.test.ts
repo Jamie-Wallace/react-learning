@@ -150,6 +150,14 @@ describe("MarsRoverController", () => {
     }
   );
 
+  it("when command is something, should move to place", () => {
+    let controller = new MarsRoverController();
+
+    let direction = controller.execute("MLMMRMMRRM");
+
+    expect(direction).toBe(`8:2:S`);
+  });
+
   it("when given an invalid command, should not move", () => {
     let controller = new MarsRoverController();
 
