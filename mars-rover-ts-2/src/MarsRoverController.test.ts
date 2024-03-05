@@ -57,14 +57,14 @@ describe("MarsRoverController", () => {
   );
 
   it.each([
-    [0, "0:0:N"],
-    [1, "0:1:N"],
-    [2, "0:2:N"],
-    [9, "0:9:N"],
-    [10, "0:0:N"],
-    [15, "0:5:N"],
+    [0, "0"],
+    [1, "1"],
+    [2, "2"],
+    [9, "9"],
+    [10, "0"],
+    [15, "5"],
   ])(
-    "when moving forward %s times, position should be %s",
+    "when moving forward %s times, y coordinate should be %s",
     (numberOfMoves, expectedPosition) => {
       let command = "";
 
@@ -76,7 +76,31 @@ describe("MarsRoverController", () => {
 
       let position = controller.execute(command);
 
-      expect(position).toBe(expectedPosition);
+      expect(position).toBe(`0:${expectedPosition}:N`);
+    }
+  );
+
+  it.each([
+    [0, "0"],
+    [1, "9"],
+    // [2, "2"],
+    // [9, "9"],
+    // [10, "0"],
+    // [15, "5"],
+  ])(
+    "when moving forward %s times after turning south, position should be %s",
+    (numberOfMoves, expectedPosition) => {
+      let command = "RR";
+
+      for (let i = 0; i < numberOfMoves; i++) {
+        command += "M";
+      }
+
+      let controller = new MarsRoverController();
+
+      let position = controller.execute(command);
+
+      expect(position).toBe(`0:${expectedPosition}:S`);
     }
   );
 

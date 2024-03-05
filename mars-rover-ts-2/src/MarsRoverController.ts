@@ -7,10 +7,18 @@ export class MarsRoverController {
 
     Array.from(command).forEach((commandChar) => {
       if (commandChar === "M") {
-        yCoordinate += 1;
+        if (directionIndex === 2) {
+          yCoordinate -= 1;
 
-        if (yCoordinate > 9) {
-          yCoordinate = 0;
+          if (yCoordinate < 0) {
+            yCoordinate = 9;
+          }
+        } else {
+          yCoordinate += 1;
+
+          if (yCoordinate > 9) {
+            yCoordinate = 0;
+          }
         }
 
         return;
