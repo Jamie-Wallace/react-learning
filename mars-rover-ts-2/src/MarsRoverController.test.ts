@@ -57,11 +57,18 @@ describe("MarsRoverController", () => {
   );
 
   it.each([
-    ["", "0:0:N"],
-    ["M", "0:1:N"],
+    [0, "0:0:N"],
+    [1, "0:1:N"],
+    [2, "0:2:N"],
   ])(
-    "when command is %s, position should be %s",
-    (command, expectedPosition) => {
+    "when moving forward %s times, position should be %s",
+    (numberOfMoves, expectedPosition) => {
+      let command = "";
+
+      for (let i = 0; i < numberOfMoves; i++) {
+        command += "M";
+      }
+
       let controller = new MarsRoverController();
 
       let position = controller.execute(command);
