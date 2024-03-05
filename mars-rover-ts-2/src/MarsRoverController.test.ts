@@ -106,9 +106,10 @@ describe("MarsRoverController", () => {
   it.each([
     [0, "0"],
     [1, "1"],
-    // [2, "8"],
-    // [10, "0"],
-    // [11, "9"],
+    [2, "2"],
+    [9, "9"],
+    [10, "0"],
+    [15, "5"],
   ])(
     "when moving forward %s times after turning east, x coordinate should be %s",
     (numberOfMoves, expectedPosition) => {

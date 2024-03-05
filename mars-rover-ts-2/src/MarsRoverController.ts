@@ -41,6 +41,9 @@ export class MarsRoverController {
     if (this.directionIndex === 1) {
       this.xCoordinate += 1;
 
+      if (this.xCoordinate > 9) {
+        this.xCoordinate = 0;
+      }
       return;
     }
 
