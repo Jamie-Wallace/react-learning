@@ -8,19 +8,26 @@ export class MarsRoverController {
     Array.from(command).forEach((commandChar) => {
       if (commandChar === "M") {
         yCoordinate += 1;
-      } else if (commandChar === "L") {
+
+        if (yCoordinate > 9) {
+          yCoordinate = 0;
+        }
+
+        return;
+      }
+
+      if (commandChar === "L") {
         directionIndex -= 1;
-      } else {
-        directionIndex += 1;
+
+        if (directionIndex < 0) {
+          directionIndex = 3;
+        }
+
+        return;
       }
 
-      if (yCoordinate > 9) {
-        yCoordinate = 0;
-      }
-
-      if (directionIndex < 0) {
-        directionIndex = 3;
-      } else if (directionIndex > 3) {
+      directionIndex += 1;
+      if (directionIndex > 3) {
         directionIndex = 0;
       }
     });
