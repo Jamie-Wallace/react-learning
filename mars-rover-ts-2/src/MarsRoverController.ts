@@ -56,26 +56,41 @@ export class MarsRoverController {
   }
 
   move() {
-
-    if (this.directionIndex === 0) {
+    if (this.directionIsNorth()) {
       this.moveNorth();
       return;
     }
 
-    if (this.directionIndex === 1) {
+    if (this.directionIsEast()) {
       this.moveEast();
       return;
     }
 
-    if (this.directionIndex === 2) {
+    if (this.directionIsSouth()) {
       this.moveSouth();
       return;
     }
 
-    if (this.directionIndex === 3) {
+    if (this.directionIsWest()) {
       this.moveWest();
       return;
     }
+  }
+
+  private directionIsNorth() {
+    return this.directionIndex === 0;
+  }
+
+  private directionIsEast() {
+    return this.directionIndex === 1;
+  }
+
+  private directionIsSouth() {
+    return this.directionIndex === 2;
+  }
+
+  private directionIsWest() {
+    return this.directionIndex === 3;
   }
 
   private moveNorth() {

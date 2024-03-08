@@ -100,7 +100,10 @@ Potential refactors to do as we go:
 - Grid
   - Extents i.e 10x10
   - myPosition = grid.move(myPosition, myDirection)
--- Next steps (As at 2024-03-05)
-Discuss refactoring movement
+
+-- Next steps (As at 2024-03-08)
+Continue the refactor:
+- Consider move / grid class.
+- Consider compass / direction class.
 
 Start hooking up the UI on the response of the Controller
