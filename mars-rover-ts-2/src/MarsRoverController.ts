@@ -1,22 +1,75 @@
 export class MarsRoverController {
+  directionIndex = 0;
+  yCoordinate = 0;
+  xCoordinate = 0;
+
   execute(command: string) {
     const directions = ["N", "E", "S", "W"];
-    let directionIndex = 0;
 
-    Array.from(command).forEach(commandChar => {
-      if (commandChar === "L") {
-        directionIndex -= 1;
-      } else {
-        directionIndex += 1;
+    Array.from(command).forEach((commandChar) => {
+      if (commandChar === "M") {
+        this.move();
+
+        return;
       }
 
-      if (directionIndex < 0) {
-        directionIndex = 3;
-      } else if (directionIndex > 3) {
-        directionIndex = 0;
+      if (commandChar === "L") {
+        this.directionIndex -= 1;
+
+        if (this.directionIndex < 0) {
+          this.directionIndex = 3;
+        }
+
+        return;
+      }
+
+      if (commandChar === "R") {
+        this.directionIndex += 1;
+
+        if (this.directionIndex > 3) {
+          this.directionIndex = 0;
+        }
       }
     });
 
-    return `0:0:${directions[directionIndex]}`;
+    return `${this.xCoordinate}:${this.yCoordinate}:${
+      directions[this.directionIndex]
+    }`;
+  }
+
+  move() {
+    if (this.directionIndex === 1) {
+      this.xCoordinate += 1;
+
+      if (this.xCoordinate > 9) {
+        this.xCoordinate = 0;
+      }
+      return;
+    }
+
+    if (this.directionIndex === 2) {
+      this.yCoordinate -= 1;
+
+      if (this.yCoordinate < 0) {
+        this.yCoordinate = 9;
+      }
+
+      return;
+    }
+
+    if (this.directionIndex === 3) {
+      this.xCoordinate -= 1;
+
+      if (this.xCoordinate < 0) {
+        this.xCoordinate = 9;
+      }
+      return;
+    }
+
+    this.yCoordinate += 1;
+
+    if (this.yCoordinate > 9) {
+      this.yCoordinate = 0;
+    }
   }
 }
