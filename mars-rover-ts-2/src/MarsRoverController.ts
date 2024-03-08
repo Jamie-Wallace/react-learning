@@ -9,17 +9,15 @@ export class MarsRoverController {
     Array.from(command).forEach((commandChar) => {
       if (commandChar === "M") {
         this.move();
-
         return;
       }
 
-      if (commandChar === "L") {
+      if (this.isTurnLeftCommand(commandChar)) {
         this.turnLeft();
-
         return;
       }
 
-      if (commandChar === "R") {
+      if (this.isTurnRightCommand(commandChar)) {
         this.turnRight();
       }
     });
@@ -27,6 +25,14 @@ export class MarsRoverController {
     return `${this.xCoordinate}:${this.yCoordinate}:${
       directions[this.directionIndex]
     }`;
+  }
+
+  private isTurnRightCommand(commandChar: string) {
+    return commandChar === "R";
+  }
+
+  private isTurnLeftCommand(commandChar: string) {
+    return commandChar === "L";
   }
 
   turnLeft() {
