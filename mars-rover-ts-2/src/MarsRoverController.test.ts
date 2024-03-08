@@ -150,12 +150,17 @@ describe("MarsRoverController", () => {
     }
   );
 
-  it("when command is something, should move to place", () => {
+  it.each([
+      ["MLMMRMMRRM", "8:2:S"],
+      ["LLMMRMMLLM", "9:8:E"],
+      ["MMRMMMLMRMMM", "6:3:E"],
+  ])("when given command %s, should move to %s",
+      (command, expectedPosition) => {
     let controller = new MarsRoverController();
 
-    let direction = controller.execute("MLMMRMMRRM");
+    let direction = controller.execute(command);
 
-    expect(direction).toBe(`8:2:S`);
+    expect(direction).toBe(expectedPosition);
   });
 
   it("when given an invalid command, should not move", () => {
