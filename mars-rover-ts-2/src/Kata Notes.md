@@ -99,7 +99,7 @@ Potential refactors to do as we go:
 - Coordinate class with X/Y
 - Grid
   - Extents i.e 10x10
-  - myPosition = grid.getNewPosition(myPosition, myDirection)
+  - myPosition = grid.move(myPosition, myDirection)
 -- Next steps (As at 2024-03-05)
 Discuss refactoring movement
 

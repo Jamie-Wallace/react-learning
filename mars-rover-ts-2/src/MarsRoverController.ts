@@ -7,7 +7,7 @@ export class MarsRoverController {
     const directions = ["N", "E", "S", "W"];
 
     Array.from(command).forEach((commandChar) => {
-      if (commandChar === "M") {
+      if (this.isMoveCommand(commandChar)) {
         this.move();
         return;
       }
@@ -25,6 +25,10 @@ export class MarsRoverController {
     return `${this.xCoordinate}:${this.yCoordinate}:${
       directions[this.directionIndex]
     }`;
+  }
+
+  private isMoveCommand(commandChar: string) {
+    return commandChar === "M";
   }
 
   private isTurnRightCommand(commandChar: string) {
@@ -52,38 +56,57 @@ export class MarsRoverController {
   }
 
   move() {
-    if (this.directionIndex === 1) {
-      this.xCoordinate += 1;
 
-      if (this.xCoordinate > 9) {
-        this.xCoordinate = 0;
-      }
+    if (this.directionIndex === 0) {
+      this.moveNorth();
+      return;
+    }
+
+    if (this.directionIndex === 1) {
+      this.moveEast();
       return;
     }
 
     if (this.directionIndex === 2) {
-      this.yCoordinate -= 1;
-
-      if (this.yCoordinate < 0) {
-        this.yCoordinate = 9;
-      }
-
+      this.moveSouth();
       return;
     }
 
     if (this.directionIndex === 3) {
-      this.xCoordinate -= 1;
-
-      if (this.xCoordinate < 0) {
-        this.xCoordinate = 9;
-      }
+      this.moveWest();
       return;
     }
+  }
 
+  private moveNorth() {
     this.yCoordinate += 1;
 
     if (this.yCoordinate > 9) {
       this.yCoordinate = 0;
+    }
+  }
+
+  private moveEast() {
+    this.xCoordinate += 1;
+
+    if (this.xCoordinate > 9) {
+      this.xCoordinate = 0;
+    }
+  }
+
+  private moveSouth() {
+    this.yCoordinate -= 1;
+
+    if (this.yCoordinate < 0) {
+      this.yCoordinate = 9;
+    }
+  }
+
+  private moveWest() {
+    this.xCoordinate -= 1;
+
+    if (this.xCoordinate < 0) {
+      this.xCoordinate = 9;
     }
   }
 }
