@@ -94,7 +94,12 @@ directionIndex -= 1;
 `
 
 ** To discuss : Do we want to refactor as we go, or refactor towards the end?**
-
+Potential refactors to do as we go:
+- Direction / Compass class or enum
+- Coordinate class with X/Y
+- Grid
+  - Extents i.e 10x10
+  - myPosition = grid.getNewPosition(myPosition, myDirection)
 -- Next steps (As at 2024-03-05)
 Discuss refactoring movement
 

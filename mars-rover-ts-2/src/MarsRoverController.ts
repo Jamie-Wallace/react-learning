@@ -14,27 +14,35 @@ export class MarsRoverController {
       }
 
       if (commandChar === "L") {
-        this.directionIndex -= 1;
-
-        if (this.directionIndex < 0) {
-          this.directionIndex = 3;
-        }
+        this.turnLeft();
 
         return;
       }
 
       if (commandChar === "R") {
-        this.directionIndex += 1;
-
-        if (this.directionIndex > 3) {
-          this.directionIndex = 0;
-        }
+        this.turnRight();
       }
     });
 
     return `${this.xCoordinate}:${this.yCoordinate}:${
       directions[this.directionIndex]
     }`;
+  }
+
+  turnLeft() {
+    this.directionIndex -= 1;
+
+    if (this.directionIndex < 0) {
+      this.directionIndex = 3;
+    }
+  }
+
+  turnRight() {
+    this.directionIndex += 1;
+
+    if (this.directionIndex > 3) {
+      this.directionIndex = 0;
+    }
   }
 
   move() {
