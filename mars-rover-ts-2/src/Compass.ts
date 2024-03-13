@@ -1,40 +1,67 @@
 export class Compass {
-  directions = ["N", "E", "S", "W"];
-  directionIndex = 0;
+  currentDirection = "N";
 
   turnLeft() {
-    this.directionIndex -= 1;
+    if (this.isNorth()) {
+      this.currentDirection = "W";
+      return;
+    }
 
-    if (this.directionIndex < 0) {
-      this.directionIndex = 3;
+    if (this.isWest()) {
+      this.currentDirection = "S";
+      return;
+    }
+
+    if (this.isSouth()) {
+      this.currentDirection = "E";
+      return;
+    }
+
+    if (this.isEast()) {
+      this.currentDirection = "N";
+      return;
     }
   }
 
   turnRight() {
-    this.directionIndex += 1;
+    if (this.isNorth()) {
+      this.currentDirection = "E";
+      return;
+    }
 
-    if (this.directionIndex > 3) {
-      this.directionIndex = 0;
+    if (this.isEast()) {
+      this.currentDirection = "S";
+      return;
+    }
+
+    if (this.isSouth()) {
+      this.currentDirection = "W";
+      return;
+    }
+
+    if (this.isWest()) {
+      this.currentDirection = "N";
+      return;
     }
   }
 
   isNorth() {
-    return this.directionIndex === 0;
+    return this.currentDirection === "N";
   }
 
   isEast() {
-    return this.directionIndex === 1;
+    return this.currentDirection === "E";
   }
 
   isSouth() {
-    return this.directionIndex === 2;
+    return this.currentDirection === "S";
   }
 
   isWest() {
-    return this.directionIndex === 3;
+    return this.currentDirection === "W";
   }
 
   getCurrentDirection() {
-    return this.directions[this.directionIndex];
+    return this.currentDirection;
   }
 }
