@@ -1,9 +1,5 @@
 import { Compass } from "./Compass";
-
-class Position {
-  yCoordinate = 0;
-  xCoordinate = 0;
-}
+import { Position } from "./Position";
 
 export class MarsRoverController {
   position = new Position();
@@ -45,55 +41,23 @@ export class MarsRoverController {
 
   move() {
     if (this.compass.isNorth()) {
-      this.moveNorth();
+      this.position.moveNorth();
       return;
     }
 
     if (this.compass.isEast()) {
-      this.moveEast();
+      this.position.moveEast();
       return;
     }
 
     if (this.compass.isSouth()) {
-      this.moveSouth();
+      this.position.moveSouth();
       return;
     }
 
     if (this.compass.isWest()) {
-      this.moveWest();
+      this.position.moveWest();
       return;
-    }
-  }
-
-  private moveNorth() {
-    this.position.yCoordinate += 1;
-
-    if (this.position.yCoordinate > 9) {
-      this.position.yCoordinate = 0;
-    }
-  }
-
-  private moveEast() {
-    this.position.xCoordinate += 1;
-
-    if (this.position.xCoordinate > 9) {
-      this.position.xCoordinate = 0;
-    }
-  }
-
-  private moveSouth() {
-    this.position.yCoordinate -= 1;
-
-    if (this.position.yCoordinate < 0) {
-      this.position.yCoordinate = 9;
-    }
-  }
-
-  private moveWest() {
-    this.position.xCoordinate -= 1;
-
-    if (this.position.xCoordinate < 0) {
-      this.position.xCoordinate = 9;
     }
   }
 }
