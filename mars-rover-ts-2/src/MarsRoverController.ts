@@ -17,6 +17,10 @@ class Compass {
       this.directionIndex = 0;
     }
   }
+
+  directionIsNorth() {
+    return this.directionIndex === 0;
+  }
 }
 
 export class MarsRoverController {
@@ -59,7 +63,7 @@ export class MarsRoverController {
   }
 
   move() {
-    if (this.directionIsNorth()) {
+    if (this.compass.directionIsNorth()) {
       this.moveNorth();
       return;
     }
@@ -78,10 +82,6 @@ export class MarsRoverController {
       this.moveWest();
       return;
     }
-  }
-
-  private directionIsNorth() {
-    return this.compass.directionIndex === 0;
   }
 
   private directionIsEast() {
