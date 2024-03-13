@@ -1,11 +1,14 @@
+class Compass {
+  directions = ["N", "E", "S", "W"];
+}
+
 export class MarsRoverController {
   directionIndex = 0;
   yCoordinate = 0;
   xCoordinate = 0;
+  compass = new Compass();
 
   execute(command: string) {
-    const directions = ["N", "E", "S", "W"];
-
     Array.from(command).forEach((commandChar) => {
       if (this.isMoveCommand(commandChar)) {
         this.move();
@@ -23,7 +26,7 @@ export class MarsRoverController {
     });
 
     return `${this.xCoordinate}:${this.yCoordinate}:${
-      directions[this.directionIndex]
+      this.compass.directions[this.directionIndex]
     }`;
   }
 
