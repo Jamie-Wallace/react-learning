@@ -9,6 +9,14 @@ class Compass {
       this.directionIndex = 3;
     }
   }
+
+  turnRight() {
+    this.directionIndex += 1;
+
+    if (this.directionIndex > 3) {
+      this.directionIndex = 0;
+    }
+  }
 }
 
 export class MarsRoverController {
@@ -29,7 +37,7 @@ export class MarsRoverController {
       }
 
       if (this.isTurnRightCommand(commandChar)) {
-        this.turnRight();
+        this.compass.turnRight();
       }
     });
 
@@ -48,14 +56,6 @@ export class MarsRoverController {
 
   private isTurnLeftCommand(commandChar: string) {
     return commandChar === "L";
-  }
-
-  turnRight() {
-    this.compass.directionIndex += 1;
-
-    if (this.compass.directionIndex > 3) {
-      this.compass.directionIndex = 0;
-    }
   }
 
   move() {
