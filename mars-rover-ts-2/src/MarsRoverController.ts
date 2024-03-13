@@ -33,6 +33,10 @@ class Compass {
   isWest() {
     return this.directionIndex === 3;
   }
+
+  getCurrentDirection() {
+    return this.directions[this.directionIndex];
+  }
 }
 
 export class MarsRoverController {
@@ -57,9 +61,9 @@ export class MarsRoverController {
       }
     });
 
-    return `${this.xCoordinate}:${this.yCoordinate}:${
-      this.compass.directions[this.compass.directionIndex]
-    }`;
+    return `${this.xCoordinate}:${
+      this.yCoordinate
+    }:${this.compass.getCurrentDirection()}`;
   }
 
   private isMoveCommand(commandChar: string) {
