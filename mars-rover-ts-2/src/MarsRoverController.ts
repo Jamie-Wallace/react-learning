@@ -21,6 +21,18 @@ class Compass {
   directionIsNorth() {
     return this.directionIndex === 0;
   }
+
+  directionIsEast() {
+    return this.directionIndex === 1;
+  }
+
+  directionIsSouth() {
+    return this.directionIndex === 2;
+  }
+
+  directionIsWest() {
+    return this.directionIndex === 3;
+  }
 }
 
 export class MarsRoverController {
@@ -68,32 +80,20 @@ export class MarsRoverController {
       return;
     }
 
-    if (this.directionIsEast()) {
+    if (this.compass.directionIsEast()) {
       this.moveEast();
       return;
     }
 
-    if (this.directionIsSouth()) {
+    if (this.compass.directionIsSouth()) {
       this.moveSouth();
       return;
     }
 
-    if (this.directionIsWest()) {
+    if (this.compass.directionIsWest()) {
       this.moveWest();
       return;
     }
-  }
-
-  private directionIsEast() {
-    return this.compass.directionIndex === 1;
-  }
-
-  private directionIsSouth() {
-    return this.compass.directionIndex === 2;
-  }
-
-  private directionIsWest() {
-    return this.compass.directionIndex === 3;
   }
 
   private moveNorth() {
