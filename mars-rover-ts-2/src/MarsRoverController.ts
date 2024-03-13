@@ -1,9 +1,9 @@
 class Compass {
   directions = ["N", "E", "S", "W"];
+  directionIndex = 0;
 }
 
 export class MarsRoverController {
-  directionIndex = 0;
   yCoordinate = 0;
   xCoordinate = 0;
   compass = new Compass();
@@ -26,7 +26,7 @@ export class MarsRoverController {
     });
 
     return `${this.xCoordinate}:${this.yCoordinate}:${
-      this.compass.directions[this.directionIndex]
+      this.compass.directions[this.compass.directionIndex]
     }`;
   }
 
@@ -43,18 +43,18 @@ export class MarsRoverController {
   }
 
   turnLeft() {
-    this.directionIndex -= 1;
+    this.compass.directionIndex -= 1;
 
-    if (this.directionIndex < 0) {
-      this.directionIndex = 3;
+    if (this.compass.directionIndex < 0) {
+      this.compass.directionIndex = 3;
     }
   }
 
   turnRight() {
-    this.directionIndex += 1;
+    this.compass.directionIndex += 1;
 
-    if (this.directionIndex > 3) {
-      this.directionIndex = 0;
+    if (this.compass.directionIndex > 3) {
+      this.compass.directionIndex = 0;
     }
   }
 
@@ -81,19 +81,19 @@ export class MarsRoverController {
   }
 
   private directionIsNorth() {
-    return this.directionIndex === 0;
+    return this.compass.directionIndex === 0;
   }
 
   private directionIsEast() {
-    return this.directionIndex === 1;
+    return this.compass.directionIndex === 1;
   }
 
   private directionIsSouth() {
-    return this.directionIndex === 2;
+    return this.compass.directionIndex === 2;
   }
 
   private directionIsWest() {
-    return this.directionIndex === 3;
+    return this.compass.directionIndex === 3;
   }
 
   private moveNorth() {
