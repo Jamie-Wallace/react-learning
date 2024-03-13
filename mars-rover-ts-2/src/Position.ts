@@ -33,4 +33,8 @@ export class Position {
       this.xCoordinate = 9;
     }
   }
+
+  getCurrentPosition() {
+    return `${this.xCoordinate}:${this.yCoordinate}`;
+  }
 }

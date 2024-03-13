@@ -113,3 +113,5 @@ Start hooking up the UI on the response of the Controller
 -- 2024-03-13
 Refactored to handle turning in new Compass class
 Considering making a Direction enum or direction classes
+
+Refactored to pull out moving into Position method

@@ -22,9 +22,7 @@ export class MarsRoverController {
       }
     });
 
-    return `${this.position.xCoordinate}:${
-      this.position.yCoordinate
-    }:${this.compass.getCurrentDirection()}`;
+    return `${this.position.getCurrentPosition()}:${this.compass.getCurrentDirection()}`;
   }
 
   private isMoveCommand(commandChar: string) {
