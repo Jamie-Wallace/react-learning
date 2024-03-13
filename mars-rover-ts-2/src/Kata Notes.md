@@ -95,6 +95,7 @@ directionIndex -= 1;
 
 ** To discuss : Do we want to refactor as we go, or refactor towards the end?**
 Potential refactors to do as we go:
+
 - Direction / Compass class or enum
 - Coordinate class with X/Y
 - Grid
@@ -103,7 +104,14 @@ Potential refactors to do as we go:
 
 -- Next steps (As at 2024-03-08)
 Continue the refactor:
+
 - Consider move / grid class.
 - Consider compass / direction class.
 
 Start hooking up the UI on the response of the Controller
+
+-- 2024-03-13
+Refactored to handle turning in new Compass class
+Considering making a Direction enum or direction classes
+
+Refactored to pull out moving into Position method
