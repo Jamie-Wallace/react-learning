@@ -1,11 +1,14 @@
 export class Position {
+  readonly gridHeight = 9;
+  readonly gridWidth = 9;
+
   yCoordinate = 0;
   xCoordinate = 0;
 
   moveNorth() {
     this.yCoordinate += 1;
 
-    if (this.yCoordinate > 9) {
+    if (this.yCoordinate > this.gridHeight) {
       this.yCoordinate = 0;
     }
   }
@@ -13,7 +16,7 @@ export class Position {
   moveEast() {
     this.xCoordinate += 1;
 
-    if (this.xCoordinate > 9) {
+    if (this.xCoordinate > this.gridWidth) {
       this.xCoordinate = 0;
     }
   }
@@ -22,7 +25,7 @@ export class Position {
     this.yCoordinate -= 1;
 
     if (this.yCoordinate < 0) {
-      this.yCoordinate = 9;
+      this.yCoordinate = this.gridHeight;
     }
   }
 
@@ -30,7 +33,7 @@ export class Position {
     this.xCoordinate -= 1;
 
     if (this.xCoordinate < 0) {
-      this.xCoordinate = 9;
+      this.xCoordinate = this.gridWidth;
     }
   }
 
