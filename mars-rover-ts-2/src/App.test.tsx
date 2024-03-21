@@ -3,11 +3,14 @@ import App from "./App";
 import { MarsRoverController } from "./MarsRoverController";
 
 jest.mock("./MarsRoverController");
-jest.mock("./Grid", () => () => <span data-testid="grid" />);
+jest.mock("./MarsGrid", () => () => <span data-testid="grid" />);
 
 describe("App", () => {
   it("Renders a grid", () => {
+    render(<App />);
+
     const grid = screen.getByTestId("grid");
+
     expect(grid).toBeInTheDocument();
   });
 

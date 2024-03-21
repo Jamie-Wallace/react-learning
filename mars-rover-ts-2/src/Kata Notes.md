@@ -98,7 +98,7 @@ Potential refactors to do as we go:
 
 - Direction / Compass class or enum
 - Coordinate class with X/Y
-- Grid
+- MarsGrid
   - Extents i.e 10x10
   - myPosition = grid.move(myPosition, myDirection)
 
