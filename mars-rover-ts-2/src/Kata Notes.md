@@ -120,3 +120,8 @@ Refactored to pull out moving into Position method
 Consider starting with Cypress test?
 - Perhaps try writing one at the end.
 - Does it bring value etc?
+
+- Hooking up UI and rendering a grid.
+- Save any further refactor until later, if needed in this run.
+  - Discussed extracting grid size as the priority of any further refactor.
+  - Likely introduce a grid class.
