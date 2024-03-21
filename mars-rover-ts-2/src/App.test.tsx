@@ -3,8 +3,14 @@ import App from "./App";
 import { MarsRoverController } from "./MarsRoverController";
 
 jest.mock("./MarsRoverController");
+jest.mock("./Grid", () => () => <span data-testid="grid" />);
 
 describe("App", () => {
+  it("Renders a grid", () => {
+    const grid = screen.getByTestId("grid");
+    expect(grid).toBeInTheDocument();
+  });
+
   it("Starts with an empty command list", () => {
     render(<App />);
 

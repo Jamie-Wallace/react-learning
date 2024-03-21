@@ -115,3 +115,8 @@ Refactored to handle turning in new Compass class
 Considering making a Direction enum or direction classes
 
 Refactored to pull out moving into Position method
+
+-- 2024-03-21
+Consider starting with Cypress test?
+- Perhaps try writing one at the end.
+- Does it bring value etc?
