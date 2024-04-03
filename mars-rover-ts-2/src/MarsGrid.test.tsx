@@ -2,32 +2,29 @@ import { render, screen } from "@testing-library/react";
 import MarsGrid from "./MarsGrid";
 
 describe("MarsGrid should", () => {
-  it.each([0, 1, 2, 3, 9])(
-    "render a square at y0 in the expected x position",
-    (xPosition) => {
-      render(<MarsGrid />);
+  it.each([
+    [0, 0],
+    [1, 0],
+    [2, 0],
+    [3, 0],
+    [9, 0],
+    [0, 1],
+    [1, 1],
+    [2, 1],
+    [3, 1],
+    [9, 1],
+    [0, 2],
+    [1, 2],
+    [2, 2],
+    [3, 2],
+    [9, 2],
+  ])("render a square in the expected coordinates", (xPosition, yPosition) => {
+    render(<MarsGrid />);
 
-      expect(screen.getByLabelText(`square at x${xPosition} y0`)).toBeVisible();
-    }
-  );
-
-  it.each([0, 1, 2, 9])(
-    "render a square at y1 in the expected x position",
-    (xPosition) => {
-      render(<MarsGrid />);
-
-      expect(screen.getByLabelText(`square at x${xPosition} y1`)).toBeVisible();
-    }
-  );
-
-  it.each([0, 1, 2, 9])(
-    "render a square at y2 in the expected x position",
-    (xPosition) => {
-      render(<MarsGrid />);
-
-      expect(screen.getByLabelText(`square at x${xPosition} y2`)).toBeVisible();
-    }
-  );
+    expect(
+      screen.getByLabelText(`square at x${xPosition} y${yPosition}`)
+    ).toBeVisible();
+  });
 
   // render all squares
 
