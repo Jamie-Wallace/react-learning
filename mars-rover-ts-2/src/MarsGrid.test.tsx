@@ -11,6 +11,15 @@ describe("MarsGrid should", () => {
     }
   );
 
+  it.each([1])(
+    "render a square in y0 at the expected x position",
+    (xPosition) => {
+      render(<MarsGrid />);
+
+      expect(screen.getByLabelText(`square at x${xPosition} y0`)).toBeVisible();
+    }
+  );
+
   // render all squares
 
   // check squares display nothing
