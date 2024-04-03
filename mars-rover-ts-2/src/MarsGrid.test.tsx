@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import MarsGrid from "./MarsGrid";
 
 describe("MarsGrid should", () => {
-  it.each([0, 1, 2])(
+  it.each([0, 1, 2, 3])(
     "render squares with the expected y coordinate",
     (yPosition) => {
       render(<MarsGrid />);

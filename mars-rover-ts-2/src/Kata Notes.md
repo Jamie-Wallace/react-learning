@@ -133,3 +133,5 @@ While working on the UI we're prioritising the rendering before caring about any
 Unless it's behavioral, it might not be worth explicitly testing the styling (i.e. a button click changes a font color, rather than the font always being red)
 
 Currently hard-coding grid height and width in MarsGrid as well as Position. At some point might want to pass value down rather than having connascence between these variables
+
+Next steps are to finish rendering the grid. Then we can decide if we want to tackle styling - or render the rover in the grid first.
