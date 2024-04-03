@@ -118,6 +118,7 @@ Refactored to pull out moving into Position method
 
 -- 2024-03-21
 Consider starting with Cypress test?
+
 - Perhaps try writing one at the end.
 - Does it bring value etc?
 
@@ -125,3 +126,12 @@ Consider starting with Cypress test?
 - Save any further refactor until later, if needed in this run.
   - Discussed extracting grid size as the priority of any further refactor.
   - Likely introduce a grid class.
+
+-- 2024-04-03
+While working on the UI we're prioritising the rendering before caring about any styling.
+
+Unless it's behavioral, it might not be worth explicitly testing the styling (i.e. a button click changes a font color, rather than the font always being red)
+
+Currently hard-coding grid height and width in MarsGrid as well as Position. At some point might want to pass value down rather than having connascence between these variables
+
+Next steps are to finish rendering the grid. Then we can decide if we want to tackle styling - or render the rover in the grid first.
