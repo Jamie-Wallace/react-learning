@@ -4,9 +4,9 @@ function MarsGrid() {
     squares.push(<span aria-label={`square at x${i} y0`}></span>);
   }
 
-  squares.push(<span aria-label={`square at x0 y1`}></span>);
-  squares.push(<span aria-label={`square at x1 y1`}></span>);
-  squares.push(<span aria-label={`square at x2 y1`}></span>);
+  for (let i = 0; i <= 9; i++) {
+    squares.push(<span aria-label={`square at x${i} y1`}></span>);
+  }
 
   return <>{squares}</>;
 }
