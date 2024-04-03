@@ -14,6 +14,12 @@ describe("MarsGrid should", () => {
     expect(screen.getByLabelText("square at x0 y1")).toBeVisible();
   });
 
+  it("render a square at x0 y2", () => {
+    render(<MarsGrid />);
+
+    expect(screen.getByLabelText("square at x0 y2")).toBeVisible();
+  });
+
   // render all squares
 
   // check squares display nothing
