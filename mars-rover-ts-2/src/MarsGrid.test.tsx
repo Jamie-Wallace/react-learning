@@ -20,7 +20,7 @@ describe("MarsGrid should", () => {
     }
   );
 
-  it.each([0])(
+  it.each([0, 1, 2, 9])(
     "render a square at y2 in the expected x position",
     (xPosition) => {
       render(<MarsGrid />);
