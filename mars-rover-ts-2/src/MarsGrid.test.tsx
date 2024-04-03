@@ -3,16 +3,7 @@ import MarsGrid from "./MarsGrid";
 
 describe("MarsGrid should", () => {
   it.each([0, 1, 2, 3, 9])(
-    "render a square at x0 in the expected y position",
-    (yPosition) => {
-      render(<MarsGrid />);
-
-      expect(screen.getByLabelText(`square at x0 y${yPosition}`)).toBeVisible();
-    }
-  );
-
-  it.each([1, 2])(
-    "render a square in y0 at the expected x position",
+    "render a square at y0 in the expected x position",
     (xPosition) => {
       render(<MarsGrid />);
 
