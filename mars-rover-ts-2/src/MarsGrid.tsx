@@ -5,6 +5,7 @@ function MarsGrid() {
   }
 
   squares.push(<span aria-label={`square at x1 y0`}></span>);
+  squares.push(<span aria-label={`square at x2 y0`}></span>);
 
   return <>{squares}</>;
 }
