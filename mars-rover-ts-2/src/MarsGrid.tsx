@@ -1,5 +1,5 @@
 function MarsGrid() {
-  return (<span>NOT IMPLEMENTED</span>);
+  return <span aria-label="square at x0 y0"></span>;
 }
 
 export default MarsGrid;
