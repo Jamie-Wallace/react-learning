@@ -131,3 +131,5 @@ Consider starting with Cypress test?
 While working on the UI we're prioritising the rendering before caring about any styling.
 
 Unless it's behavioral, it might not be worth explicitly testing the styling (i.e. a button click changes a font color, rather than the font always being red)
+
+Currently hard-coding grid height and width in MarsGrid as well as Position. At some point might want to pass value down rather than having connascence between these variables

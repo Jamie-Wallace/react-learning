@@ -26,7 +26,7 @@ function App() {
 
   return (
     <div className="App">
-      <MarsGrid></MarsGrid>
+      <MarsGrid />
       <label htmlFor="command">Command:</label>
       <input id="command" disabled value={command} />
       <button onClick={move}>Move</button>
