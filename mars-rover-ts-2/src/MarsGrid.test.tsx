@@ -8,7 +8,6 @@ describe("MarsGrid should", () => {
       render(<MarsGrid />);
 
       expect(screen.getByLabelText(`square at x0 y${yPosition}`)).toBeVisible();
-
       expect(screen.getByLabelText(`square at x9 y${yPosition}`)).toBeVisible();
     }
   );

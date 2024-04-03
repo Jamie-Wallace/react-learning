@@ -1,15 +1,9 @@
 function MarsGrid() {
   let squares = [];
-  for (let i = 0; i <= 9; i++) {
-    squares.push(<span aria-label={`square at x${i} y0`}></span>);
-  }
-
-  for (let i = 0; i <= 9; i++) {
-    squares.push(<span aria-label={`square at x${i} y1`}></span>);
-  }
-
-  for (let i = 0; i <= 9; i++) {
-    squares.push(<span aria-label={`square at x${i} y2`}></span>);
+  for (let y = 0; y <= 2; y++) {
+    for (let x = 0; x <= 9; x++) {
+      squares.push(<span aria-label={`square at x${x} y${y}`}></span>);
+    }
   }
 
   return <>{squares}</>;
