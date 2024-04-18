@@ -140,3 +140,5 @@ Began rendering the rover at start position.
 Decided to pass Mars Rover state into the grid, so it re-renders when the controller changes it.
 
 Note: in hindsight would probably pass the state to the grid at the start when first rendering the grid.
+This piece of the work is key to the talk, as understanding how the BE and FE connect is key to understanding the React/UI concept of the kata.
+Highlight this in the talk!
