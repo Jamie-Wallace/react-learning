@@ -12,7 +12,10 @@ describe("MarsGrid should", () => {
     }
   );
 
-  // render all squares
+  it("render an empty square", () => {
+    render(<MarsGrid />);
 
-  // check squares display nothing
+    let square = screen.getByLabelText(`square at x0 y0`);
+    expect(square).toHaveTextContent("");
+  });
 });
