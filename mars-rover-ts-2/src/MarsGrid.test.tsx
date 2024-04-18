@@ -15,7 +15,17 @@ describe("MarsGrid should", () => {
   it("render an empty square", () => {
     render(<MarsGrid />);
 
-    let square = screen.getByLabelText(`square at x0 y0`);
+    let square = screen.getByLabelText("square at x0 y0");
     expect(square).toHaveTextContent("");
   });
+
+  it("render the rover at the starting position", () => {
+    render(<MarsGrid />);
+
+    let square = screen.getByLabelText("square at x0 y0");
+    expect(square).toHaveTextContent("^");
+  });
+
+
+  // Test directions.
 });

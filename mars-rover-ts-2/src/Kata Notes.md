@@ -134,4 +134,9 @@ Unless it's behavioral, it might not be worth explicitly testing the styling (i.
 
 Currently hard-coding grid height and width in MarsGrid as well as Position. At some point might want to pass value down rather than having connascence between these variables
 
-Next steps are to finish rendering the grid. Then we can decide if we want to tackle styling - or render the rover in the grid first.
+-- 2024-04-18
+Finished rendering the grid.
+Began rendering the rover at start position.
+Decided to pass Mars Rover state into the grid, so it re-renders when the controller changes it.
+
+Note: in hindsight would probably pass the state to the grid at the start when first rendering the grid.
