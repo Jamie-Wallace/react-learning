@@ -26,6 +26,5 @@ describe("MarsGrid should", () => {
     expect(square).toHaveTextContent("^");
   });
 
-
   // Test directions.
 });

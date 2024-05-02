@@ -1,6 +1,6 @@
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
 
-function MarsGrid() {
+function MarsGrid({ position }: { position: string }) {
   let squares: ReactElement[] = [];
   const rowLimit = 9;
   const columnLimit = 9;
@@ -11,7 +11,12 @@ function MarsGrid() {
 
   function buildRow(column: number) {
     for (let row = 0; row <= rowLimit; row++) {
-      squares.push(<span aria-label={`square at x${row} y${column}`} key={`${row},${column}`}></span>);
+      squares.push(
+        <span
+          aria-label={`square at x${row} y${column}`}
+          key={`${row},${column}`}
+        />
+      );
     }
   }
 
