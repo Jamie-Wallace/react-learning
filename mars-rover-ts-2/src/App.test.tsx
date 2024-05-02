@@ -1,11 +1,31 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import App from "./App";
 import { MarsRoverController } from "./MarsRoverController";
+import MarsGrid from "./MarsGrid";
 
 jest.mock("./MarsRoverController");
-jest.mock("./MarsGrid", () => () => <span data-testid="grid" />);
+
+jest.mock("./MarsGrid", () => {
+  return jest.fn().mockImplementation(() => {
+    return <span data-testid="grid" />;
+  });
+});
+// jest.mock("./MarsGrid", () => () => <span data-testid="grid" />);
 
 describe("App", () => {
+  it.only("should render grid with expected position", () => {
+    const position = "1";
+
+    render(<App />);
+
+    expect(MarsGrid).toHaveBeenCalledWith(
+      expect.objectContaining({
+        position: "1",
+      }),
+      expect.anything()
+    );
+  });
+
   it("Renders a grid", () => {
     render(<App />);
 
