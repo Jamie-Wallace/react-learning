@@ -142,3 +142,13 @@ Decided to pass Mars Rover state into the grid, so it re-renders when the contro
 Note: in hindsight would probably pass the state to the grid at the start when first rendering the grid.
 This piece of the work is key to the talk, as understanding how the BE and FE connect is key to understanding the React/UI concept of the kata.
 Highlight this in the talk!
+
+
+-- 2024-04-10
+Discussed where the default start position is kept:
+-- In the App and passed to mars rover controller and grid.
+-- Or within the controller perhaps?
+-- Would be good to figure out and then follow decision next time around doing the kata.
+
+Next up we want to change position state from a string to an object with x, y as numbers.
+-- Considering new object for it - we already have a Position one however.
