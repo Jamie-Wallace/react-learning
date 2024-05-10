@@ -1,32 +1,17 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import App from "./App";
 import { MarsRoverController } from "./MarsRoverController";
-import MarsGrid from "./MarsGrid";
 
 jest.mock("./MarsRoverController");
-
-jest.mock("./MarsGrid", () => {
-  return jest.fn().mockImplementation(() => {
-    return <span data-testid="grid" />;
-  });
-});
-// jest.mock("./MarsGrid", () => () => <span data-testid="grid" />);
+jest.mock("./MarsGrid", () => ({ position }: { position: string }) => <span data-testid="grid">{position}</span>);
 
 describe("App", () => {
-  it.only("should render grid with default starting position", () => {
-    // const executeFunction = jest.fn();
-    // executeFunction.mockReturnValue("3")
-    // MarsRoverController.prototype.execute = executeFunction;
-    // const position = "1";
-
+  it("should render grid with default starting position", () => {
     render(<App />);
 
-    expect(MarsGrid).toHaveBeenCalledWith(
-      expect.objectContaining({
-        position: "0",
-      }),
-      expect.anything()
-    );
+    const grid = screen.getByTestId("grid");
+
+    expect(grid).toHaveTextContent("0")
   });
 
   it("Renders a grid", () => {
