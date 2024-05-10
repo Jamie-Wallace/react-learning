@@ -13,14 +13,17 @@ jest.mock("./MarsGrid", () => {
 // jest.mock("./MarsGrid", () => () => <span data-testid="grid" />);
 
 describe("App", () => {
-  it.only("should render grid with expected position", () => {
-    const position = "1";
+  it.only("should render grid with default starting position", () => {
+    // const executeFunction = jest.fn();
+    // executeFunction.mockReturnValue("3")
+    // MarsRoverController.prototype.execute = executeFunction;
+    // const position = "1";
 
     render(<App />);
 
     expect(MarsGrid).toHaveBeenCalledWith(
       expect.objectContaining({
-        position: "1",
+        position: "0",
       }),
       expect.anything()
     );

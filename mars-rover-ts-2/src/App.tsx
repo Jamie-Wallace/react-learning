@@ -7,6 +7,7 @@ function App() {
   const controller = new MarsRoverController();
 
   const [command, setCommand] = useState("");
+  const [position, setPosition] = useState("0");
 
   function move(): void {
     setCommand(command + "M");
@@ -21,12 +22,12 @@ function App() {
   }
 
   function executeCommand(): void {
-    controller.execute(command);
+    setPosition(controller.execute(command));
   }
 
   return (
     <div className="App">
-      <MarsGrid position={"1"} />
+      <MarsGrid position={position} />
       <label htmlFor="command">Command:</label>
       <input id="command" disabled value={command} />
       <button onClick={move}>Move</button>

@@ -5,7 +5,7 @@ describe("MarsGrid should", () => {
   it.each([0, 1, 2, 3, 9])(
     "render squares with the expected y coordinate",
     (yPosition) => {
-      render(<MarsGrid />);
+      render(<MarsGrid position={""} />);
 
       expect(screen.getByLabelText(`square at x0 y${yPosition}`)).toBeVisible();
       expect(screen.getByLabelText(`square at x9 y${yPosition}`)).toBeVisible();
@@ -13,14 +13,14 @@ describe("MarsGrid should", () => {
   );
 
   it("render an empty square", () => {
-    render(<MarsGrid />);
+    render(<MarsGrid position={""} />);
 
     let square = screen.getByLabelText("square at x0 y0");
     expect(square).toHaveTextContent("");
   });
 
   it("render the rover at the starting position", () => {
-    render(<MarsGrid />);
+    render(<MarsGrid position={"0"} />);
 
     let square = screen.getByLabelText("square at x0 y0");
     expect(square).toHaveTextContent("^");
