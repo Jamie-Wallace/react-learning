@@ -7,7 +7,7 @@ function App() {
   const controller = new MarsRoverController();
 
   const [command, setCommand] = useState("");
-  const [position, setPosition] = useState("0");
+  const [position, setPosition] = useState("0:0:N");
 
   function move(): void {
     setCommand(command + "M");

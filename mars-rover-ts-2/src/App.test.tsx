@@ -11,7 +11,7 @@ describe("App", () => {
 
     const grid = screen.getByTestId("grid");
 
-    expect(grid).toHaveTextContent("0")
+    expect(grid).toHaveTextContent("0:0:N")
   });
 
   it("Renders a grid", () => {
