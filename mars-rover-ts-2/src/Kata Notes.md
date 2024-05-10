@@ -151,4 +151,4 @@ Discussed where the default start position is kept:
 -- Would be good to figure out and then follow decision next time around doing the kata.
 
 Next up we want to change position state from a string to an object with x, y as numbers.
--- Considering new object for it - we already have a Position one however.
+-- Considering new object for it - we already have a Position one, however.
