@@ -1,5 +1,6 @@
 import { Compass } from "./Compass";
 import { Coordinate } from "./Coordinate";
+import { Position } from "./Position";
 
 export class MarsRoverController {
   coordinate = new Coordinate();
@@ -22,7 +23,7 @@ export class MarsRoverController {
       }
     });
 
-    return `${this.coordinate.getCurrentCoordinate()}:${this.compass.getCurrentDirection()}`;
+    return new Position(this.coordinate, this.compass);
   }
 
   private isMoveCommand(commandChar: string) {
