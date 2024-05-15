@@ -1,8 +1,9 @@
 import { Compass } from "./Compass";
+import { Coordinate } from "./Coordinate";
 import { Position } from "./Position";
 
 export class MarsRoverController {
-  position = new Position();
+  coordinate = new Coordinate();
   compass = new Compass();
 
   execute(command: string) {
@@ -22,7 +23,7 @@ export class MarsRoverController {
       }
     });
 
-    return `${this.position.getCurrentPosition()}:${this.compass.getCurrentDirection()}`;
+    return new Position(this.coordinate, this.compass);
   }
 
   private isMoveCommand(commandChar: string) {
@@ -39,22 +40,22 @@ export class MarsRoverController {
 
   move() {
     if (this.compass.isNorth()) {
-      this.position.moveNorth();
+      this.coordinate.moveNorth();
       return;
     }
 
     if (this.compass.isEast()) {
-      this.position.moveEast();
+      this.coordinate.moveEast();
       return;
     }
 
     if (this.compass.isSouth()) {
-      this.position.moveSouth();
+      this.coordinate.moveSouth();
       return;
     }
 
     if (this.compass.isWest()) {
-      this.position.moveWest();
+      this.coordinate.moveWest();
       return;
     }
   }
