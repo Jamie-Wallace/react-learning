@@ -1,4 +1,4 @@
-export class Position {
+export class Coordinate {
   readonly gridHeight = 9;
   readonly gridWidth = 9;
 
@@ -37,7 +37,7 @@ export class Position {
     }
   }
 
-  getCurrentPosition() {
+  getCurrentCoordinate() {
     return `${this.xCoordinate}:${this.yCoordinate}`;
   }
 }

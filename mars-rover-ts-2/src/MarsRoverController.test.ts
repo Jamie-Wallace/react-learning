@@ -65,7 +65,7 @@ describe("MarsRoverController", () => {
     [15, "5"],
   ])(
     "when moving forward %s times, y coordinate should be %s",
-    (numberOfMoves, expectedPosition) => {
+    (numberOfMoves, expectedCoordinate) => {
       let command = "";
 
       for (let i = 0; i < numberOfMoves; i++) {
@@ -76,7 +76,7 @@ describe("MarsRoverController", () => {
 
       let position = controller.execute(command);
 
-      expect(position).toBe(`0:${expectedPosition}:N`);
+      expect(position).toBe(`0:${expectedCoordinate}:N`);
     }
   );
 
@@ -88,7 +88,7 @@ describe("MarsRoverController", () => {
     [11, "9"],
   ])(
     "when moving forward %s times after turning south, y coordinate should be %s",
-    (numberOfMoves, expectedPosition) => {
+    (numberOfMoves, expectedCoordinate) => {
       let command = "RR";
 
       for (let i = 0; i < numberOfMoves; i++) {
@@ -99,7 +99,7 @@ describe("MarsRoverController", () => {
 
       let position = controller.execute(command);
 
-      expect(position).toBe(`0:${expectedPosition}:S`);
+      expect(position).toBe(`0:${expectedCoordinate}:S`);
     }
   );
 
@@ -112,7 +112,7 @@ describe("MarsRoverController", () => {
     [15, "5"],
   ])(
     "when moving forward %s times after turning east, x coordinate should be %s",
-    (numberOfMoves, expectedPosition) => {
+    (numberOfMoves, expectedCoordinate) => {
       let command = "R";
 
       for (let i = 0; i < numberOfMoves; i++) {
@@ -123,7 +123,7 @@ describe("MarsRoverController", () => {
 
       let position = controller.execute(command);
 
-      expect(position).toBe(`${expectedPosition}:0:E`);
+      expect(position).toBe(`${expectedCoordinate}:0:E`);
     }
   );
 
@@ -135,7 +135,7 @@ describe("MarsRoverController", () => {
     [11, "9"],
   ])(
     "when moving forward %s times after turning west, x coordinate should be %s",
-    (numberOfMoves, expectedPosition) => {
+    (numberOfMoves, expectedCoordinate) => {
       let command = "L";
 
       for (let i = 0; i < numberOfMoves; i++) {
@@ -146,22 +146,24 @@ describe("MarsRoverController", () => {
 
       let position = controller.execute(command);
 
-      expect(position).toBe(`${expectedPosition}:0:W`);
+      expect(position).toBe(`${expectedCoordinate}:0:W`);
     }
   );
 
   it.each([
-      ["MLMMRMMRRM", "8:2:S"],
-      ["LLMMRMMLLM", "9:8:E"],
-      ["MMRMMMLMRMMM", "6:3:E"],
-  ])("when given command %s, should move to %s",
-      (command, expectedPosition) => {
-    let controller = new MarsRoverController();
+    ["MLMMRMMRRM", "8:2:S"],
+    ["LLMMRMMLLM", "9:8:E"],
+    ["MMRMMMLMRMMM", "6:3:E"],
+  ])(
+    "when given command %s, should move to %s",
+    (command, expectedPosition) => {
+      let controller = new MarsRoverController();
 
-    let direction = controller.execute(command);
+      let direction = controller.execute(command);
 
-    expect(direction).toBe(expectedPosition);
-  });
+      expect(direction).toBe(expectedPosition);
+    }
+  );
 
   it("when given an invalid command, should not move", () => {
     let controller = new MarsRoverController();

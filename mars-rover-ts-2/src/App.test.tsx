@@ -3,15 +3,17 @@ import App from "./App";
 import { MarsRoverController } from "./MarsRoverController";
 
 jest.mock("./MarsRoverController");
-jest.mock("./MarsGrid", () => ({ position }: { position: string }) => <span data-testid="grid">{position}</span>);
+jest.mock("./MarsGrid", () => ({ position }: { position: string }) => (
+  <span data-testid="grid">{position}</span>
+));
 
 describe("App", () => {
-  it("should render grid with default starting position", () => {
+  it("should render grid with default starting coordinate", () => {
     render(<App />);
 
     const grid = screen.getByTestId("grid");
 
-    expect(grid).toHaveTextContent("0:0:N")
+    expect(grid).toHaveTextContent("0:0:N");
   });
 
   it("Renders a grid", () => {

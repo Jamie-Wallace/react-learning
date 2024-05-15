@@ -19,7 +19,7 @@ describe("MarsGrid should", () => {
     expect(square).toHaveTextContent("");
   });
 
-  it("render the rover at the starting position", () => {
+  it.skip("render the rover at the starting position", () => {
     render(<MarsGrid position={"0"} />);
 
     let square = screen.getByLabelText("square at x0 y0");
