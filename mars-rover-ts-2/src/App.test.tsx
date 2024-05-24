@@ -2,13 +2,22 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import App from "./App";
 import { MarsRoverController } from "./MarsRoverController";
 import { Position } from "./Position";
+import Mock = jest.Mock;
 
 jest.mock("./MarsRoverController");
 jest.mock("./MarsGrid", () => ({ position }: { position: Position }) => (
   <span data-testid="grid">{position.toString()}</span>
 ));
 
+let executeFunction: Mock<any, any>;
+
 describe("App", () => {
+  beforeEach(() => {
+    executeFunction = jest.fn();
+    executeFunction.mockReturnValue("0:0:N");
+    MarsRoverController.prototype.execute = executeFunction;
+  });
+
   it("should render grid with default starting coordinate", () => {
     render(<App />);
 
@@ -80,9 +89,6 @@ describe("App", () => {
   );
 
   it("sends an empty execute command to the controller", () => {
-    const executeFunction = jest.fn();
-    MarsRoverController.prototype.execute = executeFunction;
-
     render(<App />);
 
     clickExecuteButton();
@@ -92,9 +98,6 @@ describe("App", () => {
   });
 
   it("sends execute command of M to the controller", () => {
-    const executeFunction = jest.fn();
-    MarsRoverController.prototype.execute = executeFunction;
-
     render(<App />);
 
     clickMoveButton();
@@ -106,9 +109,6 @@ describe("App", () => {
   });
 
   it("sends execute command of MLLMRM to the controller", () => {
-    const executeFunction = jest.fn();
-    MarsRoverController.prototype.execute = executeFunction;
-
     render(<App />);
 
     clickMoveButton();
