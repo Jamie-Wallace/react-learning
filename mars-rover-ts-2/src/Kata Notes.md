@@ -158,3 +158,12 @@ Decided not to at the moment, we should reflect on this later.
 
 Moving to Position instead of string. Currently fixing tests to support this. We think a mocking issue is causing App.test.tsx to fail.
 
+-- 2024-05-24
+Discussed immutability:
+-- Particularly around coordinate.
+-- But applies to compass also, and potentially at the position level.
+-- Refactoring to immutability - as a demonstration/exercise - is one option.
+-- But we have discussed just making immutable as we go.
+    -- Plan to try that out in future and see how it affects the tests.
+
+

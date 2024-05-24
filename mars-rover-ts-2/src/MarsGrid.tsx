@@ -12,17 +12,17 @@ function MarsGrid({ position }: { position: Position }) {
 
   function buildRow(column: number) {
     for (let row = 0; row <= rowLimit; row++) {
-      if (column == 0 && row == 0) {
+      if (column == position.coordinate.xCoordinate && row == 0) {
         squares.push(
             <span
-                aria-label={`square at x${row} y${column}`}
-                key={`${row},${column}`}>^</span>
+                aria-label={`square at x${column} y${row}`}
+                key={`${column},${row}`}>^</span>
         );
       } else {
         squares.push(
             <span
-                aria-label={`square at x${row} y${column}`}
-                key={`${row},${column}`}
+                aria-label={`square at x${column} y${row}`}
+                key={`${column},${row}`}
             />
         );
       }

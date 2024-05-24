@@ -2,8 +2,8 @@ export class Coordinate {
   readonly gridHeight = 9;
   readonly gridWidth = 9;
 
-  yCoordinate = 0;
-  xCoordinate = 0;
+  public yCoordinate = 0;
+  public xCoordinate = 0;
 
   moveNorth() {
     this.yCoordinate += 1;
