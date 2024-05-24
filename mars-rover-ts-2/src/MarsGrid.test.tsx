@@ -49,5 +49,19 @@ describe("MarsGrid should", () => {
         expect(square).toHaveTextContent("^");
       });
 
+  it("render the rover at a different y position",
+      () => {
+        let coordinate = new Coordinate();
+        coordinate.xCoordinate = 0;
+        coordinate.yCoordinate = 7;
+
+        render(
+            <MarsGrid position={new Position(coordinate, new Compass())}/>
+        );
+
+        let square = screen.getByLabelText("square at x0 y7");
+        expect(square).toHaveTextContent("^");
+      });
+
   // Test directions.
 });
