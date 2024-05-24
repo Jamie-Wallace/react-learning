@@ -166,4 +166,4 @@ Discussed immutability:
 -- But we have discussed just making immutable as we go.
     -- Plan to try that out in future and see how it affects the tests.
 
-
+-- Next up we need to test rover directions are displayed on the grid.
