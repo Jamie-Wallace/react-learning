@@ -26,12 +26,16 @@ describe("App", () => {
     expect(grid).toHaveTextContent("0:0:N");
   });
 
-  it("Renders a grid", () => {
+  it("should render grid with given coordinate", () => {
+    executeFunction.mockReturnValue("5:3:E");
+
     render(<App />);
+
+    clickExecuteButton();
 
     const grid = screen.getByTestId("grid");
 
-    expect(grid).toBeInTheDocument();
+    expect(grid).toHaveTextContent("5:3:E");
   });
 
   it("Starts with an empty command list", () => {
@@ -138,9 +142,9 @@ describe("App", () => {
     clickButton(button, clickCount);
   }
 
-  function clickExecuteButton(clickCount: number = 1) {
+  function clickExecuteButton() {
     const button = screen.getByRole("button", { name: "Execute" });
-    clickButton(button, clickCount);
+    clickButton(button, 1);
   }
 
   function clickButton(button: HTMLElement, clickCount: number = 1) {
