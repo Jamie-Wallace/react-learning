@@ -1,6 +1,7 @@
 import { ReactElement } from "react";
+import { Position } from "./Position";
 
-function MarsGrid({ position }: { position: string }) {
+function MarsGrid({ position }: { position: Position }) {
   let squares: ReactElement[] = [];
   const rowLimit = 9;
   const columnLimit = 9;

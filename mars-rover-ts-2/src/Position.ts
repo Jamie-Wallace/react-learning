@@ -9,4 +9,8 @@ export class Position {
     this.coordinate = coordinate;
     this.compass = compass;
   }
+
+  toString() {
+    return `${this.coordinate.xCoordinate}:${this.coordinate.yCoordinate}:${this.compass.currentDirection}`;
+  }
 }

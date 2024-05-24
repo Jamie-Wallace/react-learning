@@ -2,12 +2,17 @@ import { useState } from "react";
 import "./App.css";
 import { MarsRoverController } from "./MarsRoverController";
 import MarsGrid from "./MarsGrid";
+import { Position } from "./Position";
+import { Coordinate } from "./Coordinate";
+import { Compass } from "./Compass";
 
 function App() {
   const controller = new MarsRoverController();
 
   const [command, setCommand] = useState("");
-  const [position, setPosition] = useState("0:0:N");
+  const [position, setPosition] = useState(
+    new Position(new Coordinate(), new Compass())
+  );
 
   function move(): void {
     setCommand(command + "M");

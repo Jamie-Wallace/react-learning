@@ -1,10 +1,11 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import App from "./App";
 import { MarsRoverController } from "./MarsRoverController";
+import { Position } from "./Position";
 
 jest.mock("./MarsRoverController");
-jest.mock("./MarsGrid", () => ({ position }: { position: string }) => (
-  <span data-testid="grid">{position}</span>
+jest.mock("./MarsGrid", () => ({ position }: { position: Position }) => (
+  <span data-testid="grid">{position.toString()}</span>
 ));
 
 describe("App", () => {
