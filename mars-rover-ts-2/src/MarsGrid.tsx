@@ -12,12 +12,20 @@ function MarsGrid({ position }: { position: Position }) {
 
   function buildRow(column: number) {
     for (let row = 0; row <= rowLimit; row++) {
-      squares.push(
-        <span
-          aria-label={`square at x${row} y${column}`}
-          key={`${row},${column}`}
-        />
-      );
+      if (column == 0 && row == 0) {
+        squares.push(
+            <span
+                aria-label={`square at x${row} y${column}`}
+                key={`${row},${column}`}>^</span>
+        );
+      } else {
+        squares.push(
+            <span
+                aria-label={`square at x${row} y${column}`}
+                key={`${row},${column}`}
+            />
+        );
+      }
     }
   }
 

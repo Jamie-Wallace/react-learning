@@ -26,7 +26,7 @@ describe("MarsGrid should", () => {
     expect(square).toHaveTextContent("");
   });
 
-  it.skip("render the rover at the starting position", () => {
+  it("render the rover at the starting position", () => {
     render(
       <MarsGrid position={new Position(new Coordinate(), new Compass())} />
     );
