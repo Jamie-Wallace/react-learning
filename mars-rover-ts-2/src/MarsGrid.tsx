@@ -17,25 +17,20 @@ function MarsGrid({ position }: { position: Position }) {
         roverToken = ">";
       }
       if (
-        column === position.coordinate.xCoordinate &&
-        row === position.coordinate.yCoordinate
+        column !== position.coordinate.xCoordinate ||
+        row !== position.coordinate.yCoordinate
       ) {
-        squares.push(
-          <span
-            aria-label={`square at x${column} y${row}`}
-            key={`${column},${row}`}
-          >
-            {roverToken}
-          </span>
-        );
-      } else {
-        squares.push(
-          <span
-            aria-label={`square at x${column} y${row}`}
-            key={`${column},${row}`}
-          />
-        );
+        roverToken = "";
       }
+
+      squares.push(
+        <span
+          aria-label={`square at x${column} y${row}`}
+          key={`${column},${row}`}
+        >
+          {roverToken}
+        </span>
+      );
     }
   }
 
