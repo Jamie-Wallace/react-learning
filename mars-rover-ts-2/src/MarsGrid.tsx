@@ -22,7 +22,7 @@ function MarsGrid({ position }: { position: Position }) {
       let roverToken = "";
 
       if (
-        column === position.coordinate.xCoordinate ||
+        column === position.coordinate.xCoordinate &&
         row === position.coordinate.yCoordinate
       ) {
         roverToken = map.get(position.compass.currentDirection)!;

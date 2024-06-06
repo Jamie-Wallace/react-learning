@@ -1,9 +1,9 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import App from "./App";
 import userEvent from "@testing-library/user-event";
 
 describe("mars rover feature", () => {
-  it.skip("moves and turns", () => {
+  it("moves and turns", async () => {
     render(<App />);
 
     const moveButton = screen.getByRole("button", { name: "Move" });
@@ -28,8 +28,10 @@ describe("mars rover feature", () => {
     userEvent.click(executeButton);
 
     // Assert on the position.
-    const squareAt1_3 = screen.getByLabelText("square at x1 y3");
+    await waitFor(() => {
+      const squareAt1_3 = screen.getByLabelText("square at x1 y3");
 
-    expect(squareAt1_3).toHaveTextContent("^");
+      expect(squareAt1_3).toHaveTextContent("^");
+    });
   });
 });

@@ -172,3 +172,5 @@ Discussed immutability:
 Moved the rover direction logic out into a map
 Discussed the idea of having this map as its own class (Would be valuable if we went further with this, to return specific assets rather than just strings)
 We aren't sure if it's worth doing this at this point, we want to think about it more in future
+
+Next time we're fixing the acceptance test!
