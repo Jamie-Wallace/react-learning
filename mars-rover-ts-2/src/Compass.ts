@@ -1,5 +1,9 @@
 export class Compass {
-  currentDirection = "N";
+  public currentDirection = "N";
+
+  getCurrentDirection() {
+    return this.currentDirection;
+  }
 
   turnLeft() {
     if (this.isNorth()) {
@@ -59,9 +63,5 @@ export class Compass {
 
   isWest() {
     return this.currentDirection === "W";
-  }
-
-  getCurrentDirection() {
-    return this.currentDirection;
   }
 }
