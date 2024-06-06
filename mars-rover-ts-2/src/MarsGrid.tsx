@@ -6,6 +6,13 @@ function MarsGrid({ position }: { position: Position }) {
   const rowLimit = 9;
   const columnLimit = 9;
 
+  const map = new Map<string, string>([
+    ["N", "^"],
+    ["E", ">"],
+    ["S", "V"],
+    ["W", "<"],
+  ]);
+
   for (let column = 0; column <= columnLimit; column++) {
     buildRow(column);
   }
@@ -13,25 +20,12 @@ function MarsGrid({ position }: { position: Position }) {
   function buildRow(column: number) {
     for (let row = 0; row <= rowLimit; row++) {
       let roverToken = "";
+
       if (
         column === position.coordinate.xCoordinate ||
         row === position.coordinate.yCoordinate
       ) {
-        if (position.compass.currentDirection === "N") {
-          roverToken = "^";
-        }
-
-        if (position.compass.currentDirection === "E") {
-          roverToken = ">";
-        }
-
-        if (position.compass.currentDirection === "S") {
-          roverToken = "V";
-        }
-
-        if (position.compass.currentDirection === "W") {
-          roverToken = "<";
-        }
+        roverToken = map.get(position.compass.currentDirection)!;
       }
 
       squares.push(

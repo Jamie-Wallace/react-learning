@@ -164,6 +164,11 @@ Discussed immutability:
 -- But applies to compass also, and potentially at the position level.
 -- Refactoring to immutability - as a demonstration/exercise - is one option.
 -- But we have discussed just making immutable as we go.
-    -- Plan to try that out in future and see how it affects the tests.
+-- Plan to try that out in future and see how it affects the tests.
 
 -- Next up we need to test rover directions are displayed on the grid.
+
+-- 2024-06-06
+Moved the rover direction logic out into a map
+Discussed the idea of having this map as its own class (Would be valuable if we went further with this, to return specific assets rather than just strings)
+We aren't sure if it's worth doing this at this point, we want to think about it more in future
