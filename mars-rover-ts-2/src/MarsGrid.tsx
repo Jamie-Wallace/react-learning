@@ -16,8 +16,13 @@ function MarsGrid({ position }: { position: Position }) {
       if (position.compass.currentDirection === "E") {
         roverToken = ">";
       }
+
       if (position.compass.currentDirection === "S") {
         roverToken = "V";
+      }
+
+      if (position.compass.currentDirection === "W") {
+        roverToken = "<";
       }
 
       if (
