@@ -12,18 +12,28 @@ function MarsGrid({ position }: { position: Position }) {
 
   function buildRow(column: number) {
     for (let row = 0; row <= rowLimit; row++) {
-      if (column == position.coordinate.xCoordinate && row == position.coordinate.yCoordinate) {
+      let roverToken = "^";
+      if (position.compass.currentDirection === "E") {
+        roverToken = ">";
+      }
+      if (
+        column === position.coordinate.xCoordinate &&
+        row === position.coordinate.yCoordinate
+      ) {
         squares.push(
-            <span
-                aria-label={`square at x${column} y${row}`}
-                key={`${column},${row}`}>^</span>
+          <span
+            aria-label={`square at x${column} y${row}`}
+            key={`${column},${row}`}
+          >
+            {roverToken}
+          </span>
         );
       } else {
         squares.push(
-            <span
-                aria-label={`square at x${column} y${row}`}
-                key={`${column},${row}`}
-            />
+          <span
+            aria-label={`square at x${column} y${row}`}
+            key={`${column},${row}`}
+          />
         );
       }
     }
