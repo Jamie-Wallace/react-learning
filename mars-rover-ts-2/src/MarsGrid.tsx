@@ -12,24 +12,26 @@ function MarsGrid({ position }: { position: Position }) {
 
   function buildRow(column: number) {
     for (let row = 0; row <= rowLimit; row++) {
-      let roverToken = "^";
-      if (position.compass.currentDirection === "E") {
-        roverToken = ">";
-      }
-
-      if (position.compass.currentDirection === "S") {
-        roverToken = "V";
-      }
-
-      if (position.compass.currentDirection === "W") {
-        roverToken = "<";
-      }
-
+      let roverToken = "";
       if (
-        column !== position.coordinate.xCoordinate ||
-        row !== position.coordinate.yCoordinate
+        column === position.coordinate.xCoordinate ||
+        row === position.coordinate.yCoordinate
       ) {
-        roverToken = "";
+        if (position.compass.currentDirection === "N") {
+          roverToken = "^";
+        }
+
+        if (position.compass.currentDirection === "E") {
+          roverToken = ">";
+        }
+
+        if (position.compass.currentDirection === "S") {
+          roverToken = "V";
+        }
+
+        if (position.compass.currentDirection === "W") {
+          roverToken = "<";
+        }
       }
 
       squares.push(
