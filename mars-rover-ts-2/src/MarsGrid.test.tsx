@@ -41,7 +41,7 @@ describe("MarsGrid should", () => {
     expect(square).toHaveTextContent("^");
   });
 
-  it("render the rover facing right", () => {
+  it("render the rover facing east", () => {
     const compass = new Compass();
     compass.currentDirection = "E";
 
@@ -49,5 +49,15 @@ describe("MarsGrid should", () => {
 
     let square = screen.getByLabelText(`square at x0 y0`);
     expect(square).toHaveTextContent(">");
+  });
+
+  it("render the rover facing south", () => {
+    const compass = new Compass();
+    compass.currentDirection = "S";
+
+    render(<MarsGrid position={new Position(new Coordinate(), compass)} />);
+
+    let square = screen.getByLabelText(`square at x0 y0`);
+    expect(square).toHaveTextContent("V");
   });
 });
