@@ -1,31 +1,36 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import App from "./App";
 import userEvent from "@testing-library/user-event";
+import { act } from "react-dom/test-utils";
 
 describe("mars rover feature", () => {
   it("moves and turns", async () => {
-    render(<App />);
+    await act( async () => render(<App />));
+    // render(<App />);
 
     const moveButton = screen.getByRole("button", { name: "Move" });
     const turnRightButton = screen.getByRole("button", { name: "Right" });
     const turnLeftButton = screen.getByRole("button", { name: "Left" });
 
     // Move forwards    0,1
-    userEvent.click(moveButton);
+    await userEvent.click(moveButton);
     // Move forwards    0,2
-    userEvent.click(moveButton);
+    await userEvent.click(moveButton);
     // Turn right       0,2
-    userEvent.click(turnRightButton);
+    await userEvent.click(turnRightButton);
     // Move forwards    1,2
-    userEvent.click(moveButton);
+    await userEvent.click(moveButton);
     // Turn left        1,2
-    userEvent.click(turnLeftButton);
+    await userEvent.click(turnLeftButton);
     // Move forwards    1,3
-    userEvent.click(moveButton);
-    // 1,3 ^
+    await userEvent.click(moveButton);
 
+    // 1,3 ^
     const executeButton = screen.getByRole("button", { name: "Execute" });
-    userEvent.click(executeButton);
+
+    await act(async () => {
+     await userEvent.click(executeButton);
+    });
 
     // Assert on the position.
     await waitFor(() => {
