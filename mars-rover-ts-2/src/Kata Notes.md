@@ -174,3 +174,10 @@ Discussed the idea of having this map as its own class (Would be valuable if we 
 We aren't sure if it's worth doing this at this point, we want to think about it more in future
 
 Next time we're fixing the acceptance test!
+
+-- 2024-13-06
+Got acceptance test passing!
+
+-- But currently getting "not wrapped in act() warnings".
+-- Have found using act() works but is supposedly unnecessary.
+-- See Execute button.
