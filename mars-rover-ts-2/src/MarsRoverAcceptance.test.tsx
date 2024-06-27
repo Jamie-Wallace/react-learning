@@ -5,7 +5,9 @@ import { act } from "react-dom/test-utils";
 
 describe("mars rover feature", () => {
   it("moves and turns", async () => {
-    await act( async () => render(<App />));
+    // await act( async () =>
+    render(<App />);
+    // );
     // render(<App />);
 
     const moveButton = screen.getByRole("button", { name: "Move" });
@@ -28,9 +30,9 @@ describe("mars rover feature", () => {
     // 1,3 ^
     const executeButton = screen.getByRole("button", { name: "Execute" });
 
-    await act(async () => {
-     await userEvent.click(executeButton);
-    });
+    // await act(async () => {
+    await userEvent.click(executeButton);
+    // });
 
     // Assert on the position.
     await waitFor(() => {
