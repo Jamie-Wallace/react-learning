@@ -127,6 +127,15 @@ describe("App", () => {
     expect(executeFunction).toHaveBeenCalledWith("MLLMRM");
   });
 
+  it("clear after executing command", () => {
+    render(<App />);
+
+    clickMoveButton();
+    clickExecuteButton();
+
+    assertCommandIs("");
+  });
+
   function clickMoveButton(clickCount: number = 1) {
     const button = screen.getByRole("button", { name: "Move" });
     clickButton(button, clickCount);

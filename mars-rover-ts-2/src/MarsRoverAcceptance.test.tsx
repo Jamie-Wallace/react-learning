@@ -1,12 +1,10 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import App from "./App";
 import userEvent from "@testing-library/user-event";
-import { act } from "react-dom/test-utils";
 
 describe("mars rover feature", () => {
   it("moves and turns", async () => {
-    await act( async () => render(<App />));
-    // render(<App />);
+    render(<App />);
 
     const moveButton = screen.getByRole("button", { name: "Move" });
     const turnRightButton = screen.getByRole("button", { name: "Right" });
@@ -28,9 +26,7 @@ describe("mars rover feature", () => {
     // 1,3 ^
     const executeButton = screen.getByRole("button", { name: "Execute" });
 
-    await act(async () => {
-     await userEvent.click(executeButton);
-    });
+    await userEvent.click(executeButton);
 
     // Assert on the position.
     await waitFor(() => {
@@ -38,5 +34,7 @@ describe("mars rover feature", () => {
 
       expect(squareAt1_3).toHaveTextContent("^");
     });
+
+    expect(screen.getByLabelText("Command:")).toHaveValue("");
   });
 });
