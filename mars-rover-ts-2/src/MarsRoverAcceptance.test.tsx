@@ -34,5 +34,7 @@ describe("mars rover feature", () => {
 
       expect(squareAt1_3).toHaveTextContent("^");
     });
+
+    expect(screen.getByLabelText("Command:")).toHaveValue("");
   });
 });
