@@ -175,9 +175,20 @@ We aren't sure if it's worth doing this at this point, we want to think about it
 
 Next time we're fixing the acceptance test!
 
--- 2024-13-06
+-- 2024-06-13
 Got acceptance test passing!
 
 -- But currently getting "not wrapped in act() warnings".
 -- Have found using act() works but is supposedly unnecessary.
 -- See Execute button.
+
+-- 2024-06-27
+Fixed the wrapped in act warnings!
+Upgrading @testing-library/react from 13.x.x resolved this issue.
+We're running with 16.0.0
+
+We want to:
+
+- Fix the input to clear after sending a command (and preserve state)
+- Fix aria warnings that are displayed when running the page
+- Add some CSS
