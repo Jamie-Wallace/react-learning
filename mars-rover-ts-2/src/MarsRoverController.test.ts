@@ -184,4 +184,15 @@ describe("MarsRoverController", () => {
     expect(position.coordinate.yCoordinate).toBe(0);
     expect(position.compass.currentDirection).toBe("N");
   });
+
+  it("maintain state after executing twice", () => {
+    let controller = new MarsRoverController();
+
+    controller.execute("M");
+    let position = controller.execute("M");
+
+    expect(position.coordinate.xCoordinate).toBe(0);
+    expect(position.coordinate.yCoordinate).toBe(2);
+    expect(position.compass.currentDirection).toBe("N");
+  });
 });

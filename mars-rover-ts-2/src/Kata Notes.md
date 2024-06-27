@@ -192,3 +192,7 @@ We want to:
 - Fix the input to clear after sending a command (and preserve state)
 - Fix aria warnings that are displayed when running the page
 - Add some CSS
+
+Clearing the command involves updating the MarsRoverController so it won't be reset after each render.
+We've discussed whether to make wrap the control in useState so it won't be cleared, but this has highlighted that the position is duplicated in App and in the Controller.
+We've now decided to instead pass our position in to the controller from App, so the Controller doesn't need to care about it and can be stateless.

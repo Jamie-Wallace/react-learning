@@ -7,12 +7,13 @@ import { Coordinate } from "./Coordinate";
 import { Compass } from "./Compass";
 
 function App() {
-  const controller = new MarsRoverController();
-
   const [command, setCommand] = useState("");
   const [position, setPosition] = useState(
     new Position(new Coordinate(), new Compass())
   );
+
+  //TODO Start from here next time!
+  const controller = new MarsRoverController();
 
   function move(): void {
     setCommand(command + "M");
