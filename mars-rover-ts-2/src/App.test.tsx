@@ -14,6 +14,8 @@ jest.mock("./MarsGrid", () => ({ position }: { position: Position }) => (
 
 let executeFunction: Mock<any, any>;
 
+const startingPosition = new Position(new Coordinate(), new Compass())
+
 describe("App", () => {
   beforeEach(() => {
     executeFunction = jest.fn();
@@ -102,9 +104,7 @@ describe("App", () => {
 
     expect(executeFunction).toHaveBeenCalledTimes(1);
 
-    const expectedPosition = new Position(new Coordinate(), new Compass())
-
-    expect(executeFunction).toHaveBeenCalledWith(expectedPosition, "")
+    expect(executeFunction).toHaveBeenCalledWith(startingPosition, "")
   });
 
   it("sends execute command of M to the controller", () => {
@@ -115,7 +115,7 @@ describe("App", () => {
     clickExecuteButton();
 
     expect(executeFunction).toHaveBeenCalledTimes(1);
-    expect(executeFunction).toHaveBeenCalledWith("M");
+    expect(executeFunction).toHaveBeenCalledWith(startingPosition, "M");
   });
 
   it("sends execute command of MLLMRM to the controller", () => {
@@ -130,7 +130,7 @@ describe("App", () => {
     clickExecuteButton();
 
     expect(executeFunction).toHaveBeenCalledTimes(1);
-    expect(executeFunction).toHaveBeenCalledWith("MLLMRM");
+    expect(executeFunction).toHaveBeenCalledWith(startingPosition, "MLLMRM");
   });
 
   it("clear after executing command", () => {
