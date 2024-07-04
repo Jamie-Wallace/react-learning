@@ -1,9 +1,16 @@
+import { Compass } from "./Compass";
+
 export class Coordinate {
   readonly gridHeight = 9;
   readonly gridWidth = 9;
 
   public yCoordinate = 0;
   public xCoordinate = 0;
+
+  constructor(xCoordinate: number, yCoordinate: number) {
+    this.xCoordinate = xCoordinate;
+    this.yCoordinate = yCoordinate;
+  }
 
   moveNorth() {
     this.yCoordinate += 1;

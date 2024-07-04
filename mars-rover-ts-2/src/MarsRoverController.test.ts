@@ -1,4 +1,11 @@
 import { MarsRoverController } from "./MarsRoverController";
+import { Position } from "./Position";
+import { Coordinate } from "./Coordinate";
+import { Compass } from "./Compass";
+
+const startingPosition = new Position(
+    new Coordinate(0, 0),
+    new Compass("N"))
 
 describe("MarsRoverController", () => {
   it.each([
@@ -14,8 +21,7 @@ describe("MarsRoverController", () => {
     (command, expectedDirection) => {
       let controller = new MarsRoverController();
 
-      let direction = controller.execute(command);
-
+      let direction = controller.execute(startingPosition, command);
       expect(direction.compass.currentDirection).toBe(expectedDirection);
     }
   );
@@ -33,7 +39,7 @@ describe("MarsRoverController", () => {
     (command, expectedDirection) => {
       let controller = new MarsRoverController();
 
-      let direction = controller.execute(command);
+      let direction = controller.execute(startingPosition, command);
 
       expect(direction.compass.currentDirection).toBe(expectedDirection);
     }
@@ -50,7 +56,7 @@ describe("MarsRoverController", () => {
     (command, expectedDirection) => {
       let controller = new MarsRoverController();
 
-      let direction = controller.execute(command);
+      let direction = controller.execute(startingPosition, command);
 
       expect(direction.compass.currentDirection).toBe(expectedDirection);
     }
@@ -74,7 +80,7 @@ describe("MarsRoverController", () => {
 
       let controller = new MarsRoverController();
 
-      let position = controller.execute(command);
+      let position = controller.execute(startingPosition, command);
 
       expect(position.coordinate.xCoordinate).toBe(0);
       expect(position.coordinate.yCoordinate).toBe(expectedCoordinate);
@@ -99,7 +105,7 @@ describe("MarsRoverController", () => {
 
       let controller = new MarsRoverController();
 
-      let position = controller.execute(command);
+      let position = controller.execute(startingPosition, command);
 
       expect(position.coordinate.xCoordinate).toBe(0);
       expect(position.coordinate.yCoordinate).toBe(expectedCoordinate);
@@ -125,7 +131,7 @@ describe("MarsRoverController", () => {
 
       let controller = new MarsRoverController();
 
-      let position = controller.execute(command);
+      let position = controller.execute(startingPosition, command);
 
       expect(position.coordinate.xCoordinate).toBe(expectedCoordinate);
       expect(position.coordinate.yCoordinate).toBe(0);
@@ -150,7 +156,7 @@ describe("MarsRoverController", () => {
 
       let controller = new MarsRoverController();
 
-      let position = controller.execute(command);
+      let position = controller.execute(startingPosition, command);
 
       expect(position.coordinate.xCoordinate).toBe(expectedCoordinate);
       expect(position.coordinate.yCoordinate).toBe(0);
@@ -167,7 +173,7 @@ describe("MarsRoverController", () => {
     (command, xCoordinate, yCoordinate, direction) => {
       let controller = new MarsRoverController();
 
-      let position = controller.execute(command);
+      let position = controller.execute(startingPosition, command);
 
       expect(position.coordinate.xCoordinate).toBe(xCoordinate);
       expect(position.coordinate.yCoordinate).toBe(yCoordinate);
@@ -178,7 +184,7 @@ describe("MarsRoverController", () => {
   it("when given an invalid command, should not move", () => {
     let controller = new MarsRoverController();
 
-    let position = controller.execute("X");
+    let position = controller.execute(startingPosition, "X");
 
     expect(position.coordinate.xCoordinate).toBe(0);
     expect(position.coordinate.yCoordinate).toBe(0);
@@ -188,8 +194,12 @@ describe("MarsRoverController", () => {
   it("maintain state after executing twice", () => {
     let controller = new MarsRoverController();
 
-    controller.execute("M");
-    let position = controller.execute("M");
+    // controller.execute("M");
+    const coordinate = new Coordinate(0, 1)
+
+    const expectedPosition = new Position(coordinate, new Compass("N"))
+
+    let position = controller.execute(expectedPosition, "M");
 
     expect(position.coordinate.xCoordinate).toBe(0);
     expect(position.coordinate.yCoordinate).toBe(2);

@@ -1,6 +1,10 @@
 export class Compass {
   public currentDirection = "N";
 
+  constructor(direction: string) {
+    this.currentDirection = direction;
+  }
+
   getCurrentDirection() {
     return this.currentDirection;
   }

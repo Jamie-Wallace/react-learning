@@ -1,29 +1,30 @@
-import { Compass } from "./Compass";
-import { Coordinate } from "./Coordinate";
 import { Position } from "./Position";
+import { Coordinate } from "./Coordinate";
+import { Compass } from "./Compass";
 
 export class MarsRoverController {
-  coordinate = new Coordinate();
-  compass = new Compass();
-
   execute(currentPosition: Position, command: string) {
+    const coordinate = new Coordinate(currentPosition.coordinate.xCoordinate,
+        currentPosition.coordinate.yCoordinate)
+    const compass = new Compass(currentPosition.compass.currentDirection)
+
     Array.from(command).forEach((commandChar) => {
       if (this.isMoveCommand(commandChar)) {
-        this.move();
+        this.move(new Position(coordinate, compass));
         return;
       }
 
       if (this.isTurnLeftCommand(commandChar)) {
-        this.compass.turnLeft();
+        compass.turnLeft();
         return;
       }
 
       if (this.isTurnRightCommand(commandChar)) {
-        this.compass.turnRight();
+        compass.turnRight();
       }
     });
 
-    return new Position(this.coordinate, this.compass);
+    return new Position(coordinate, compass);
   }
 
   private isMoveCommand(commandChar: string) {
@@ -38,24 +39,24 @@ export class MarsRoverController {
     return commandChar === "L";
   }
 
-  move() {
-    if (this.compass.isNorth()) {
-      this.coordinate.moveNorth();
+  move(currentPosition: Position) {
+    if (currentPosition.compass.isNorth()) {
+      currentPosition.coordinate.moveNorth();
       return;
     }
 
-    if (this.compass.isEast()) {
-      this.coordinate.moveEast();
+    if (currentPosition.compass.isEast()) {
+      currentPosition.coordinate.moveEast();
       return;
     }
 
-    if (this.compass.isSouth()) {
-      this.coordinate.moveSouth();
+    if (currentPosition.compass.isSouth()) {
+      currentPosition.coordinate.moveSouth();
       return;
     }
 
-    if (this.compass.isWest()) {
-      this.coordinate.moveWest();
+    if (currentPosition.compass.isWest()) {
+      currentPosition.coordinate.moveWest();
       return;
     }
   }
