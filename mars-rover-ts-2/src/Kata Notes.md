@@ -196,3 +196,11 @@ We want to:
 Clearing the command involves updating the MarsRoverController so it won't be reset after each render.
 We've discussed whether to make wrap the control in useState so it won't be cleared, but this has highlighted that the position is duplicated in App and in the Controller.
 We've now decided to instead pass our position in to the controller from App, so the Controller doesn't need to care about it and can be stateless.
+
+-- 2024-07-04
+
+- We might want to continue the state changes and apply them to Coordinate and Compass:
+  - For example the Coordinate class holds the grid size - this could be in the controller/grid.
+  - We could make Coordinate and Compass immutable, accept current position and command and return new position.
+  - Similar to how we have refactored the App and Controller.
+- Note - we are thinking that the controller is probably more a grid - but will see how refactors go.

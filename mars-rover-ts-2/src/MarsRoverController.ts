@@ -6,7 +6,7 @@ export class MarsRoverController {
   coordinate = new Coordinate();
   compass = new Compass();
 
-  execute(command: string) {
+  execute(currentPosition: Position, command: string) {
     Array.from(command).forEach((commandChar) => {
       if (this.isMoveCommand(commandChar)) {
         this.move();

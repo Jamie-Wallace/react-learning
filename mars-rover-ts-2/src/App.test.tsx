@@ -3,6 +3,9 @@ import App from "./App";
 import { MarsRoverController } from "./MarsRoverController";
 import { Position } from "./Position";
 import Mock = jest.Mock;
+import exp from "constants";
+import { Coordinate } from "./Coordinate";
+import { Compass } from "./Compass";
 
 jest.mock("./MarsRoverController");
 jest.mock("./MarsGrid", () => ({ position }: { position: Position }) => (
@@ -98,7 +101,10 @@ describe("App", () => {
     clickExecuteButton();
 
     expect(executeFunction).toHaveBeenCalledTimes(1);
-    expect(executeFunction).toHaveBeenCalledWith("");
+
+    const expectedPosition = new Position(new Coordinate(), new Compass())
+
+    expect(executeFunction).toHaveBeenCalledWith(expectedPosition, "")
   });
 
   it("sends execute command of M to the controller", () => {
