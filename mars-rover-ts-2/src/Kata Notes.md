@@ -204,3 +204,8 @@ We've now decided to instead pass our position in to the controller from App, so
   - We could make Coordinate and Compass immutable, accept current position and command and return new position.
   - Similar to how we have refactored the App and Controller.
 - Note - we are thinking that the controller is probably more a grid - but will see how refactors go.
+
+- We have moved state out of the controller by passing in current position to execute. 
+- Effectively adding some immutability.
+
+Next up we can review if we wish to make Coordinate and Compass immutable also.
