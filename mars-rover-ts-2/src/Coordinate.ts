@@ -1,13 +1,11 @@
-import { Compass } from "./Compass";
-
 export class Coordinate {
   readonly gridHeight = 9;
   readonly gridWidth = 9;
 
-  public yCoordinate = 0;
-  public xCoordinate = 0;
+  public yCoordinate;
+  public xCoordinate;
 
-  constructor(xCoordinate: number, yCoordinate: number) {
+  constructor(xCoordinate: number = 0, yCoordinate: number = 0) {
     this.xCoordinate = xCoordinate;
     this.yCoordinate = yCoordinate;
   }
