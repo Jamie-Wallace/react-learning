@@ -1,15 +1,22 @@
-import { Compass } from "./Compass";
-
 export class Coordinate {
   readonly gridHeight = 9;
   readonly gridWidth = 9;
 
-  public yCoordinate = 0;
-  public xCoordinate = 0;
+  public yCoordinate;
+  public xCoordinate;
 
-  constructor(xCoordinate: number, yCoordinate: number) {
+  constructor(xCoordinate: number = 0, yCoordinate: number = 0) {
     this.xCoordinate = xCoordinate;
     this.yCoordinate = yCoordinate;
+  }
+
+  static moveNorth(coordinate: Coordinate): Coordinate {
+    let yCoordinate = coordinate.yCoordinate + 1;
+
+    if (yCoordinate > coordinate.gridHeight) {
+      yCoordinate = 0;
+    }
+    return new Coordinate(coordinate.xCoordinate, yCoordinate);
   }
 
   moveNorth() {

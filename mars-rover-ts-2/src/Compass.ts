@@ -1,7 +1,7 @@
 export class Compass {
-  public currentDirection = "N";
+  public currentDirection;
 
-  constructor(direction: string) {
+  constructor(direction: string = "N") {
     this.currentDirection = direction;
   }
 
