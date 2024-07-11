@@ -10,6 +10,10 @@ export class Coordinate {
     this.yCoordinate = yCoordinate;
   }
 
+  static moveNorth(coordinate: Coordinate): Coordinate {
+    return new Coordinate(coordinate.xCoordinate, coordinate.yCoordinate + 1);
+  }
+
   moveNorth() {
     this.yCoordinate += 1;
 

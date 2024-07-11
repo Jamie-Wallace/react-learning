@@ -205,7 +205,38 @@ We've now decided to instead pass our position in to the controller from App, so
   - Similar to how we have refactored the App and Controller.
 - Note - we are thinking that the controller is probably more a grid - but will see how refactors go.
 
-- We have moved state out of the controller by passing in current position to execute. 
+- We have moved state out of the controller by passing in current position to execute.
 - Effectively adding some immutability.
 
 Next up we can review if we wish to make Coordinate and Compass immutable also.
+
+-- 2024-07-11
+
+Discussed between two approaches for Coordinate immutability:
+
+```
+public static moveNorth(coordinate: Coordinate): Coordinate {
+    let yCoord = coordinate.yCoordinate + 1;
+
+    if (yCoord > coordinate.gridHeight) {
+      yCoord = 0;
+    }
+
+    return new Coordinate(coordinate.xCoordinate, yCoord);
+  }
+  // Coordinate.moveNorth(currentPosition.coordinate);
+
+  moveSouth() {
+    let yCoord = this.yCoordinate - 1;
+
+    if (yCoord < 0) {
+      yCoord = this.gridHeight;
+    }
+
+    return new Coordinate(this.xCoordinate, yCoord);
+  }
+  // currentPosition.coordinate.moveSouth();
+```
+
+One is a static method with a coordinate passed in, the other relies on the instance of our coordinate.
+We're undecided on this. Currently going with static due to Navigator **authority**. Would be interested to reflect on this in future.
