@@ -11,7 +11,12 @@ export class Coordinate {
   }
 
   static moveNorth(coordinate: Coordinate): Coordinate {
-    return new Coordinate(coordinate.xCoordinate, coordinate.yCoordinate + 1);
+    let yCoordinate = coordinate.yCoordinate + 1;
+
+    if (yCoordinate > coordinate.gridHeight) {
+      yCoordinate = 0;
+    }
+    return new Coordinate(coordinate.xCoordinate, yCoordinate);
   }
 
   moveNorth() {
