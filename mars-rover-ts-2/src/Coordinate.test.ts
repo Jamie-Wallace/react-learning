@@ -39,4 +39,17 @@ describe("Coordinate should", () => {
         expect(result).toStrictEqual(expectedCoordinate);
       }
   );
+
+  it.each([
+    [new Coordinate(9, 0), new Coordinate(8, 0)],
+    [new Coordinate(7, 6), new Coordinate(6, 6)],
+    [new Coordinate(0, 0), new Coordinate(9, 0)]
+  ])(
+      "Move west to expected coordinate",
+      (startingCoordinate, expectedCoordinate) => {
+        const result = Coordinate.moveWest(startingCoordinate);
+
+        expect(result).toStrictEqual(expectedCoordinate);
+      }
+  );
 });

@@ -60,7 +60,7 @@ export class Coordinate {
       yCoordinate = coordinate.gridHeight;
     }
 
-    return new Coordinate(coordinate.xCoordinate, yCoordinate)
+    return new Coordinate(coordinate.xCoordinate, yCoordinate);
   }
 
   moveWest() {
@@ -71,7 +71,13 @@ export class Coordinate {
     }
   }
 
-  getCurrentCoordinate() {
-    return `${this.xCoordinate}:${this.yCoordinate}`;
+  static moveWest(coordinate: Coordinate) : Coordinate {
+    let xCoordinate = coordinate.xCoordinate - 1;
+
+    if (xCoordinate < 0) {
+      xCoordinate = coordinate.gridWidth;
+    }
+
+    return new Coordinate(xCoordinate, coordinate.yCoordinate);
   }
 }
