@@ -35,6 +35,16 @@ export class Coordinate {
     }
   }
 
+  static moveEast(coordinate: Coordinate) : Coordinate {
+    let xCoordinate = coordinate.xCoordinate + 1;
+
+    if (xCoordinate > coordinate.gridWidth) {
+      xCoordinate = 0;
+    }
+
+    return new Coordinate(xCoordinate, coordinate.yCoordinate)
+  }
+
   moveSouth() {
     this.yCoordinate -= 1;
 
