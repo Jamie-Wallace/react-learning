@@ -15,15 +15,14 @@ describe("Coordinate should", () => {
   );
 
   it.each([
-    [0, 9],
-    [1, 0],
-    [9, 8]
-  ])("Move south to expected coordinate",
+    [new Coordinate(0, 9), new Coordinate(0, 8)],
+    [new Coordinate(3, 2), new Coordinate(3, 1)],
+    [new Coordinate(0, 0), new Coordinate(0, 9)]
+  ])(
+      "Move south to expected coordinate",
       (startingCoordinate, expectedCoordinate) => {
-        const coordinate = new Coordinate(0, startingCoordinate);
+        const result = Coordinate.moveSouth(startingCoordinate);
 
-        const result = Coordinate.moveSouth(coordinate);
-
-        expect(result.getCurrentCoordinate()).toBe(`0:${expectedCoordinate}`);
+        expect(result).toStrictEqual(expectedCoordinate);
       });
 });

@@ -50,7 +50,7 @@ export class Coordinate {
       yCoordinate = coordinate.gridHeight;
     }
 
-    return new Coordinate(0, yCoordinate)
+    return new Coordinate(coordinate.xCoordinate, yCoordinate)
   }
 
   moveWest() {
