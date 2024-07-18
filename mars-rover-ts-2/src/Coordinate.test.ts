@@ -1,4 +1,5 @@
 import { Coordinate } from "./Coordinate";
+import { start } from "repl";
 
 describe("Coordinate should", () => {
   it.each([
@@ -6,21 +7,26 @@ describe("Coordinate should", () => {
     [1, 2],
     [9, 0],
   ])(
-    "Move north to expected coordinate",
-    (startingCoordinate, expectedCoordinate) => {
-      const coordinate = new Coordinate(0, startingCoordinate);
+      "Move north to expected coordinate",
+      (startingCoordinate, expectedCoordinate) => {
+        const coordinate = new Coordinate(0, startingCoordinate);
 
-      const result = Coordinate.moveNorth(coordinate);
+        const result = Coordinate.moveNorth(coordinate);
 
-      expect(result.getCurrentCoordinate()).toBe(`0:${expectedCoordinate}`);
-    }
+        expect(result.getCurrentCoordinate()).toBe(`0:${expectedCoordinate}`);
+      }
   );
 
-  it("Move south from 0", () => {
-    const coordinate = new Coordinate(0, 0);
+  it.each([
+    [0, 9],
+    [1, 0],
+    [9, 8]
+  ])("Move south to expected coordinate",
+      (startingCoordinate, expectedCoordinate) => {
+        const coordinate = new Coordinate(0, startingCoordinate);
 
-    const result = Coordinate.moveNorth(coordinate);
+        const result = Coordinate.moveSouth(coordinate);
 
-    expect(result.getCurrentCoordinate()).toBe("0:9");
-  });
+        expect(result.getCurrentCoordinate()).toBe(`0:${expectedCoordinate}`);
+      });
 });

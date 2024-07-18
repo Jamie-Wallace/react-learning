@@ -43,6 +43,16 @@ export class Coordinate {
     }
   }
 
+  static moveSouth(coordinate: Coordinate) : Coordinate {
+    let yCoordinate = coordinate.yCoordinate - 1;
+
+    if (yCoordinate < 0) {
+      yCoordinate = coordinate.gridHeight;
+    }
+
+    return new Coordinate(0, yCoordinate)
+  }
+
   moveWest() {
     this.xCoordinate -= 1;
 
