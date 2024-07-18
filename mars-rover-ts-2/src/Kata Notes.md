@@ -240,3 +240,12 @@ public static moveNorth(coordinate: Coordinate): Coordinate {
 
 One is a static method with a coordinate passed in, the other relies on the instance of our coordinate.
 We're undecided on this. Currently going with static due to Navigator **authority**. Would be interested to reflect on this in future.
+
+-- 2024-07-18
+
+Completed making Coordinate immutable.
+
+Next we plan to change MarsRoverController so that it uses the new static functions and have the move function
+within the controller return the new coordinate. 
+
+After that, then make Compass immutable.
