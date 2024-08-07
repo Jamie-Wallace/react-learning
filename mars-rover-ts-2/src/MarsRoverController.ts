@@ -51,13 +51,11 @@ export class MarsRoverController {
     }
 
     if (currentPosition.compass.isSouth()) {
-      currentPosition.coordinate.moveSouth();
-      return currentPosition.coordinate;
+      return Coordinate.moveSouth(currentPosition.coordinate);
     }
 
     if (currentPosition.compass.isWest()) {
-      currentPosition.coordinate.moveWest();
-      return currentPosition.coordinate;
+      return Coordinate.moveWest(currentPosition.coordinate);
     }
   }
 }

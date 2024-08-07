@@ -29,14 +29,6 @@ export class Coordinate {
     return new Coordinate(xCoordinate, coordinate.yCoordinate);
   }
 
-  moveSouth() {
-    this.yCoordinate -= 1;
-
-    if (this.yCoordinate < 0) {
-      this.yCoordinate = this.gridHeight;
-    }
-  }
-
   static moveSouth(coordinate: Coordinate): Coordinate {
     let yCoordinate = coordinate.yCoordinate - 1;
 
@@ -45,14 +37,6 @@ export class Coordinate {
     }
 
     return new Coordinate(coordinate.xCoordinate, yCoordinate);
-  }
-
-  moveWest() {
-    this.xCoordinate -= 1;
-
-    if (this.xCoordinate < 0) {
-      this.xCoordinate = this.gridWidth;
-    }
   }
 
   static moveWest(coordinate: Coordinate): Coordinate {
