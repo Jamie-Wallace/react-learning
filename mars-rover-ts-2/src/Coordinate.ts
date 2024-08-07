@@ -19,14 +19,6 @@ export class Coordinate {
     return new Coordinate(coordinate.xCoordinate, yCoordinate);
   }
 
-  moveEast() {
-    this.xCoordinate += 1;
-
-    if (this.xCoordinate > this.gridWidth) {
-      this.xCoordinate = 0;
-    }
-  }
-
   static moveEast(coordinate: Coordinate): Coordinate {
     let xCoordinate = coordinate.xCoordinate + 1;
 

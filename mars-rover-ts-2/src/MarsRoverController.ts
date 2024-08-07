@@ -47,8 +47,7 @@ export class MarsRoverController {
     }
 
     if (currentPosition.compass.isEast()) {
-      currentPosition.coordinate.moveEast();
-      return currentPosition.coordinate;
+      return Coordinate.moveEast(currentPosition.coordinate);
     }
 
     if (currentPosition.compass.isSouth()) {
