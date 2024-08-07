@@ -10,6 +10,22 @@ export class Position {
     this.compass = compass;
   }
 
+  move(): Coordinate {
+    if (this.compass.isNorth()) {
+      return Coordinate.moveNorth(this.coordinate);
+    }
+
+    if (this.compass.isEast()) {
+      return Coordinate.moveEast(this.coordinate);
+    }
+
+    if (this.compass.isSouth()) {
+      return Coordinate.moveSouth(this.coordinate);
+    }
+
+    return Coordinate.moveWest(this.coordinate);
+  }
+
   toString() {
     return `${this.coordinate.xCoordinate}:${this.coordinate.yCoordinate}:${this.compass.currentDirection}`;
   }
