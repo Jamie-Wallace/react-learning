@@ -54,8 +54,6 @@ export class MarsRoverController {
       return Coordinate.moveSouth(currentPosition.coordinate);
     }
 
-    if (currentPosition.compass.isWest()) {
-      return Coordinate.moveWest(currentPosition.coordinate);
-    }
+    return Coordinate.moveWest(currentPosition.coordinate);
   }
 }
