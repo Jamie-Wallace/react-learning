@@ -12,7 +12,7 @@ export class MarsRoverController {
 
     Array.from(command).forEach((commandChar) => {
       if (this.isMoveCommand(commandChar)) {
-        coordinate = this.move(new Position(coordinate, compass));
+        coordinate = new Position(coordinate, compass).move();
         return;
       }
 
@@ -39,21 +39,5 @@ export class MarsRoverController {
 
   private isTurnLeftCommand(commandChar: string) {
     return commandChar === "L";
-  }
-
-  move(currentPosition: Position): Coordinate {
-    if (currentPosition.compass.isNorth()) {
-      return Coordinate.moveNorth(currentPosition.coordinate);
-    }
-
-    if (currentPosition.compass.isEast()) {
-      return Coordinate.moveEast(currentPosition.coordinate);
-    }
-
-    if (currentPosition.compass.isSouth()) {
-      return Coordinate.moveSouth(currentPosition.coordinate);
-    }
-
-    return Coordinate.moveWest(currentPosition.coordinate);
   }
 }

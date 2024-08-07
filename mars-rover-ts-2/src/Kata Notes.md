@@ -246,6 +246,11 @@ We're undecided on this. Currently going with static due to Navigator **authorit
 Completed making Coordinate immutable.
 
 Next we plan to change MarsRoverController so that it uses the new static functions and have the move function
-within the controller return the new coordinate. 
+within the controller return the new coordinate.
 
 After that, then make Compass immutable.
+
+-- 2024-08-07
+
+Moved to using our Coordinate's static methods in Controller
+Moved 'move' method to Position as we feel it fits in there a bit more and reduces Feature Envy / Innapropriate Intimacy. (Previously doing position.compass.isX() a lot)
