@@ -16,22 +16,18 @@ describe("Compass should", () => {
     }
   );
 
-  //   it.each([
-  //     ["L", "W"],
-  //     ["LL", "S"],
-  //     ["LLL", "E"],
-  //     ["LLLL", "N"],
-  //     ["LLLLL", "W"],
-  //     ["LLLLLL", "S"],
-  //     ["LLLLLLLLLL", "S"],
-  //   ])(
-  //     "when command is %s, should turn left to face %s",
-  //     (command, expectedDirection) => {
-  //       let controller = new MarsRoverController();
+  it.each([
+    ["N", "W"],
+    ["W", "S"],
+    ["S", "E"],
+    ["E", "N"],
+  ])(
+    "when compass is facing %s, should turn right to face %s",
+    (initialDirection, expectedDirection) => {
+      let compass = new Compass(initialDirection);
 
-  //       let direction = controller.execute(startingPosition, command);
-
-  //       expect(direction.compass.currentDirection).toBe(expectedDirection);
-  //     }
-  //   );
+      compass.turnLeft();
+      expect(compass.currentDirection).toBe(expectedDirection);
+    }
+  );
 });
