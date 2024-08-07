@@ -3,9 +3,7 @@ import { Position } from "./Position";
 import { Coordinate } from "./Coordinate";
 import { Compass } from "./Compass";
 
-const startingPosition = new Position(
-    new Coordinate(0, 0),
-    new Compass("N"))
+const startingPosition = new Position(new Coordinate(0, 0), new Compass("N"));
 
 describe("MarsRoverController", () => {
   it.each([
@@ -194,10 +192,9 @@ describe("MarsRoverController", () => {
   it("maintain state after executing twice", () => {
     let controller = new MarsRoverController();
 
-    // controller.execute("M");
-    const coordinate = new Coordinate(0, 1)
+    const coordinate = new Coordinate(0, 1);
 
-    const expectedPosition = new Position(coordinate, new Compass("N"))
+    const expectedPosition = new Position(coordinate, new Compass("N"));
 
     let position = controller.execute(expectedPosition, "M");
 
