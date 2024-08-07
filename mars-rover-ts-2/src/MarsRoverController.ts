@@ -4,13 +4,15 @@ import { Compass } from "./Compass";
 
 export class MarsRoverController {
   execute(currentPosition: Position, command: string) {
-    const coordinate = new Coordinate(currentPosition.coordinate.xCoordinate,
-        currentPosition.coordinate.yCoordinate)
-    const compass = new Compass(currentPosition.compass.currentDirection)
+    let coordinate = new Coordinate(
+      currentPosition.coordinate.xCoordinate,
+      currentPosition.coordinate.yCoordinate
+    );
+    const compass = new Compass(currentPosition.compass.currentDirection);
 
     Array.from(command).forEach((commandChar) => {
       if (this.isMoveCommand(commandChar)) {
-        this.move(new Position(coordinate, compass));
+        coordinate = this.move(new Position(coordinate, compass));
         return;
       }
 
@@ -39,25 +41,24 @@ export class MarsRoverController {
     return commandChar === "L";
   }
 
-  move(currentPosition: Position) {
+  move(currentPosition: Position): Coordinate {
     if (currentPosition.compass.isNorth()) {
-      currentPosition.coordinate.moveNorth();
-      return;
+      return Coordinate.moveNorth(currentPosition.coordinate);
     }
 
     if (currentPosition.compass.isEast()) {
       currentPosition.coordinate.moveEast();
-      return;
+      return currentPosition.coordinate;
     }
 
     if (currentPosition.compass.isSouth()) {
       currentPosition.coordinate.moveSouth();
-      return;
+      return currentPosition.coordinate;
     }
 
     if (currentPosition.compass.isWest()) {
       currentPosition.coordinate.moveWest();
-      return;
+      return currentPosition.coordinate;
     }
   }
 }

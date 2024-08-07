@@ -19,14 +19,6 @@ export class Coordinate {
     return new Coordinate(coordinate.xCoordinate, yCoordinate);
   }
 
-  moveNorth() {
-    this.yCoordinate += 1;
-
-    if (this.yCoordinate > this.gridHeight) {
-      this.yCoordinate = 0;
-    }
-  }
-
   moveEast() {
     this.xCoordinate += 1;
 
@@ -35,14 +27,14 @@ export class Coordinate {
     }
   }
 
-  static moveEast(coordinate: Coordinate) : Coordinate {
+  static moveEast(coordinate: Coordinate): Coordinate {
     let xCoordinate = coordinate.xCoordinate + 1;
 
     if (xCoordinate > coordinate.gridWidth) {
       xCoordinate = 0;
     }
 
-    return new Coordinate(xCoordinate, coordinate.yCoordinate)
+    return new Coordinate(xCoordinate, coordinate.yCoordinate);
   }
 
   moveSouth() {
@@ -53,7 +45,7 @@ export class Coordinate {
     }
   }
 
-  static moveSouth(coordinate: Coordinate) : Coordinate {
+  static moveSouth(coordinate: Coordinate): Coordinate {
     let yCoordinate = coordinate.yCoordinate - 1;
 
     if (yCoordinate < 0) {
@@ -71,7 +63,7 @@ export class Coordinate {
     }
   }
 
-  static moveWest(coordinate: Coordinate) : Coordinate {
+  static moveWest(coordinate: Coordinate): Coordinate {
     let xCoordinate = coordinate.xCoordinate - 1;
 
     if (xCoordinate < 0) {
