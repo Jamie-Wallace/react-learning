@@ -1,12 +1,8 @@
 export class Compass {
-  private currentDirection;
+  public readonly currentDirection;
 
   constructor(direction: string = "N") {
     this.currentDirection = direction;
-  }
-
-  getCurrentDirection() {
-    return this.currentDirection;
   }
 
   static turnLeft(compass: Compass) : Compass {

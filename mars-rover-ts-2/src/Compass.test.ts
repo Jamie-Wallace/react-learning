@@ -13,7 +13,7 @@ describe("Compass should", () => {
 
       let newCompass = Compass.turnRight(compass);
 
-      expect(newCompass.getCurrentDirection()).toBe(expectedDirection);
+      expect(newCompass.currentDirection).toBe(expectedDirection);
     }
   );
 
@@ -29,7 +29,7 @@ describe("Compass should", () => {
 
       let newCompass = Compass.turnLeft(compass);
 
-      expect(newCompass.getCurrentDirection()).toBe(expectedDirection);
+      expect(newCompass.currentDirection).toBe(expectedDirection);
     }
   );
 });

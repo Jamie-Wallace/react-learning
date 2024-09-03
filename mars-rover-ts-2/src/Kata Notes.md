@@ -262,3 +262,5 @@ Started work on the compass. Tests are in place, moving to static methods next!
 Afterwards we want to remember to consider the Command Pattern and where it fits:
   - Is it something to definitely include in first video? Unlikely.
   - Does it solve the if/then/else within the controller when processing commands?
+
+Next we plan to apply styling and carry out a quick code review to ensure we haven't missed anything.

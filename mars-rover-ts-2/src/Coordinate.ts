@@ -2,8 +2,8 @@ export class Coordinate {
   readonly gridHeight = 9;
   readonly gridWidth = 9;
 
-  public yCoordinate;
-  public xCoordinate;
+  public readonly yCoordinate;
+  public readonly xCoordinate;
 
   constructor(xCoordinate: number = 0, yCoordinate: number = 0) {
     this.xCoordinate = xCoordinate;

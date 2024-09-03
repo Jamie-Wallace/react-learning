@@ -3,7 +3,6 @@ import App from "./App";
 import { MarsRoverController } from "./MarsRoverController";
 import { Position } from "./Position";
 import Mock = jest.Mock;
-import exp from "constants";
 import { Coordinate } from "./Coordinate";
 import { Compass } from "./Compass";
 

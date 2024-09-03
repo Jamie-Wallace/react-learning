@@ -8,7 +8,7 @@ export class MarsRoverController {
       currentPosition.coordinate.xCoordinate,
       currentPosition.coordinate.yCoordinate
     );
-    let compass = new Compass(currentPosition.compass.getCurrentDirection());
+    let compass = new Compass(currentPosition.compass.currentDirection);
 
     Array.from(command).forEach((commandChar) => {
       if (this.isMoveCommand(commandChar)) {

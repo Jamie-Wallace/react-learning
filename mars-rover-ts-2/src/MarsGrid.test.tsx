@@ -31,10 +31,8 @@ describe("MarsGrid should", () => {
     [4, 0],
     [0, 7],
   ])("render the rover at the starting position", (xCoord, yCoord) => {
-    let coordinate = new Coordinate();
-    coordinate.xCoordinate = xCoord;
-    coordinate.yCoordinate = yCoord;
-
+    let coordinate = new Coordinate(xCoord, yCoord);
+    
     render(<MarsGrid position={new Position(coordinate, new Compass())} />);
 
     let square = screen.getByLabelText(`square at x${xCoord} y${yCoord}`);
@@ -42,8 +40,7 @@ describe("MarsGrid should", () => {
   });
 
   it("render the rover facing east", () => {
-    const compass = new Compass();
-    compass.currentDirection = "E";
+    const compass = new Compass("E");
 
     render(<MarsGrid position={new Position(new Coordinate(), compass)} />);
 
@@ -52,8 +49,7 @@ describe("MarsGrid should", () => {
   });
 
   it("render the rover facing south", () => {
-    const compass = new Compass();
-    compass.currentDirection = "S";
+    const compass = new Compass("S");
 
     render(<MarsGrid position={new Position(new Coordinate(), compass)} />);
 
@@ -62,8 +58,7 @@ describe("MarsGrid should", () => {
   });
 
   it("render the rover facing west", () => {
-    const compass = new Compass();
-    compass.currentDirection = "W";
+    const compass = new Compass("W");
 
     render(<MarsGrid position={new Position(new Coordinate(), compass)} />);
 
