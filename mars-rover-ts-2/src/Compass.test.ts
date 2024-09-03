@@ -22,18 +22,13 @@ describe("Compass should", () => {
     ["S", "E"],
     ["E", "N"],
   ])(
-    "when compass is facing %s, should turn right to face %s",
+    "when compass is facing %s, should turn left to face %s",
     (initialDirection, expectedDirection) => {
       let compass = new Compass(initialDirection);
 
-      compass.turnLeft();
-      expect(compass.currentDirection).toBe(expectedDirection);
+      let newCompass = Compass.turnLeft(compass);
+
+      expect(newCompass.getCurrentDirection()).toBe(expectedDirection);
     }
   );
-
-  it("reminds us where we are", () => {
-    let compass = new Compass("N");
-    let direction = Compass.turnLeft(compass);
-    expect(direction.getCurrentDirection()).toBe("W");
-  });
 });
