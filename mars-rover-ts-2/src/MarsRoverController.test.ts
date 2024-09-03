@@ -20,7 +20,7 @@ describe("MarsRoverController", () => {
       let controller = new MarsRoverController();
 
       let direction = controller.execute(startingPosition, command);
-      expect(direction.compass.currentDirection).toBe(expectedDirection);
+      expect(direction.compass.getCurrentDirection()).toBe(expectedDirection);
     }
   );
 
@@ -39,7 +39,7 @@ describe("MarsRoverController", () => {
 
       let direction = controller.execute(startingPosition, command);
 
-      expect(direction.compass.currentDirection).toBe(expectedDirection);
+      expect(direction.compass.getCurrentDirection()).toBe(expectedDirection);
     }
   );
 
@@ -56,7 +56,7 @@ describe("MarsRoverController", () => {
 
       let direction = controller.execute(startingPosition, command);
 
-      expect(direction.compass.currentDirection).toBe(expectedDirection);
+      expect(direction.compass.getCurrentDirection()).toBe(expectedDirection);
     }
   );
 
@@ -82,7 +82,7 @@ describe("MarsRoverController", () => {
 
       expect(position.coordinate.xCoordinate).toBe(0);
       expect(position.coordinate.yCoordinate).toBe(expectedCoordinate);
-      expect(position.compass.currentDirection).toBe("N");
+      expect(position.compass.getCurrentDirection()).toBe("N");
     }
   );
 
@@ -107,7 +107,7 @@ describe("MarsRoverController", () => {
 
       expect(position.coordinate.xCoordinate).toBe(0);
       expect(position.coordinate.yCoordinate).toBe(expectedCoordinate);
-      expect(position.compass.currentDirection).toBe("S");
+      expect(position.compass.getCurrentDirection()).toBe("S");
     }
   );
 
@@ -133,7 +133,7 @@ describe("MarsRoverController", () => {
 
       expect(position.coordinate.xCoordinate).toBe(expectedCoordinate);
       expect(position.coordinate.yCoordinate).toBe(0);
-      expect(position.compass.currentDirection).toBe("E");
+      expect(position.compass.getCurrentDirection()).toBe("E");
     }
   );
 
@@ -158,7 +158,7 @@ describe("MarsRoverController", () => {
 
       expect(position.coordinate.xCoordinate).toBe(expectedCoordinate);
       expect(position.coordinate.yCoordinate).toBe(0);
-      expect(position.compass.currentDirection).toBe("W");
+      expect(position.compass.getCurrentDirection()).toBe("W");
     }
   );
 
@@ -175,7 +175,7 @@ describe("MarsRoverController", () => {
 
       expect(position.coordinate.xCoordinate).toBe(xCoordinate);
       expect(position.coordinate.yCoordinate).toBe(yCoordinate);
-      expect(position.compass.currentDirection).toBe(direction);
+      expect(position.compass.getCurrentDirection()).toBe(direction);
     }
   );
 
@@ -186,7 +186,7 @@ describe("MarsRoverController", () => {
 
     expect(position.coordinate.xCoordinate).toBe(0);
     expect(position.coordinate.yCoordinate).toBe(0);
-    expect(position.compass.currentDirection).toBe("N");
+    expect(position.compass.getCurrentDirection()).toBe("N");
   });
 
   it("maintain state after executing twice", () => {
@@ -200,6 +200,6 @@ describe("MarsRoverController", () => {
 
     expect(position.coordinate.xCoordinate).toBe(0);
     expect(position.coordinate.yCoordinate).toBe(2);
-    expect(position.compass.currentDirection).toBe("N");
+    expect(position.compass.getCurrentDirection()).toBe("N");
   });
 });

@@ -8,7 +8,7 @@ export class MarsRoverController {
       currentPosition.coordinate.xCoordinate,
       currentPosition.coordinate.yCoordinate
     );
-    const compass = new Compass(currentPosition.compass.currentDirection);
+    let compass = new Compass(currentPosition.compass.getCurrentDirection());
 
     Array.from(command).forEach((commandChar) => {
       if (this.isMoveCommand(commandChar)) {
@@ -17,12 +17,12 @@ export class MarsRoverController {
       }
 
       if (this.isTurnLeftCommand(commandChar)) {
-        compass.turnLeft();
+        compass = Compass.turnLeft(compass);
         return;
       }
 
       if (this.isTurnRightCommand(commandChar)) {
-        compass.turnRight();
+        compass = Compass.turnRight(compass);
       }
     });
 

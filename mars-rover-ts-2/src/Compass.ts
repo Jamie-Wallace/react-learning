@@ -1,5 +1,5 @@
 export class Compass {
-  public currentDirection;
+  private currentDirection;
 
   constructor(direction: string = "N") {
     this.currentDirection = direction;
@@ -7,28 +7,6 @@ export class Compass {
 
   getCurrentDirection() {
     return this.currentDirection;
-  }
-
-  turnLeft() {
-    if (this.isNorth()) {
-      this.currentDirection = "W";
-      return;
-    }
-
-    if (this.isWest()) {
-      this.currentDirection = "S";
-      return;
-    }
-
-    if (this.isSouth()) {
-      this.currentDirection = "E";
-      return;
-    }
-
-    if (this.isEast()) {
-      this.currentDirection = "N";
-      return;
-    }
   }
 
   static turnLeft(compass: Compass) : Compass {
@@ -45,28 +23,6 @@ export class Compass {
     }
 
     return new Compass("N");
-  }
-
-  turnRight() {
-    if (this.isNorth()) {
-      this.currentDirection = "E";
-      return;
-    }
-
-    if (this.isEast()) {
-      this.currentDirection = "S";
-      return;
-    }
-
-    if (this.isSouth()) {
-      this.currentDirection = "W";
-      return;
-    }
-
-    if (this.isWest()) {
-      this.currentDirection = "N";
-      return;
-    }
   }
 
   static turnRight(compass: Compass) : Compass {

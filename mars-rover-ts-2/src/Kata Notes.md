@@ -256,3 +256,9 @@ Moved to using our Coordinate's static methods in Controller
 Moved 'move' method to Position as we feel it fits in there a bit more and reduces Feature Envy / Inappropriate Intimacy. (Previously doing position.compass.isX() a lot)
 
 Started work on the compass. Tests are in place, moving to static methods next!
+
+-- 2024-09-03
+
+Afterwards we want to remember to consider the Command Pattern and where it fits:
+  - Is it something to definitely include in first video? Unlikely.
+  - Does it solve the if/then/else within the controller when processing commands?

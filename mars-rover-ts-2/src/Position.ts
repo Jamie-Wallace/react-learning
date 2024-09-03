@@ -27,6 +27,6 @@ export class Position {
   }
 
   toString() {
-    return `${this.coordinate.xCoordinate}:${this.coordinate.yCoordinate}:${this.compass.currentDirection}`;
+    return `${this.coordinate.xCoordinate}:${this.coordinate.yCoordinate}:${this.compass.getCurrentDirection()}`;
   }
 }
