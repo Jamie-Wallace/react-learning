@@ -31,6 +31,29 @@ export class Compass {
     }
   }
 
+  static turnLeft(compass: Compass) : Compass {
+    return new Compass("W");
+    // if (this.isNorth()) {
+    //   this.currentDirection = "W";
+    //   return;
+    // }
+
+    // if (this.isWest()) {
+    //   this.currentDirection = "S";
+    //   return;
+    // }
+
+    // if (this.isSouth()) {
+    //   this.currentDirection = "E";
+    //   return;
+    // }
+
+    // if (this.isEast()) {
+    //   this.currentDirection = "N";
+    //   return;
+    // }
+  }
+
   turnRight() {
     if (this.isNorth()) {
       this.currentDirection = "E";

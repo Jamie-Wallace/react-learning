@@ -34,6 +34,6 @@ describe("Compass should", () => {
   it("reminds us where we are", () => {
     let compass = new Compass("N");
     let direction = Compass.turnLeft(compass);
-    expect(direction).toBe("W");
+    expect(direction.getCurrentDirection()).toBe("W");
   });
 });

@@ -253,6 +253,6 @@ After that, then make Compass immutable.
 -- 2024-08-07
 
 Moved to using our Coordinate's static methods in Controller
-Moved 'move' method to Position as we feel it fits in there a bit more and reduces Feature Envy / Innapropriate Intimacy. (Previously doing position.compass.isX() a lot)
+Moved 'move' method to Position as we feel it fits in there a bit more and reduces Feature Envy / Inappropriate Intimacy. (Previously doing position.compass.isX() a lot)
 
 Started work on the compass. Tests are in place, moving to static methods next!
