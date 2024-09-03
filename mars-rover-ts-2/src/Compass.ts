@@ -69,6 +69,22 @@ export class Compass {
     }
   }
 
+  static turnRight(compass: Compass) : Compass {
+    if (compass.isNorth()) {
+      return new Compass("E");
+    }
+
+    if (compass.isEast()) {
+      return new Compass("S");
+    }
+
+    if (compass.isSouth()) {
+      return new Compass("W");
+    }
+
+    return new Compass("N");
+  }
+
   isNorth() {
     return this.currentDirection === "N";
   }

@@ -11,8 +11,9 @@ describe("Compass should", () => {
     (initialDirection, expectedDirection) => {
       let compass = new Compass(initialDirection);
 
-      compass.turnRight();
-      expect(compass.currentDirection).toBe(expectedDirection);
+      let newCompass = Compass.turnRight(compass);
+
+      expect(newCompass.getCurrentDirection()).toBe(expectedDirection);
     }
   );
 
