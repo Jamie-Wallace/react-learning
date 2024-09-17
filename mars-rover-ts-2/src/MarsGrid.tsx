@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import { Position } from "./Position";
 
 function MarsGrid({ position }: { position: Position }) {
-  let squares: ReactElement[] = [];
+  let rows: ReactElement[] = [];
   const rowLimit = 9;
   const columnLimit = 9;
 
@@ -13,12 +13,13 @@ function MarsGrid({ position }: { position: Position }) {
     ["W", "<"],
   ]);
 
-  for (let column = 0; column <= columnLimit; column++) {
-    buildRow(column);
+  for (let row = 0; row <= rowLimit; row++) {
+    rows = buildRow(row).concat(rows);
   }
 
-  function buildRow(column: number) {
-    for (let row = 0; row <= rowLimit; row++) {
+  function buildRow(row: number): ReactElement[] {
+    let squares: ReactElement[] = [];
+    for (let column = 0; column <= columnLimit; column++) {
       let roverToken = "";
 
       if (
@@ -30,6 +31,7 @@ function MarsGrid({ position }: { position: Position }) {
 
       squares.push(
         <span
+          className="border-gray-500 border-2 min-w-6 min-h-6"
           aria-label={`square at x${column} y${row}`}
           key={`${column},${row}`}
         >
@@ -37,9 +39,14 @@ function MarsGrid({ position }: { position: Position }) {
         </span>
       );
     }
+    return squares;
   }
 
-  return <>{squares}</>;
+  return (
+    <div className="border-black border-2 max-w-64 grid grid-cols-10">
+      {rows}
+    </div>
+  );
 }
 
 export default MarsGrid;
