@@ -39,7 +39,7 @@ function MarsGrid({ position }: { position: Position }) {
     }
   }
 
-  return <>{squares}</>;
+  return <div className="border-1">{squares}</div>;
 }
 
 export default MarsGrid;
