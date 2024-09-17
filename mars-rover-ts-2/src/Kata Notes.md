@@ -270,3 +270,5 @@ Next we plan to apply styling and carry out a quick code review to ensure we hav
 Had a talk discussing UI testing. It could be valuable to mention Cypress as a tool for accessibility testing, while testing "If the font is red" isn't as necessary.
 
 Command Pattern could be mentioned as well. It's not as crucial as immutability, where we don't _need_ to do it, but mentioning that as a future expansion, or if we were to support more commands, it might be valuable for keeping code clean.
+
+We've got the UI rendering a proper grid. Had an interesting issue where the grid was rendering in an order different to how we'd want it on screen. Starting at 0,0 means that element would be in the top left, where we wanted it in the bottom left. We want to take some time to consider if this was an error on our part and missed something during our behaviour testing, or if it's purely a UI concern.
