@@ -13,12 +13,13 @@ function MarsGrid({ position }: { position: Position }) {
     ["W", "<"],
   ]);
 
-  for (let column = 0; column <= columnLimit; column++) {
-    buildRow(column);
+  for (let row = 0; row <= rowLimit; row++) {
+    squares.unshift(<div key={`row:${row}`}>{buildRow(row)}</div>);
   }
 
-  function buildRow(column: number) {
-    for (let row = 0; row <= rowLimit; row++) {
+  function buildRow(row: number): ReactElement[] {
+    let actualSquares: ReactElement[] = [];
+    for (let column = 0; column <= columnLimit; column++) {
       let roverToken = "";
 
       if (
@@ -28,8 +29,9 @@ function MarsGrid({ position }: { position: Position }) {
         roverToken = map.get(position.compass.currentDirection)!;
       }
 
-      squares.push(
+      actualSquares.push(
         <span
+          className="border-gray-500 border-2 px-2"
           aria-label={`square at x${column} y${row}`}
           key={`${column},${row}`}
         >
@@ -37,9 +39,10 @@ function MarsGrid({ position }: { position: Position }) {
         </span>
       );
     }
+    return actualSquares;
   }
 
-  return <div className="border-1">{squares}</div>;
+  return <div className="border-black border-2">{squares}</div>;
 }
 
 export default MarsGrid;
