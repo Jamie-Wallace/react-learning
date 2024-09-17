@@ -260,7 +260,13 @@ Started work on the compass. Tests are in place, moving to static methods next!
 -- 2024-09-03
 
 Afterwards we want to remember to consider the Command Pattern and where it fits:
-  - Is it something to definitely include in first video? Unlikely.
-  - Does it solve the if/then/else within the controller when processing commands?
+
+- Is it something to definitely include in first video? Unlikely.
+- Does it solve the if/then/else within the controller when processing commands?
 
 Next we plan to apply styling and carry out a quick code review to ensure we haven't missed anything.
+
+-- 2024-09-17
+Had a talk discussing UI testing. It could be valuable to mention Cypress as a tool for accessibility testing, while testing "If the font is red" isn't as necessary.
+
+Command Pattern could be mentioned as well. It's not as crucial as immutability, where we don't _need_ to do it, but mentioning that as a future expansion, or if we were to support more commands, it might be valuable for keeping code clean.
