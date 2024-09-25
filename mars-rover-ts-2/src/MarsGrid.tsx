@@ -31,7 +31,7 @@ function MarsGrid({ position }: { position: Position }) {
 
       squares.push(
         <span
-          className="border-gray-500 border-2 min-w-6 min-h-6"
+          className="border-gray-500 border-2 min-w-7 min-h-7 max-w-7 max-h-7"
           aria-label={`square at x${column} y${row}`}
           key={`${column},${row}`}
         >
@@ -43,7 +43,7 @@ function MarsGrid({ position }: { position: Position }) {
   }
 
   return (
-    <div className="border-black border-2 max-w-64 grid grid-cols-10">
+    <div className="w-fit grid grid-cols-10 gap-1">
       {rows}
     </div>
   );
