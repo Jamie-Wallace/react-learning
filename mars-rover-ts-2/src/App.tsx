@@ -34,19 +34,33 @@ function App() {
 
   return (
     <div className="App bg-blue-300 h-full p-2 flex flex-col items-center space-y-2">
-      <h1 className="text-4xl">Mars Rover</h1>
+      <h1 className="text-4xl font-semibold">Mars Rover</h1>
       <div className="mb-2">
         <MarsGrid position={position} />
       </div>
       <div>
-        <label htmlFor="command">Command:</label>
+        <label htmlFor="command" className="pr-2 font-semibold">
+          Command:
+        </label>
         <input id="command" disabled value={command} />
       </div>
       <div>
-        <button onClick={move}>Move</button>
-        <button onClick={turnRight}>Right</button>
-        <button onClick={turnLeft}>Left</button>
-        <button onClick={executeCommand}>Execute</button>
+        <div className="flex space-x-2 mb-2">
+          <button className="btn flex-1" onClick={turnRight}>
+            Right
+          </button>
+          <button className="btn flex-1" onClick={move}>
+            Move
+          </button>
+          <button className="btn flex-1" onClick={turnLeft}>
+            Left
+          </button>
+        </div>
+        <div>
+          <button className="btn w-full" onClick={executeCommand}>
+            Execute
+          </button>
+        </div>
       </div>
     </div>
   );
