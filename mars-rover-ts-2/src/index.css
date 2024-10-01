@@ -11,7 +11,22 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+html,
+body,
+#root {
+  height: 100%;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.btn {
+  @apply font-semibold py-1 px-2 rounded;
+  @apply bg-indigo-600 text-white;
+}
+
+.btn:hover {
+  @apply bg-indigo-800;
 }

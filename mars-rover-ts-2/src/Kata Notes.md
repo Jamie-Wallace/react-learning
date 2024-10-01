@@ -275,3 +275,7 @@ We've got the UI rendering a proper grid. Had an interesting issue where the gri
 
 -- 2024-09-25
 Attempting to layout overall page - having issues getting things to align with flex in a way that doesn't feel hacky.
+
+-- 2024-10-01
+Spent time making styling look better. Basics in buttons and background colors.
+Plan next week is to look through our notes and start code review
