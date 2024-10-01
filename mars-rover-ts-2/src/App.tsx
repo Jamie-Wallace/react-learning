@@ -33,8 +33,11 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <MarsGrid position={position} />
+    <div className="App bg-blue-300 h-full p-2 flex flex-col items-center space-y-2">
+      <h1 className="text-4xl">Mars Rover</h1>
+      <div className="mb-2">
+        <MarsGrid position={position} />
+      </div>
       <div>
         <label htmlFor="command">Command:</label>
         <input id="command" disabled value={command} />
