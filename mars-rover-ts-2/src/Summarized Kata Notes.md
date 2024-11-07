@@ -32,3 +32,4 @@
 - Decide on how we can test that the grid squares render in the correct order (0,0 appears bottom left)
 - See if we can plug in userEvent throughout the code to avoid FireEvent
 - See how difficult implementing the command pattern is (to help decide if we want to showcase it in the screencast)
+- Consider reaching out to Sid to help improve the React kata used in interviews
