@@ -1,9 +1,7 @@
-export class CustomerSelector {
-    filter() {
-        return [];
-    }
+import {Customer} from "./customer.ts";
 
-    selectCustomers(inputCustomers: number[]) {
+export class CustomerSelector {
+    selectCustomers(inputCustomers: Customer[]) {
         return inputCustomers;
     }
 }
