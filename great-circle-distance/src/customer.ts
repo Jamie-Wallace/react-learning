@@ -1,9 +1,9 @@
-export class Customer {
-    _longitude: number;
-    _latitude: number;
+import {Coordinate} from "./coordinate.ts";
 
-    constructor(longitude: number = 0, latitude: number = 0) {
-        this._longitude = longitude;
-        this._latitude = latitude;
+export class Customer {
+    public location: Coordinate;
+
+    constructor(location: Coordinate) {
+        this.location = location;
     }
 }

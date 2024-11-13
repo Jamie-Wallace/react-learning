@@ -8,7 +8,7 @@ export class CustomerSelector {
             longitude: -6.2592576
         }
 
-        console.log(haversine({latitude: inputCustomers[0]._latitude, longitude: inputCustomers[0]._longitude}, start))
-        return inputCustomers.filter(customer => haversine({latitude: customer._latitude, longitude: customer._longitude}, start) <= distance);
+        console.log(haversine({latitude: inputCustomers[0].location.latitude, longitude: inputCustomers[0].location.longitude}, start))
+        return inputCustomers.filter(customer => haversine({latitude: customer.location.latitude, longitude: customer.location.longitude}, start) <= distance);
     }
 }
