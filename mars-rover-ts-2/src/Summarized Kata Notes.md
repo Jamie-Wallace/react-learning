@@ -14,7 +14,8 @@
 
 ## Points to Consider
 
-- Using a UI Testing framework (such as Cypress?)
+- Try writing an acceptance test in pseudocode and see how units arise.
+    - Is a string of commands i.e. "MMMRMM" hindering our test approach with UI?
 - UserEvent vs FireEvent
 - Using the Command pattern (Do we want it as a seperate video?)
 - Do we want to refactor as we go, or refactor towards the end? - Preferred to refactor as we go to avoid getting caught up in a mess or having a LOT of changes to make. This includes extracting classes
@@ -26,9 +27,7 @@
 
 ## Actions to take
 
-- Set up call with Alasdair
-- Extract class diagram of our current structure
-- Play around with Cypress for a UI test
+- List what is required to be Done with a video recording.
 - Decide on how we can test that the grid squares render in the correct order (0,0 appears bottom left)
 - See if we can plug in userEvent throughout the code to avoid FireEvent
 - See how difficult implementing the command pattern is (to help decide if we want to showcase it in the screencast)
