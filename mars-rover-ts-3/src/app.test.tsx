@@ -1,7 +1,19 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import App from "./App";
+import { MarsRoverController } from "./MarsRoverController";
+import { vi } from "vitest";
+import Mock = jest.Mock;
+
+vi.mock("./MarsRoverController");
+
+let executeFunction: Mock<any, any>;
 
 describe("App should", () => {
+  beforeEach(() => {
+    executeFunction = vi.fn();
+    MarsRoverController.prototype.execute = executeFunction;
+  });
+
   it("Start with an empty command list", () => {
     render(<App />);
 
@@ -25,11 +37,37 @@ describe("App should", () => {
       assertCommandIs(expectedCommand);
     }
   );
+
+  it("sends an empty execute command to the controller", () => {
+    render(<App />);
+
+    clickExecuteButton();
+
+    expect(executeFunction).toHaveBeenCalledTimes(1);
+
+    expect(executeFunction).toHaveBeenCalledWith("");
+  });
+
+  it("sends execute command of M to the controller", () => {
+    render(<App />);
+
+    clickLeftButton();
+
+    clickExecuteButton();
+
+    expect(executeFunction).toHaveBeenCalledTimes(1);
+    expect(executeFunction).toHaveBeenCalledWith("L");
+  });
 });
 
 function clickLeftButton(clickCount: number = 1) {
   const button = screen.getByRole("button", { name: "Left" });
   clickButton(button, clickCount);
+}
+
+function clickExecuteButton() {
+  const button = screen.getByRole("button", { name: "Execute" });
+  clickButton(button, 1);
 }
 
 function clickButton(button: HTMLElement, clickCount: number = 1) {
