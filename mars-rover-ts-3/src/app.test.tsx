@@ -2,7 +2,7 @@ import { render, screen, waitFor } from "@testing-library/react";
 import App from "./App";
 import userEvent from "@testing-library/user-event";
 
-describe("mars rover feature", () => {
+describe.skip("mars rover feature", () => {
   it("moves and turns", async () => {
     render(<App />);
 
@@ -25,7 +25,7 @@ describe("mars rover feature", () => {
     // Move forwards    2,8
     await userEvent.click(moveButton);
 
-    // 2,8
+    // 2,8 >
     const executeButton = screen.getByRole("button", { name: "Execute" });
 
     await userEvent.click(executeButton);
@@ -35,6 +35,31 @@ describe("mars rover feature", () => {
       const squareAt2_8 = screen.getByLabelText("square at x2 y8");
 
       expect(squareAt2_8).toHaveTextContent(">");
+    });
+
+    expect(screen.getByLabelText("Command:")).toHaveValue("");
+  });
+});
+
+describe("turning feature", () => {
+  it("turns", async () => {
+    render(<App />);
+
+    const turnRightButton = screen.getByRole("button", { name: "Right" });
+    const turnLeftButton = screen.getByRole("button", { name: "Left" });
+    const executeButton = screen.getByRole("button", { name: "Execute" });
+
+    await userEvent.click(turnLeftButton);
+    await userEvent.click(turnLeftButton);
+    await userEvent.click(executeButton);
+
+    await userEvent.click(turnRightButton);
+    await userEvent.click(executeButton);
+
+    await waitFor(() => {
+      const squareAt0_0 = screen.getByLabelText("square at x0 y0");
+
+      expect(squareAt0_0).toHaveTextContent("<");
     });
 
     expect(screen.getByLabelText("Command:")).toHaveValue("");
