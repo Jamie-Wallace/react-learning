@@ -46,13 +46,15 @@ describe("turning feature", () => {
     render(<App />);
 
     const turnLeftButton = screen.getByRole("button", { name: "Left" });
-    const turnRightButton = screen.getByRole("button", { name: "Right" });
     const executeButton = screen.getByRole("button", { name: "Execute" });
 
     await userEvent.click(turnLeftButton);
     await userEvent.click(turnLeftButton);
     await userEvent.click(executeButton);
 
+    // TODO Do we want an assertion here, or is this breaking multiple assertsions?
+
+    const turnRightButton = screen.getByRole("button", { name: "Right" });
     await userEvent.click(turnRightButton);
     await userEvent.click(executeButton);
 

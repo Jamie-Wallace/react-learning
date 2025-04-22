@@ -1,3 +1,5 @@
 export class MarsRoverController {
-  execute(command: string) {}
+  execute(command: string) {
+    throw new Error("Not implemented!");
+  }
 }
