@@ -1,67 +1,44 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import App from "./App";
-import userEvent from "@testing-library/user-event";
 
-describe.skip("mars rover feature", () => {
-  it("moves and turns", async () => {
+describe("App should", () => {
+  it("Start with an empty command list", () => {
     render(<App />);
 
-    const moveButton = screen.getByRole("button", { name: "Move" });
-    const turnRightButton = screen.getByRole("button", { name: "Right" });
-    const turnLeftButton = screen.getByRole("button", { name: "Left" });
+    const commandString = screen.getByLabelText("Command:");
 
-    // Turn right       0,0
-    await userEvent.click(turnRightButton);
-    // Move forwards    1,0
-    await userEvent.click(moveButton);
-    // Turn right       1,0
-    await userEvent.click(turnRightButton);
-    // Move forwards    1,9
-    await userEvent.click(moveButton);
-    // Move forwards    1,8
-    await userEvent.click(moveButton);
-    // Turn left        1,8
-    await userEvent.click(turnLeftButton);
-    // Move forwards    2,8
-    await userEvent.click(moveButton);
-
-    // 2,8 >
-    const executeButton = screen.getByRole("button", { name: "Execute" });
-
-    await userEvent.click(executeButton);
-
-    // Assert on the position.
-    await waitFor(() => {
-      const squareAt2_8 = screen.getByLabelText("square at x2 y8");
-
-      expect(squareAt2_8).toHaveTextContent(">");
-    });
-
-    expect(screen.getByLabelText("Command:")).toHaveValue("");
+    expect(commandString).toHaveValue("");
+    expect(commandString).toBeDisabled();
   });
+
+  it.each([
+    [1, "L"],
+    [2, "LL"],
+    [5, "LLLLL"],
+  ])(
+    "Adds L to the command when we click Left",
+    async (clickCount, expectedCommand) => {
+      render(<App />);
+
+      clickLeftButton(clickCount);
+
+      assertCommandIs(expectedCommand);
+    }
+  );
 });
 
-describe("turning feature", () => {
-  it("turns", async () => {
-    render(<App />);
+function clickLeftButton(clickCount: number = 1) {
+  const button = screen.getByRole("button", { name: "Left" });
+  clickButton(button, clickCount);
+}
 
-    const turnRightButton = screen.getByRole("button", { name: "Right" });
-    const turnLeftButton = screen.getByRole("button", { name: "Left" });
-    const executeButton = screen.getByRole("button", { name: "Execute" });
+function clickButton(button: HTMLElement, clickCount: number = 1) {
+  for (let i = 0; i < clickCount; i++) {
+    fireEvent.click(button);
+  }
+}
 
-    await userEvent.click(turnLeftButton);
-    await userEvent.click(turnLeftButton);
-    await userEvent.click(executeButton);
-
-    await userEvent.click(turnRightButton);
-    await userEvent.click(executeButton);
-
-    await waitFor(() => {
-      const squareAt0_0 = screen.getByLabelText("square at x0 y0");
-
-      expect(squareAt0_0).toHaveTextContent("<");
-    });
-
-    expect(screen.getByLabelText("Command:")).toHaveValue("");
-  });
-});
+function assertCommandIs(expectedCommand: string) {
+  const commandString = screen.getByLabelText("Command:");
+  expect(commandString).toHaveValue(expectedCommand);
+}

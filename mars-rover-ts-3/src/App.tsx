@@ -1,25 +1,28 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [command, setCommand] = useState("");
+
+  function turnLeft(): void {
+    setCommand(command + "L");
+  }
 
   return (
-    <>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+    <div>
+      <div>
+        <label htmlFor="command" className="pr-2 font-semibold">
+          Command:
+        </label>
+        <input id="command" disabled value={command} />
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      <div>
+        <button className="btn flex-1" onClick={turnLeft}>
+          Left
+        </button>
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default App;
