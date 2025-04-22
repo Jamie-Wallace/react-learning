@@ -1,25 +1,40 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import { MarsRoverController } from "./MarsRoverController";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [command, setCommand] = useState("");
+  const controller = new MarsRoverController();
+
+  function turnLeft(): void {
+    setCommand(command + "L");
+  }
+
+  function executeCommand(): void {
+    controller.execute(command);
+    setCommand("");
+  }
 
   return (
-    <>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+    <div>
+      <div>
+        <label htmlFor="command" className="pr-2 font-semibold">
+          Command:
+        </label>
+        <input id="command" disabled value={command} />
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      <div>
+        <button className="btn flex-1" onClick={turnLeft}>
+          Left
+        </button>
+      </div>
+      <div>
+        <button className="btn w-full" onClick={executeCommand}>
+          Execute
+        </button>
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default App;
