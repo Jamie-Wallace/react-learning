@@ -1,10 +1,10 @@
 import { render, screen, waitFor } from "@testing-library/react";
-import App from "./App";
+import MarsRoverApplication from "./MarsRoverApplication.tsx";
 import userEvent from "@testing-library/user-event";
 
 describe.skip("mars rover feature", () => {
   it("moves and turns", async () => {
-    render(<App />);
+    render(<MarsRoverApplication />);
 
     const moveButton = screen.getByRole("button", { name: "Move" });
     const turnRightButton = screen.getByRole("button", { name: "Right" });
@@ -43,7 +43,7 @@ describe.skip("mars rover feature", () => {
 
 describe("turning feature", () => {
   it("turns", async () => {
-    render(<App />);
+    render(<MarsRoverApplication />);
 
     const turnLeftButton = screen.getByRole("button", { name: "Left" });
     const executeButton = screen.getByRole("button", { name: "Execute" });
@@ -52,9 +52,8 @@ describe("turning feature", () => {
     await userEvent.click(turnLeftButton);
     await userEvent.click(executeButton);
 
-    // TODO Do we want an assertion here, or is this breaking multiple assertsions?
-
     const turnRightButton = screen.getByRole("button", { name: "Right" });
+
     await userEvent.click(turnRightButton);
     await userEvent.click(executeButton);
 

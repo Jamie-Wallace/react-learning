@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import App from "./App";
+import MarsRoverApplication from "./MarsRoverApplication.tsx";
 import { MarsRoverController } from "./MarsRoverController";
 import { vi } from "vitest";
 import Mock = jest.Mock;
@@ -15,7 +15,7 @@ describe("App should", () => {
   });
 
   it("Start with an empty command list", () => {
-    render(<App />);
+    render(<MarsRoverApplication />);
 
     const commandString = screen.getByLabelText("Command:");
 
@@ -30,7 +30,7 @@ describe("App should", () => {
   ])(
     "Adds L to the command when we click Left",
     async (clickCount, expectedCommand) => {
-      render(<App />);
+      render(<MarsRoverApplication />);
 
       clickLeftButton(clickCount);
 
@@ -39,7 +39,7 @@ describe("App should", () => {
   );
 
   it("sends an empty execute command to the controller", () => {
-    render(<App />);
+    render(<MarsRoverApplication />);
 
     clickExecuteButton();
 
@@ -49,7 +49,7 @@ describe("App should", () => {
   });
 
   it("sends execute command of M to the controller", () => {
-    render(<App />);
+    render(<MarsRoverApplication />);
 
     clickLeftButton();
 

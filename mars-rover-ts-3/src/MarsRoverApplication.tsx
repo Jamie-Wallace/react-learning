@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import { MarsRoverController } from "./MarsRoverController";
 
-function App() {
+function MarsRoverApplication() {
   const [command, setCommand] = useState("");
   const controller = new MarsRoverController();
 
@@ -37,4 +37,4 @@ function App() {
   );
 }
 
-export default App;
+export default MarsRoverApplication;
