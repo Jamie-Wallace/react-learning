@@ -3,8 +3,8 @@ import {MarsRoverController} from "./MarsRoverController.ts";
 describe("MarsRoverController", () => {
     it.each([
         ["L", "W"],
-        // ["LL", "S"],
-        // ["LLL", "E"],
+        ["LL", "S"],
+        ["LLL", "E"],
         // ["LLLL", "N"],
         // ["LLLLL", "W"],
         // ["LLLLLL", "S"],
