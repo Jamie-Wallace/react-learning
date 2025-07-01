@@ -1,5 +1,8 @@
 export class MarsRoverController {
+
   execute(command: string) {
-    throw new Error("Not implemented!");
+    if (command === "L") {
+      return "W";
+    }
   }
 }
