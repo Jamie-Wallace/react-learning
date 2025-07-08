@@ -10,6 +10,10 @@ function MarsRoverApplication() {
     setCommand(command + "L");
   }
 
+  function turnRight(): void {
+    setCommand(command + "R");
+  }
+
   function executeCommand(): void {
     controller.execute(command);
     setCommand("");
@@ -26,6 +30,11 @@ function MarsRoverApplication() {
       <div>
         <button className="btn flex-1" onClick={turnLeft}>
           Left
+        </button>
+      </div>
+      <div>
+        <button className="btn flex-1" onClick={turnRight}>
+          Right
         </button>
       </div>
       <div>

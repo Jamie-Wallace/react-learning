@@ -38,6 +38,21 @@ describe("App should", () => {
     }
   );
 
+  it.each([
+    [1, "R"],
+    [2, "RR"],
+    [5, "RRRRR"],
+  ])(
+    "Adds R to the command when we click Right",
+    async (clickCount, expectedCommand) => {
+      render(<MarsRoverApplication />);
+
+      clickRightButton(clickCount);
+
+      assertCommandIs(expectedCommand);
+    }
+  );
+
   it("sends an empty execute command to the controller", () => {
     render(<MarsRoverApplication />);
 
@@ -62,6 +77,11 @@ describe("App should", () => {
 
 function clickLeftButton(clickCount: number = 1) {
   const button = screen.getByRole("button", { name: "Left" });
+  clickButton(button, clickCount);
+}
+
+function clickRightButton(clickCount: number = 1) {
+  const button = screen.getByRole("button", { name: "Right" });
   clickButton(button, clickCount);
 }
 
