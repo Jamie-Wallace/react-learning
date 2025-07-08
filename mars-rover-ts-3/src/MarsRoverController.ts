@@ -1,12 +1,10 @@
 export class MarsRoverController {
 
   execute(command: string) {
-    if (command === "L") {
-      return "W";
-    } else if (command === "LL") {
-      return "S";
-    } else if (command === "LLL") {
-      return "E";
-    }
+    const directions = ["N", "W", "S", "E"];
+
+    const turnCount = command.length % 4;
+    
+    return directions[turnCount];
   }
 }
