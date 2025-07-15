@@ -4,7 +4,7 @@ describe("MarsRoverController", () => {
     it('should handle unrecognised command', () => {
         let controller = new MarsRoverController();
 
-        expect(() => controller.execute("U")).toThrow("Unrecognised command");
+        expect(() => controller.execute("UL")).toThrow("Unrecognised command");
     });
 
     it.each([

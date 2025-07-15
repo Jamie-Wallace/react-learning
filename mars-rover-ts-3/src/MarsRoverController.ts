@@ -1,14 +1,16 @@
 export class MarsRoverController {
 
-  execute(command: string) {
-    const directions = ["N", "W", "S", "E"];
+    execute(command: string) {
+        const directions = ["N", "W", "S", "E"];
 
-    if (!command.includes("L")) {
-      throw new Error("Unrecognised command");
+        for (const char of command) {
+            if (char !== "L") {
+                throw new Error("Unrecognised command");
+            }
+        }
+
+        const turnCount = command.length % 4;
+
+        return directions[turnCount];
     }
-
-    const turnCount = command.length % 4;
-    
-    return directions[turnCount];
-  }
 }
