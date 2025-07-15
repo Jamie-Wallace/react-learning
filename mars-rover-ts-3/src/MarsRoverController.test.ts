@@ -1,6 +1,12 @@
 import {MarsRoverController} from "./MarsRoverController.ts";
 
 describe("MarsRoverController", () => {
+    it('should handle unrecognised command', () => {
+        let controller = new MarsRoverController();
+
+        expect(() => controller.execute("U")).toThrow("Unrecognised command");
+    });
+
     it.each([
         ["L", "W"],
         ["LL", "S"],
