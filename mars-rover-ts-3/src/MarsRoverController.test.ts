@@ -25,4 +25,23 @@ describe("MarsRoverController", () => {
             expect(direction).toBe(expectedDirection);
         }
     );
+
+    it.each([
+        ["R", "E"],
+        ["RR", "S"],
+        ["RRR", "W"],
+        ["RRRR", "N"],
+        ["RRRRR", "E"],
+        ["RRRRRR", "S"],
+        ["RRRRRRRRRR", "S"],
+    ])(
+        "when command is %s, should turn right to face %s",
+        (command, expectedDirection) => {
+            let controller = new MarsRoverController();
+
+            let direction = controller.execute(command);
+
+            expect(direction).toBe(expectedDirection);
+        }
+    );
 });
