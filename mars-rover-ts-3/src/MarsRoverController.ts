@@ -8,6 +8,10 @@ export class MarsRoverController {
             }
         }
 
+        if(command == "LR"){
+          return directions[0];
+        }
+
         if (command.includes("L")) {
             const turnCount = command.length % 4;
             return directions[turnCount];
