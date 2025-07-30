@@ -8,14 +8,21 @@ export class MarsRoverController {
             }
         }
 
+        if(command == "LR"){
+          return directions[0];
+        }
+
         if (command.includes("L")) {
             const turnCount = command.length % 4;
             return directions[turnCount];
         }
 
         if (command.includes("R")) {
-            const turnCount = command.length % 4;
-            return directions[(4 - turnCount) % 4];
+            let turnCount = command.length % 4;
+            if(turnCount == 0){
+              turnCount = 4;
+            }
+            return directions[(4 - turnCount)];
         }
     }
 }
