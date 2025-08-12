@@ -47,6 +47,7 @@ describe("MarsRoverController", () => {
     
     it.each([
         ["LR", "N"],
+        ["LRRLLRL", "W"],
     ])(
         "when command is %s, should turn left and right to face %s",
         (command, expectedDirection) => {
