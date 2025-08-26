@@ -6,10 +6,8 @@ export class MarsRoverController {
         for (const char of command) {
             if (char == "R") {
                 directionIndex = compass.turnRight(directionIndex);
-                
             } else if (char == "L") {
-                directionIndex++;
-                directionIndex = directionIndex % 4;
+                directionIndex = compass.turnLeft(directionIndex);
             } else {
                 throw new Error("Unrecognised command");
             }
@@ -21,6 +19,13 @@ export class MarsRoverController {
 
 class Compass {
     directions = ["N", "W", "S", "E"];
+
+    
+    turnLeft(directionIndex: number): number {
+        directionIndex++;
+        directionIndex = directionIndex % 4;
+        return directionIndex;
+    }
 
     turnRight(directionIndex: number) {
         directionIndex--;
