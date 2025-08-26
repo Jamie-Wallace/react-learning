@@ -1,7 +1,6 @@
 export class MarsRoverController {
     execute(command: string) {
         const compass = new Compass();
-        const directions = ["N", "W", "S", "E"];
         let directionIndex = 0
         for (const char of command) {
             if (char == "R") {
@@ -13,13 +12,17 @@ export class MarsRoverController {
             }
         }
 
-        return directions[directionIndex];
+        return compass.getDirection(directionIndex);
     }
 }
 
 class Compass {
     directions = ["N", "W", "S", "E"];
 
+    
+    getDirection(directionIndex: number) {
+        return this.directions[directionIndex];
+    }
     
     turnLeft(directionIndex: number): number {
         directionIndex++;
