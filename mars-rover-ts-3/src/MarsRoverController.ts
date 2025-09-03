@@ -1,22 +1,39 @@
 export class MarsRoverController {
     execute(command: string) {
-        let directions = ["N", "W", "S", "E"];
-        let directionIndex = 0
+        const compass = new Compass();
 
         for (const char of command) {
             if (char == "R") {
-                directionIndex--;
-                if (directionIndex < 0) {
-                    directionIndex = directions.length - 1;
-                }
+                compass.turnRight();
             } else if (char == "L") {
-                directionIndex++;
-                directionIndex = directionIndex % 4;
+                compass.turnLeft();
             } else {
                 throw new Error("Unrecognised command");
             }
         }
 
-        return directions[directionIndex];
+        return compass.getDirection();
     }
+}
+
+class Compass {
+    directions = ["N", "W", "S", "E"];
+    directionIndex = 0
+    
+    getDirection() {
+        return this.directions[this.directionIndex];
+    }
+
+    turnLeft() {
+        this.directionIndex++;
+        this.directionIndex = this.directionIndex % 4;
+    }
+
+    turnRight() {
+        this.directionIndex--;
+        if (this.directionIndex < 0) {
+            this.directionIndex = this.directions.length - 1;
+        }
+    }
+
 }

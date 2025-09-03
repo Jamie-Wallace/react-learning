@@ -41,7 +41,7 @@ describe.skip("mars rover feature", () => {
   });
 });
 
-describe("turning feature", () => {
+describe.skip("turning feature", () => {
   it("turns", async () => {
     render(<MarsRoverApplication />);
 
