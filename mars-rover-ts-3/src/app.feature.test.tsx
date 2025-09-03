@@ -3,6 +3,19 @@ import MarsRoverApplication from "./MarsRoverApplication.tsx";
 import userEvent from "@testing-library/user-event";
 
 describe.skip("mars rover feature", () => {
+  it("starts at home on the grid", async() => {
+    await waitFor(() => {
+
+      // TODO: need to assert in a way that forces a grid to be created.
+      // i.e. check that it has 100 squares.
+      // we could assert that squares at specific indexes in the array have expected labels.
+
+      const squareAt0_0 = screen.getByLabelText("square at x0 y0");
+
+      expect(squareAt0_0).toHaveTextContent("^");
+    });
+  });
+
   it("moves and turns", async () => {
     render(<MarsRoverApplication />);
 
