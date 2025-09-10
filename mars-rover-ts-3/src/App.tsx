@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import { MarsRoverController } from "./MarsRoverController";
+import MarsGrid from "./MarsGrid";
 
 function App() {
   const [command, setCommand] = useState("");
@@ -21,6 +22,9 @@ function App() {
 
   return (
     <div>
+        <div>
+            <MarsGrid />
+        </div>
       <div>
         <label htmlFor="command" className="pr-2 font-semibold">
           Command:

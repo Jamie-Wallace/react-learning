@@ -5,9 +5,9 @@ import {vi} from "vitest";
 import Mock = jest.Mock;
 
 vi.mock("./MarsRoverController");
-vi.mock("./MarsGrid", () => () => (
-    <span data-testid="grid"></span>
-));
+vi.mock("./MarsGrid", () => ({
+    default: () => <span data-testid="grid"></span>
+}));
 
 let executeFunction: Mock<any, any>;
 
