@@ -1,23 +1,20 @@
-import { render, screen, waitFor } from "@testing-library/react";
-import MarsRoverApplication from "./MarsRoverApplication.tsx";
+import {render, screen, waitFor, within} from "@testing-library/react";
+import App from "./App.tsx";
 import userEvent from "@testing-library/user-event";
 
-describe.skip("mars rover feature", () => {
+describe("mars rover feature", () => {
   it("starts at home on the grid", async() => {
     await waitFor(() => {
 
-      // TODO: need to assert in a way that forces a grid to be created.
-      // i.e. check that it has 100 squares.
-      // we could assert that squares at specific indexes in the array have expected labels.
+      const grid = screen.getByLabelText("Mars rover grid");
+      const lastSquare = within(grid).getByLabelText("square at x9 y9");
 
-      const squareAt0_0 = screen.getByLabelText("square at x0 y0");
-
-      expect(squareAt0_0).toHaveTextContent("^");
+      expect(lastSquare).toBeVisible();
     });
   });
 
-  it("moves and turns", async () => {
-    render(<MarsRoverApplication />);
+  it.skip("moves and turns", async () => {
+    render(<App />);
 
     const moveButton = screen.getByRole("button", { name: "Move" });
     const turnRightButton = screen.getByRole("button", { name: "Right" });
@@ -56,7 +53,7 @@ describe.skip("mars rover feature", () => {
 
 describe.skip("turning feature", () => {
   it("turns", async () => {
-    render(<MarsRoverApplication />);
+    render(<App />);
 
     const turnLeftButton = screen.getByRole("button", { name: "Left" });
     const executeButton = screen.getByRole("button", { name: "Execute" });
