@@ -1,10 +1,16 @@
-function MarsGrid() {
-    return <div aria-label={`Mars rover grid`}>
-        <span aria-label={`square at x0 y0`}/>
-        <span aria-label={`square at x1 y0`}/>
-        <span aria-label={`square at x2 y0`}/>
+import { ReactElement } from "react";
 
-    </div>;
+function MarsGrid() {
+    const squares : ReactElement[] = [];
+
+    for(let xCoord = 0; xCoord < 3; xCoord++){
+        squares.push(<span aria-label={`square at x${xCoord} y0`}/>);
+    }
+
+
+    return(<div aria-label={`Mars rover grid`}>
+       {squares}
+    </div>);
 }
 
 export default MarsGrid;
