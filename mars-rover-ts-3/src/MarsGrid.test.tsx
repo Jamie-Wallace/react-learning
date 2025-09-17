@@ -8,14 +8,18 @@ describe("MarsGrid should", () => {
         expect(screen.getByLabelText("Mars rover grid")).toBeVisible();
     });
 
-    it('Render square 0,0 inside grid', () => {
+    it.each(
+        [0]
+    )
+    ('Render square inside grid at x coordinate %s', (xCoord: number) => {
         render(<MarsGrid />);
 
         const grid = screen.getByLabelText("Mars rover grid")
-        expect(within(grid).getByLabelText("square at x0 y0")).toBeVisible();
+        expect(within(grid).getByLabelText(`square at x${xCoord} y0`)).toBeVisible();
     });
 
     // Render each square
+    // Do we want to pass in size?
     // Do we want to render rover?
     // Do we want to test grid layout CSS?
 });
