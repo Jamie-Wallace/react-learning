@@ -2,6 +2,7 @@ function MarsGrid() {
     return <div aria-label={`Mars rover grid`}>
         <span aria-label={`square at x0 y0`}/>
         <span aria-label={`square at x1 y0`}/>
+        <span aria-label={`square at x2 y0`}/>
 
     </div>;
 }
