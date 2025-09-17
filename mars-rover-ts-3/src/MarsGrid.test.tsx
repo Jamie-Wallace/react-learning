@@ -9,7 +9,7 @@ describe("MarsGrid should", () => {
     });
 
     it.each(
-        [0]
+        [0, 1]
     )
     ('Render square inside grid at x coordinate %s', (xCoord: number) => {
         render(<MarsGrid />);
