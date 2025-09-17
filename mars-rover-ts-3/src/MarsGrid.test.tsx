@@ -18,8 +18,8 @@ describe("MarsGrid should", () => {
         expect(within(grid).getByLabelText(`square at x${xCoord} y0`)).toBeVisible();
     });
 
-    // Do we want to test that we don't render 10,10?
     // Do we want to pass in size?
+    // Do we want to test that we don't render 10,10?
     // Do we want to render rover?
     // Do we want to test grid layout CSS?
 });
