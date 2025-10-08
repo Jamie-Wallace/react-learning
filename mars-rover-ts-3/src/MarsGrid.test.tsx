@@ -28,6 +28,7 @@ describe("MarsGrid should", () => {
         expect(within(grid).getByLabelText(`square at x0 y${yCoord}`)).toBeVisible();
     });
 
+    // Do we want to combine the render square at x and y tests into a single render at x,y test?
     // Do we want to pass in size?
     // Do we want to test that we don't render 10,10?
     // Do we want to render rover?
