@@ -9,28 +9,15 @@ describe("MarsGrid should", () => {
     });
 
     it.each(
-        [0, 1, 2, 3, 9]
+        [[0, 0], [0, 1], [2, 0], [9, 9]]
     )
-    ('Render square inside grid at x coordinate %s', (xCoord: number) => {
+    ('Render square inside grid at coordinates %s,%s', (xCoord: number, yCoord: number) => {
         render(<MarsGrid />);
 
         const grid = screen.getByLabelText("Mars rover grid")
-        expect(within(grid).getByLabelText(`square at x${xCoord} y0`)).toBeVisible();
+        expect(within(grid).getByLabelText(`square at x${xCoord} y${yCoord}`)).toBeVisible();
     });
 
-    it.each(
-        [0, 1, 2, 3, 9]
-    )
-    ('Render square inside grid at y coordinate %s', (yCoord: number) => {
-        render(<MarsGrid />);
-
-        const grid = screen.getByLabelText("Mars rover grid")
-        expect(within(grid).getByLabelText(`square at x0 y${yCoord}`)).toBeVisible();
-    });
-
-    // Do we want to combine the render square at x and y tests into a single render at x,y test?
-    // Do we want to pass in size?
-    // Do we want to test that we don't render 10,10?
     // Do we want to render rover?
     // Do we want to test grid layout CSS?
 });
