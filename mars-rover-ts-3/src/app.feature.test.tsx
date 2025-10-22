@@ -3,15 +3,19 @@ import App from "./App.tsx";
 import userEvent from "@testing-library/user-event";
 
 describe("mars rover feature", () => {
-  it.skip("starts at home on the grid", async() => {
+  it("starts at home on the grid", async() => {
     // await waitFor(() => {
       
     render(<App />);
 
     const grid = screen.getByLabelText("Mars rover grid");
-    const lastSquare = within(grid).getByLabelText("square at x9 y9");
 
+    const lastSquare = within(grid).getByLabelText("square at x9 y9");
     expect(lastSquare).toBeVisible();
+
+    const squares = screen.getAllByLabelText(/^square at/)
+    expect(squares).toHaveLength(100);
+
     // });
   });
 
