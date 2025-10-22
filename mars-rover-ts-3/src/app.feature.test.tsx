@@ -4,8 +4,6 @@ import userEvent from "@testing-library/user-event";
 
 describe("mars rover feature", () => {
   it("starts at home on the grid", async() => {
-    // await waitFor(() => {
-      
     render(<App />);
 
     const grid = screen.getByLabelText("Mars rover grid");
@@ -15,8 +13,6 @@ describe("mars rover feature", () => {
 
     const squares = screen.getAllByLabelText(/^square at/)
     expect(squares).toHaveLength(100);
-
-    // });
   });
 
   it.skip("moves and turns", async () => {
