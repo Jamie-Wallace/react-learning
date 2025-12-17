@@ -18,6 +18,24 @@ describe("MarsGrid should", () => {
         expect(within(grid).getByLabelText(`square at x${xCoord} y${yCoord}`)).toBeVisible();
     });
 
-    // Do we want to render rover?
+    it.each(
+        [[0, 1], [2, 0], [9, 9]]
+    )
+    ('Render empty square inside grid at coordinates %s,%s', (xCoord: number, yCoord: number) => {
+        render(<MarsGrid />);
+
+        const grid = screen.getByLabelText("Mars rover grid")
+        expect(within(grid).getByLabelText(`square at x${xCoord} y${yCoord}`)).toBeEmptyDOMElement();
+    });
+
+    it("Render the Mars Rover at coordinates 0, 0", () => {
+       render(<MarsGrid />);
+
+        const grid = screen.getByLabelText("Mars rover grid")
+        const expectedRoverSquare = within(grid).getByLabelText("square at x0 y0");
+
+        expect(expectedRoverSquare).toHaveTextContent("^");
+    });
+
     // Do we want to test grid layout CSS?
 });
