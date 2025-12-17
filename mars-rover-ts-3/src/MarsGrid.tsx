@@ -8,7 +8,7 @@ function MarsGrid() {
 
     function buildRow(yCoord: number) {
         for (let xCoord = 0; xCoord < xLimit; xCoord++) {
-            squares.push(<span aria-label={`square at x${xCoord} y${yCoord}`} key={`${xCoord}-${yCoord}`} className="border-2 p-1">x</span>);
+            squares.push(<span aria-label={`square at x${xCoord} y${yCoord}`} key={`${xCoord}-${yCoord}`} className="border-2 p-1"></span>);
         }
     }
 
