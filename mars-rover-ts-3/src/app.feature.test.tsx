@@ -13,6 +13,9 @@ describe("mars rover feature", () => {
 
     const squares = screen.getAllByLabelText(/^square at/)
     expect(squares).toHaveLength(100);
+
+    const expectedRoverSquare = within(grid).getByLabelText("square at x0 y0");
+    expect(expectedRoverSquare).toHaveTextContent("^");
   });
 
   it.skip("moves and turns", async () => {
