@@ -16,7 +16,7 @@ function MarsGrid() {
         }
     }
 
-    for (let yCoord = 0; yCoord < yLimit; yCoord++) {
+    for (let yCoord = yLimit - 1; yCoord >= 0; yCoord--) {
         buildRow(yCoord);
     }
 
