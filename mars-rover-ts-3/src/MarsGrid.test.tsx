@@ -37,5 +37,13 @@ describe("MarsGrid should", () => {
         expect(expectedRoverSquare).toHaveTextContent("^");
     });
 
+    it('Render 0,0 at the correct grid location', () => {
+        render(<MarsGrid />);
+
+        const ninetiethItem = screen.getAllByLabelText(/^square at/i)[90];
+
+        expect(ninetiethItem).toHaveAttribute('aria-label','square at x0 y0');
+    });
+
     // Do we want to test grid layout CSS?
 });
