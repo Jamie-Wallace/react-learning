@@ -4,21 +4,27 @@ function MarsGrid() {
     const xLimit = 10;
     const yLimit = 10;
 
-    const squares: ReactElement[] = [];
+    let squares: ReactElement[] = [];
 
-    function buildRow(yCoord: number) {
+    function buildGrid() {
+        for (let yCoord = yLimit - 1; yCoord >= 0; yCoord--) {
+            squares.push(...buildRow(yCoord));
+        }
+    }
+
+    function buildRow(yCoord: number) : ReactElement[] {
+        let row = [];
         for (let xCoord = 0; xCoord < xLimit; xCoord++) {
-            squares.push(<span
+            row.push(<span
                 aria-label={`square at x${xCoord} y${yCoord}`}
                 key={`${xCoord}-${yCoord}`}
                 className="border-2 p-1 size-12">{(xCoord == 0 && yCoord == 0) && "^"}</span>
             );
         }
+        return row;
     }
 
-    for (let yCoord = yLimit - 1; yCoord >= 0; yCoord--) {
-        buildRow(yCoord);
-    }
+    buildGrid();
 
     return (<div className='grid grid-cols-10' aria-label={`Mars rover grid`}>
         {squares}
