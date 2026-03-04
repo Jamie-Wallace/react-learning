@@ -1,6 +1,7 @@
 import { ReactElement } from "react";
+import {Compass} from "./Compass.ts";
 
-function MarsGrid() {
+function MarsGrid({ compass }: { compass: Compass }) {
     const xLimit = 10;
     const yLimit = 10;
 

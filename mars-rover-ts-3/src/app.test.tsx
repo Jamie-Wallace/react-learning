@@ -3,11 +3,13 @@ import App from "./App.tsx";
 import {MarsRoverController} from "./MarsRoverController";
 import {vi} from "vitest";
 import Mock = jest.Mock;
+import {Compass} from "./Compass.ts";
 
 vi.mock("./MarsRoverController");
-vi.mock("./MarsGrid", () => ({
-    default: () => <span data-testid="grid"></span>
-}));
+
+vi.mock("./MarsGrid", () => ({default: ({ compass }: { compass: Compass }) => (
+   <span data-testid="grid">{compass.toString()}</span>
+)}));
 
 let executeFunction: Mock<any, any>;
 
@@ -83,6 +85,26 @@ describe("App should", () => {
 
         expect(executeFunction).toHaveBeenCalledTimes(1);
         expect(executeFunction).toHaveBeenCalledWith("L");
+    });
+
+    it("should render grid with default starting coordinate", () => {
+        render(<App />);
+
+        const grid = screen.getByTestId("grid");
+
+        expect(grid).toHaveTextContent("0:0:N");
+    });
+
+    it("should render grid with given coordinate", () => {
+        executeFunction.mockReturnValue("5:3:E");
+
+        render(<App />);
+
+        clickExecuteButton();
+
+        const grid = screen.getByTestId("grid");
+
+        expect(grid).toHaveTextContent("5:3:E");
     });
 });
 

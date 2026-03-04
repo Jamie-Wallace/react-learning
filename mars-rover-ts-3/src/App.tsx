@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import { MarsRoverController } from "./MarsRoverController";
 import MarsGrid from "./MarsGrid";
+import {Compass} from "./Compass.ts";
 
 function App() {
   const [command, setCommand] = useState("");
@@ -23,7 +24,7 @@ function App() {
   return (
     <div>
       <div>
-        <MarsGrid />
+        <MarsGrid compass={new Compass()} />
       </div>
       <div>
         <label htmlFor="command" className="pr-2 font-semibold">

@@ -66,7 +66,7 @@ describe("mars rover feature", () => {
   });
 });
 
-describe.skip("turning feature", () => {
+describe("turning feature", () => {
   it("turns", async () => {
     render(<App />);
 
