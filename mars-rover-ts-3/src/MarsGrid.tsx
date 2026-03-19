@@ -1,11 +1,17 @@
 import { ReactElement } from "react";
-import {Compass} from "./Compass.ts";
 
-function MarsGrid({ compass }: { compass: Compass }) {
+function MarsGrid({ compass }: { compass: string }) {
     const xLimit = 10;
     const yLimit = 10;
 
     let squares: ReactElement[] = [];
+
+    const map = new Map<string, string>([
+        ["N", "^"],
+        ["E", ">"],
+        ["S", "V"],
+        ["W", "<"],
+    ]);
 
     function buildGrid() {
         for (let yCoord = yLimit - 1; yCoord >= 0; yCoord--) {
@@ -26,7 +32,7 @@ function MarsGrid({ compass }: { compass: Compass }) {
             aria-label={`square at x${xCoord} y${yCoord}`}
             key={`${xCoord}-${yCoord}`}
             className="border-2 p-1 size-12">
-            {(xCoord == 0 && yCoord == 0) && "^"}
+            {(xCoord == 0 && yCoord == 0) && map.get(compass)}
         </span>
     }
 

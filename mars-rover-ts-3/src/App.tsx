@@ -2,10 +2,10 @@ import { useState } from "react";
 import "./App.css";
 import { MarsRoverController } from "./MarsRoverController";
 import MarsGrid from "./MarsGrid";
-import {Compass} from "./Compass.ts";
 
 function App() {
   const [command, setCommand] = useState("");
+  const [compass, setCompass] = useState("N");
   const controller = new MarsRoverController();
 
   function turnLeft(): void {
@@ -17,14 +17,14 @@ function App() {
   }
 
   function executeCommand(): void {
-    controller.execute(command);
+    setCompass(controller.execute(command));
     setCommand("");
   }
 
   return (
     <div>
       <div>
-        <MarsGrid compass={new Compass()} />
+        <MarsGrid compass={compass} />
       </div>
       <div>
         <label htmlFor="command" className="pr-2 font-semibold">

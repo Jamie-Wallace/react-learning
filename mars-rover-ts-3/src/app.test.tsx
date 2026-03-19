@@ -3,13 +3,12 @@ import App from "./App.tsx";
 import { MarsRoverController } from "./MarsRoverController";
 import { vi } from "vitest";
 import Mock = jest.Mock;
-import { Compass } from "./Compass.ts";
 
 vi.mock("./MarsRoverController");
 
 vi.mock("./MarsGrid", () => ({
-    default: ({ compass }: { compass: Compass }) => (
-        <span data-testid="grid">{compass.toString()}</span>
+    default: ({ compass }: { compass: string }) => (
+        <span data-testid="grid">{compass}</span>
     )
 }));
 
