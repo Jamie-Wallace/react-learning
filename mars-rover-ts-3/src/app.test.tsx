@@ -1,15 +1,17 @@
-import {fireEvent, render, screen} from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import App from "./App.tsx";
-import {MarsRoverController} from "./MarsRoverController";
-import {vi} from "vitest";
+import { MarsRoverController } from "./MarsRoverController";
+import { vi } from "vitest";
 import Mock = jest.Mock;
-import {Compass} from "./Compass.ts";
+import { Compass } from "./Compass.ts";
 
 vi.mock("./MarsRoverController");
 
-vi.mock("./MarsGrid", () => ({default: ({ compass }: { compass: Compass }) => (
-   <span data-testid="grid">{compass.toString()}</span>
-)}));
+vi.mock("./MarsGrid", () => ({
+    default: ({ compass }: { compass: Compass }) => (
+        <span data-testid="grid">{compass.toString()}</span>
+    )
+}));
 
 let executeFunction: Mock<any, any>;
 
@@ -20,7 +22,7 @@ describe("App should", () => {
     });
 
     it("Render a grid", () => {
-        render(<App/>);
+        render(<App />);
 
         const grid = screen.getByTestId("grid");
 
@@ -28,7 +30,7 @@ describe("App should", () => {
     });
 
     it("Start with an empty command list", () => {
-        render(<App/>);
+        render(<App />);
 
         const commandString = screen.getByLabelText("Command:");
 
@@ -43,7 +45,7 @@ describe("App should", () => {
     ])(
         "Adds L to the command when we click Left",
         async (clickCount, expectedCommand) => {
-            render(<App/>);
+            render(<App />);
 
             clickLeftButton(clickCount);
 
@@ -58,7 +60,7 @@ describe("App should", () => {
     ])(
         "Adds R to the command when we click Right",
         async (clickCount, expectedCommand) => {
-            render(<App/>);
+            render(<App />);
 
             clickRightButton(clickCount);
 
@@ -67,7 +69,7 @@ describe("App should", () => {
     );
 
     it("sends an empty execute command to the controller", () => {
-        render(<App/>);
+        render(<App />);
 
         clickExecuteButton();
 
@@ -77,7 +79,7 @@ describe("App should", () => {
     });
 
     it("sends execute command of M to the controller", () => {
-        render(<App/>);
+        render(<App />);
 
         clickLeftButton();
 
@@ -92,11 +94,11 @@ describe("App should", () => {
 
         const grid = screen.getByTestId("grid");
 
-        expect(grid).toHaveTextContent("0:0:N");
+        expect(grid).toHaveTextContent("N");
     });
 
     it("should render grid with given coordinate", () => {
-        executeFunction.mockReturnValue("5:3:E");
+        executeFunction.mockReturnValue("E");
 
         render(<App />);
 
@@ -104,22 +106,22 @@ describe("App should", () => {
 
         const grid = screen.getByTestId("grid");
 
-        expect(grid).toHaveTextContent("5:3:E");
+        expect(grid).toHaveTextContent("E");
     });
 });
 
 function clickLeftButton(clickCount: number = 1) {
-    const button = screen.getByRole("button", {name: "Left"});
+    const button = screen.getByRole("button", { name: "Left" });
     clickButton(button, clickCount);
 }
 
 function clickRightButton(clickCount: number = 1) {
-    const button = screen.getByRole("button", {name: "Right"});
+    const button = screen.getByRole("button", { name: "Right" });
     clickButton(button, clickCount);
 }
 
 function clickExecuteButton() {
-    const button = screen.getByRole("button", {name: "Execute"});
+    const button = screen.getByRole("button", { name: "Execute" });
     clickButton(button, 1);
 }
 

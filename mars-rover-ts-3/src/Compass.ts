@@ -17,4 +17,8 @@ export class Compass {
             this.directionIndex = this.directions.length - 1;
         }
     }
+
+    toString(){
+        return this.directions[this.directionIndex];
+    }
 }
