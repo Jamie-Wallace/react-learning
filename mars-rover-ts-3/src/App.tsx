@@ -6,7 +6,7 @@ import {Compass} from "./Compass.ts";
 
 function App() {
   const [command, setCommand] = useState("");
-  const [compass, setCompass] = useState( new Compass(0));
+  const [compass, setCompass] = useState( new Compass("N"));
   const [controller] = useState(new MarsRoverController());
 
   function turnLeft(): void {

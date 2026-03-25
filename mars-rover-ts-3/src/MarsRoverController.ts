@@ -1,11 +1,9 @@
 import {Compass} from "./Compass.ts";
 
 export class MarsRoverController {
-    compass = new Compass(0);
+    compass = new Compass("N");
     
     execute(command: string) {
-        console.warn(`${this.compass.getDirection()} - Direction: ${command}`)
-
         for (const char of command) {
             if (char == "R") {
                 this.compass.turnRight();
