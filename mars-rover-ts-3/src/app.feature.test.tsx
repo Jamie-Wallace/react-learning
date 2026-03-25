@@ -31,7 +31,7 @@ describe("mars rover feature", () => {
 });
 
 describe("turning feature", () => {
-  it.skip("turns", async () => {
+  it("turns", async () => {
     render(<App />);
 
     const turnLeftButton = screen.getByRole("button", { name: "Left" });
@@ -44,6 +44,7 @@ describe("turning feature", () => {
     const turnRightButton = screen.getByRole("button", { name: "Right" });
 
     await userEvent.click(turnRightButton);
+    await userEvent.click(executeButton);
     await userEvent.click(executeButton);
 
     await waitFor(() => {

@@ -6,7 +6,7 @@ function MarsGrid({ compass }: { compass: string }) {
 
     let squares: ReactElement[] = [];
 
-    const map = new Map<string, string>([
+    const roverDisplayMap = new Map<string, string>([
         ["N", "^"],
         ["E", ">"],
         ["S", "V"],
@@ -32,7 +32,7 @@ function MarsGrid({ compass }: { compass: string }) {
             aria-label={`square at x${xCoord} y${yCoord}`}
             key={`${xCoord}-${yCoord}`}
             className="border-2 p-1 size-12">
-            {(xCoord == 0 && yCoord == 0) && map.get(compass)}
+            {(xCoord == 0 && yCoord == 0) && roverDisplayMap.get(compass)}
         </span>
     }
 
