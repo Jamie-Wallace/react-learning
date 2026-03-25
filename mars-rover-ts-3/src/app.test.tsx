@@ -3,6 +3,7 @@ import App from "./App.tsx";
 import { MarsRoverController } from "./MarsRoverController";
 import { vi } from "vitest";
 import Mock = jest.Mock;
+import {Compass} from "./Compass.ts";
 
 vi.mock("./MarsRoverController");
 
@@ -17,6 +18,7 @@ let executeFunction: Mock<any, any>;
 describe("App should", () => {
     beforeEach(() => {
         executeFunction = vi.fn();
+        executeFunction.mockReturnValue(new Compass(0));
         MarsRoverController.prototype.execute = executeFunction;
     });
 
@@ -97,7 +99,7 @@ describe("App should", () => {
     });
 
     it("should render grid with given coordinate", () => {
-        executeFunction.mockReturnValue("E");
+        executeFunction.mockReturnValue(new Compass(3));
 
         render(<App />);
 

@@ -2,6 +2,10 @@ export class Compass {
     directions = ["N", "W", "S", "E"];
     directionIndex = 0
 
+    constructor(directionIndex: number) {
+        this.directionIndex = directionIndex;
+    }
+
     getDirection() {
         return this.directions[this.directionIndex];
     }

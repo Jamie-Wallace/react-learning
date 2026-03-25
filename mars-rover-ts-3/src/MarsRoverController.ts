@@ -1,7 +1,7 @@
 import {Compass} from "./Compass.ts";
 
 export class MarsRoverController {
-    compass = new Compass();
+    compass = new Compass(0);
     
     execute(command: string) {
         console.warn(`${this.compass.getDirection()} - Direction: ${command}`)
@@ -16,6 +16,6 @@ export class MarsRoverController {
             }
         }
 
-        return this.compass.getDirection();
+        return this.compass;
     }
 }
