@@ -58,4 +58,15 @@ describe("MarsRoverController", () => {
             expect(direction).toBe(expectedDirection);
         }
     );
+    
+    it("should maintain state after executing", ()  => {
+            let expectedDirection = "S"
+            let controller = new MarsRoverController();
+
+            controller.execute("R");
+            let direction = controller.execute("R");
+
+            expect(direction).toBe(expectedDirection);
+        }
+    );
 });

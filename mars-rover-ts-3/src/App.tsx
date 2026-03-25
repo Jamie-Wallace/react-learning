@@ -6,7 +6,7 @@ import MarsGrid from "./MarsGrid";
 function App() {
   const [command, setCommand] = useState("");
   const [compass, setCompass] = useState("N");
-  const controller = new MarsRoverController();
+  const [controller] = useState(new MarsRoverController());
 
   function turnLeft(): void {
     setCommand(command + "L");
@@ -18,6 +18,7 @@ function App() {
 
   function executeCommand(): void {
     setCompass(controller.execute(command));
+    console.warn(`Compass is ${compass}`)
     setCommand("");
   }
 

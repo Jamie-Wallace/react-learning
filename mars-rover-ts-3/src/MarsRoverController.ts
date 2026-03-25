@@ -1,19 +1,21 @@
 import {Compass} from "./Compass.ts";
 
 export class MarsRoverController {
+    compass = new Compass();
+    
     execute(command: string) {
-        const compass = new Compass();
+        console.warn(`${this.compass.getDirection()} - Direction: ${command}`)
 
         for (const char of command) {
             if (char == "R") {
-                compass.turnRight();
+                this.compass.turnRight();
             } else if (char == "L") {
-                compass.turnLeft();
+                this.compass.turnLeft();
             } else {
                 throw new Error("Unrecognised command");
             }
         }
 
-        return compass.getDirection();
+        return this.compass.getDirection();
     }
 }
