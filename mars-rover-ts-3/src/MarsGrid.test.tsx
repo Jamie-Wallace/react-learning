@@ -1,10 +1,9 @@
 import { render, screen, within } from "@testing-library/react";
 import MarsGrid from "./MarsGrid";
-import {Compass} from "./Compass.ts";
 
 describe("MarsGrid should", () => {
     function renderGrid() {
-        render(<MarsGrid compass={new Compass()} />);
+        render(<MarsGrid compass={"N"} />);
     }
 
     it("Render a grid", () => {
@@ -39,6 +38,15 @@ describe("MarsGrid should", () => {
         const expectedRoverSquare = within(grid).getByLabelText("square at x0 y0");
 
         expect(expectedRoverSquare).toHaveTextContent("^");
+    });
+
+    it("Render the Mars Rover at coordinates 0, 0 while facing East", () => {
+        render(<MarsGrid compass={"E"} />);
+
+        const grid = screen.getByLabelText("Mars rover grid")
+        const expectedRoverSquare = within(grid).getByLabelText("square at x0 y0");
+
+        expect(expectedRoverSquare).toHaveTextContent(">");
     });
 
     it('Render 0,0 at the correct grid location', () => {
