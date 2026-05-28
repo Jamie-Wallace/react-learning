@@ -6,4 +6,12 @@ export class Pose {
     getDirection() {
         return this.compass.getDirection();
     }
+
+    turnRight() {
+        return this.compass.turnRight();
+    }
+
+    turnLeft() {
+        return this.compass.turnLeft();
+    }
 }
