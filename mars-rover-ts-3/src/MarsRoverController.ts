@@ -1,16 +1,16 @@
-import { Compass } from "./Compass.ts";
 import { Coordinate } from "./Coordinate.ts";
+import {Pose} from "./Pose.ts";
 
 export class MarsRoverController {
-    compass = new Compass("N");
-    
-    
-    execute(command: string): Compass{
+    pose = new Pose();
+    // compass = new Compass("N");
+
+    execute(command: string): Pose {
         for (const char of command) {
             if (char == "R") {
-                this.compass.turnRight();
+                this.pose.compass.turnRight();
             } else if (char == "L") {
-                this.compass.turnLeft();
+                this.pose.compass.turnLeft();
             } else if (char == "M") {
                 new Coordinate().move();
             } else {
@@ -18,6 +18,6 @@ export class MarsRoverController {
             }
         }
 
-        return this.compass;
+        return this.pose;
     }
 }

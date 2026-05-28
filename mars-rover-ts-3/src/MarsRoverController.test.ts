@@ -84,7 +84,6 @@ describe("MarsRoverController", () => {
             expect(moveFunction).toHaveBeenCalledTimes(1);
         }
     );
-    
 
     // it.each([
     //     ["M", 0, 1],
@@ -92,9 +91,9 @@ describe("MarsRoverController", () => {
     //     "when command is %s, should move to %s, %s",
     //     (command, expectedX, expectedY) => {
     //         let controller = new MarsRoverController();
-
+    //
     //         let pose = controller.execute(command);
-
+    //
     //         let coordinate = pose.getCoordinate();
     //         expect(coordinate.x).toBe(expectedX);
     //         expect(coordinate.y).toBe(expectedY);

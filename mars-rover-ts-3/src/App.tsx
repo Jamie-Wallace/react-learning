@@ -22,7 +22,7 @@ function App() {
   }
 
   function executeCommand(): void {
-    setCompass(controller.execute(command));
+    setCompass(controller.execute(command).compass);
     setCommand("");
   }
 

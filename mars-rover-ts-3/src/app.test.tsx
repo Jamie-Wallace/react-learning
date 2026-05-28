@@ -1,9 +1,10 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import App from "./App.tsx";
-import { MarsRoverController } from "./MarsRoverController";
+import {MarsRoverController} from "./MarsRoverController";
 import { vi } from "vitest";
 import Mock = jest.Mock;
 import { Compass } from "./Compass.ts";
+import {Pose} from "./Pose.ts";
 
 vi.mock("./MarsRoverController");
 
@@ -18,7 +19,8 @@ let executeFunction: Mock<any, any>;
 describe("App should", () => {
     beforeEach(() => {
         executeFunction = vi.fn();
-        executeFunction.mockReturnValue(new Compass("N"));
+
+        executeFunction.mockReturnValue(new Pose());
         MarsRoverController.prototype.execute = executeFunction;
     });
 
@@ -115,7 +117,10 @@ describe("App should", () => {
     });
 
     it("should render grid with given coordinate", () => {
-        executeFunction.mockReturnValue(new Compass("E"));
+        let pose = new Pose();
+        pose.compass = new Compass("E");
+
+        executeFunction.mockReturnValue(pose);
 
         render(<App />);
 
