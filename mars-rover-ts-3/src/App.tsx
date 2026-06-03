@@ -2,11 +2,12 @@ import { useState } from "react";
 import "./App.css";
 import { MarsRoverController } from "./MarsRoverController";
 import MarsGrid from "./MarsGrid";
-import {Pose} from "./Pose.ts";
+import { Pose } from "./Pose.ts";
+import { Compass } from "./Compass.ts";
 
 function App() {
   const [command, setCommand] = useState("");
-  const [pose, setPose] = useState(new Pose());
+  const [pose, setPose] = useState(new Pose(new Compass("N")));
   const [controller] = useState(new MarsRoverController());
 
   function turnLeft(): void {

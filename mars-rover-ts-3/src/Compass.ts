@@ -1,24 +1,26 @@
 export class Compass {
-    directions = ["N", "W", "S", "E"];
-    directionIndex = 0
+    public static readonly directions = ["N", "W", "S", "E"];
+    public readonly directionIndex;
 
     constructor(direction: string) {
-        this.directionIndex = this.directions.indexOf(direction);
+        this.directionIndex = Compass.directions.indexOf(direction);
     }
 
     getDirection() {
-        return this.directions[this.directionIndex];
+        return Compass.directions[this.directionIndex];
     }
 
-    turnLeft() {
-        this.directionIndex++;
-        this.directionIndex = this.directionIndex % 4;
+    turnLeft(): Compass {
+        let newDirection = this.directionIndex + 1;
+        newDirection = newDirection % Compass.directions.length;
+        return new Compass(Compass.directions[newDirection]);
     }
 
-    turnRight() {
-        this.directionIndex--;
-        if (this.directionIndex < 0) {
-            this.directionIndex = this.directions.length - 1;
+    turnRight(): Compass {
+        let newDirection = this.directionIndex - 1;
+        if (newDirection < 0) {
+            newDirection = Compass.directions.length - 1;
         }
+        return new Compass(Compass.directions[newDirection]);
     }
 }
