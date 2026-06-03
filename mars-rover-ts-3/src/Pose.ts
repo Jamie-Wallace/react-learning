@@ -1,17 +1,19 @@
 import {Compass} from "./Compass.ts";
 
 export class Pose {
-    compass = new Compass("N");
+    constructor(
+        private readonly compass: Compass
+    ) {}
 
     getDirection() {
         return this.compass.getDirection();
     }
 
     turnRight() {
-        return this.compass.turnRight();
+        return new Pose(this.compass.turnRight());
     }
 
     turnLeft() {
-        return this.compass.turnLeft();
+        return new Pose(this.compass.turnLeft());
     }
 }

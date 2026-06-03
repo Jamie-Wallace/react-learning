@@ -10,15 +10,17 @@ export class Compass {
         return this.directions[this.directionIndex];
     }
 
-    turnLeft() {
+    turnLeft(): Compass {
         this.directionIndex++;
         this.directionIndex = this.directionIndex % 4;
+        return this;
     }
 
-    turnRight() {
+    turnRight(): Compass {
         this.directionIndex--;
         if (this.directionIndex < 0) {
             this.directionIndex = this.directions.length - 1;
         }
+        return this;
     }
 }
