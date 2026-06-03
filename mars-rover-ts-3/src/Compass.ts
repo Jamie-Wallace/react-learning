@@ -13,7 +13,7 @@ export class Compass {
     turnLeft(): Compass {
         this.directionIndex++;
         this.directionIndex = this.directionIndex % 4;
-        return this;
+        return new Compass(this.getDirection());
     }
 
     turnRight(): Compass {
@@ -21,6 +21,6 @@ export class Compass {
         if (this.directionIndex < 0) {
             this.directionIndex = this.directions.length - 1;
         }
-        return this;
+        return new Compass(this.getDirection());
     }
 }
