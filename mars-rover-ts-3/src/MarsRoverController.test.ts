@@ -40,21 +40,26 @@ describe("MarsRoverController", () => {
     );
 
     it.each([
-        ["R", "E"],
-        ["RR", "S"],
-        ["RRR", "W"],
-        ["RRRR", "N"],
-        ["RRRRR", "E"],
-        ["RRRRRR", "S"],
-        ["RRRRRRRRRR", "S"],
+        ["R", 1],
+        ["RR", 2],
+        ["RRR", 3],
+        ["RRRR", 4],
+        ["RRRRR", 5],
+        ["RRRRRR", 6],
+        ["RRRRRRRRRR", 10],
     ])(
         "when command is %s, should turn right to face %s",
-        (command, expectedDirection) => {
+        (command, expectedTurnCount) => {
+            let turnRightFunction = vi.fn(function (this: Pose) {
+                return this;
+            });
+
+            Pose.prototype.turnRight = turnRightFunction;
             let controller = new MarsRoverController();
 
-            let pose = controller.execute(command);
+            controller.execute(command);
 
-            expect(pose.getDirection()).toBe(expectedDirection);
+            expect(turnRightFunction).toHaveBeenCalledTimes(expectedTurnCount);
         }
     );
     
