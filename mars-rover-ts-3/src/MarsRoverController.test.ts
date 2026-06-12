@@ -64,16 +64,29 @@ describe("MarsRoverController", () => {
     );
     
     it.each([
-        ["LR", "N"],
-        ["LRRLLRL", "W"],
+        ["LR", 1, 1],
+        ["LRRLLRL", 4, 3],
     ])(
-        "when command is %s, should turn left and right to face %s",
-        (command, expectedDirection) => {
+        "when command is %s, should turn left %d times and right %d times",
+        (command, expectedLeftTurns, expectedRightTurns) => {
+            let turnRightFunction = vi.fn(function (this: Pose) {
+                return this;
+            });
+
+            Pose.prototype.turnRight = turnRightFunction;
+
+            let turnLeftFunction = vi.fn(function (this: Pose) {
+                return this;
+            });
+
+            Pose.prototype.turnLeft = turnLeftFunction;
+
             let controller = new MarsRoverController();
 
-            let pose = controller.execute(command);
+            controller.execute(command);
 
-            expect(pose.getDirection()).toBe(expectedDirection);
+            expect(turnRightFunction).toHaveBeenCalledTimes(expectedRightTurns);
+            expect(turnLeftFunction).toHaveBeenCalledTimes(expectedLeftTurns);
         }
     );
 
