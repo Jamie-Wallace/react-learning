@@ -2,8 +2,10 @@ import { MarsRoverController } from "./MarsRoverController.ts";
 import { Coordinate } from "./Coordinate.ts";
 
 import { vi } from "vitest";
+import {Pose} from "./Pose.ts";
 
-vi.mock("./Coordinate");
+// vi.mock("./Coordinate");
+vi.mock("./Pose");
 
 describe("MarsRoverController", () => {
     it('should handle unrecognised command', () => {
@@ -13,21 +15,27 @@ describe("MarsRoverController", () => {
     });
 
     it.each([
-        ["L", "W"],
-        ["LL", "S"],
-        ["LLL", "E"],
-        ["LLLL", "N"],
-        ["LLLLL", "W"],
-        ["LLLLLL", "S"],
-        ["LLLLLLLLLL", "S"],
+        ["L", 1],
+        ["LL", 2],
+        ["LLL", 3],
+        ["LLLL", 4],
+        ["LLLLL", 5],
+        ["LLLLLL", 6],
+        ["LLLLLLLLLL", 10],
     ])(
-        "when command is %s, should turn left to face %s",
-        (command, expectedDirection) => {
+        "when command is %s, should turn left %d times",
+        (command, expectedTurnCount) => {
+            let turnLeftFunction = vi.fn(function (this: Pose) {
+                return this;
+            });
+
+            Pose.prototype.turnLeft = turnLeftFunction;
+
             let controller = new MarsRoverController();
 
-            let pose = controller.execute(command);
+            controller.execute(command);
 
-            expect(pose.getDirection()).toBe(expectedDirection);
+            expect(turnLeftFunction).toHaveBeenCalledTimes(expectedTurnCount);
         }
     );
 
